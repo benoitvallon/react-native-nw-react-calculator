@@ -1,24 +1,21 @@
 'use strict';
 
-var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
+var React = require('react'),
+    Screen = require('./Screen'),
+    Formulae = require('./Formulae'),
+    Keyboard = require('./Keyboard');
 
 // CSS
 require('normalize.css');
 require('../styles/main.css');
 
-var imageURL = require('../images/yeoman.png');
-
 var App = React.createClass({
   render: function() {
     return (
       <div className='main'>
-        <ReactTransitionGroup transitionName="fade">
-          <img src={imageURL} />
-          <div>
-            Coucou
-          </div>
-        </ReactTransitionGroup>
+        <Screen />
+        <Formulae />
+        <Keyboard />
       </div>
     );
   }

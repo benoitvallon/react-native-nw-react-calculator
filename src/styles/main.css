@@ -1,41 +1,110 @@
-/* Stiziles */
-
+// Stiziles
 html, body {
-  background: #222222;
+  background: white;
 }
 
-/* main */
+.calculator {
+  height: 00;
+  background: blue;
+}
+.screen {
+  background-color: #68cef2;
+  color: #190d08;
+  font-size: 50px;
+  padding: 30px 10px;
+  text-align: right;
+  font-weight: lighter;
+}
 
-.main {
+.formulae {
+  background-color: #4c4c4c;
+  padding: 20px 10px;
+  text-align: right;
+  font-weight: lighter;
+}
+
+.group {
+  padding: 7px 8px 8px 8px;
+  font-size: 14px;
+  border-radius: 12px;
+  margin: 0 3px;
+}
+.group.multiply {
+  background-color: #68cef2;
+}
+.group.add {
+  background-color: #fcb064;
+}
+.group.substract {
+  background-color: #fcb064;
+}
+
+.keyboard {
+  height: 300px;
+}
+.keyboard-row {
+  display: table;
   width: 100%;
-  height: 100%;
-  background: #222222;
-  color: #fff;
 }
-
-.main img {
-  width: 103px;
-  height: 89px;
-  margin-bottom: 10px;
+.key {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
+  padding: 10px 0;
+  font-weight: lighter;
+}
+.key-number {
+  border: 1px solid #f8f8f8;
+  width: 33%;
+  color: #919191;
 }
 
-/* transitions */
-
-.fade-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
+.key-operation {
+  width: 25%;
+  color: white;
+  padding: 20px 0;
+}
+.operator {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 20px;
+  height: 60px;
+  display: inline;
+}
+.operator.divide {
+  background-color: #cb7dc9;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.operator.substract {
+  background-color: #fcb064;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+.operator.add {
+  background-color: #fb96cf;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.operator.multiply {
+  background-color: #68cef1;
+  padding-left: 13px;
+  padding-right: 13px;
 }
 
-.fade-enter.fade-enter-active {
-  opacity: 1;
+.key-action {
+  width: 50%;
+  padding: 20px;
 }
-
-.fade-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+.action {
+  border-radius: 10px;
+  padding: 10px 0;
 }
-
-.fade-leave.fade-leave-active {
-  opacity: 0.01;
+.action.back {
+  color: #d68086;
+  border: 1px solid #d68086;
+}
+.action.equal {
+  color: #9ed8a6;
+  border: 1px solid #9ed8a6;
 }
