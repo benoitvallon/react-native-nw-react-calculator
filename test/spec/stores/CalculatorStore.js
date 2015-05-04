@@ -1,10 +1,10 @@
 'use strict';
 
-describe('ExampleStore', function() {
+describe('CalculatorStore', function() {
   var store;
 
   beforeEach(function() {
-    store = require('stores/ExampleStore.js');
+    store = require('stores/CalculatorStore.js');
   });
 
   it('should be defined', function() {

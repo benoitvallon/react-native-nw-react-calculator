@@ -1,10 +1,11 @@
 'use strict';
 
 var React = require('react');
+var CalculatorActions = require('../actions/CalculatorActions');
 
 var Key = React.createClass({
   handleClick: function(event) {
-    console.log('click', this.props.keyValue);
+    CalculatorActions.create(this.props.keyValue);
   },
 
   render: function() {

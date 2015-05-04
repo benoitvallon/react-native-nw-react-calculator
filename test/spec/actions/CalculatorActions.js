@@ -1,10 +1,10 @@
 'use strict';
 
-describe('ExampleActionCreators', function() {
+describe('CalculatorActions', function() {
   var action;
 
   beforeEach(function() {
-    action = require('actions/ExampleActionCreators.js');
+    action = require('actions/CalculatorActions.js');
   });
 
   it('should be defined', function() {
