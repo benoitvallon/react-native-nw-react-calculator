@@ -5,7 +5,7 @@ var CalculatorStore = require('../stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
-    allKeys: CalculatorStore.getKeys()
+    display: CalculatorStore.getDisplay()
   };
 }
 
@@ -26,7 +26,7 @@ var Screen = React.createClass({
   render: function() {
     return (
       <div className='screen'>
-        26 {this.state.allKeys}
+        {this.state.display}
       </div>
     );
   },
