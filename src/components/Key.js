@@ -43,14 +43,25 @@ var Key = React.createClass({
       if(this.props.keyValue === '<<') { classOperation += 'back'; }
       if(this.props.keyValue === '=') { classOperation += 'equal'; }
     }
-    return (
-      <div className={classString}>
-        <div className={classOperation}
-          onClick={this.handleClick}
-          onMouseDown={this.onMouseDown}
-          onMouseUp={this.onMouseUp}>{this.props.keyValue}</div>
-      </div>
-    );
+    if(this.props.keyType === 'number') {
+      return (
+        <div className={classString}
+            onClick={this.handleClick}
+            onMouseDown={this.onMouseDown}
+            onMouseUp={this.onMouseUp}>
+          <div className={classOperation}>{this.props.keyValue}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className={classString}>
+          <div className={classOperation}
+            onClick={this.handleClick}
+            onMouseDown={this.onMouseDown}
+            onMouseUp={this.onMouseUp}>{this.props.keyValue}</div>
+        </div>
+      );
+    }
   }
 });
 

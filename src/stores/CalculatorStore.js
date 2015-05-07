@@ -19,6 +19,14 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
     return _displayScreen;
   },
   getDisplayFormulae: function() {
+    var maxNumberOfChar = 40;
+
+    var characterCount = 0;
+    _displayFormulae = _displayFormulae.reverse().filter(function(formula) {
+      characterCount += formula.literal.length;
+      return characterCount < maxNumberOfChar;
+    }).reverse();
+
     return _displayFormulae;
   },
 
