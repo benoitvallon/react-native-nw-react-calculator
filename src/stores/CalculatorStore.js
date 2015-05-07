@@ -49,11 +49,15 @@ function processKey(key) {
     // if a nuber was being typed we reset it otherwise we reset everything
     if(key === '<<') {
       if(_numericKeyTyped.length) {
-        _numericKeyTyped = [];
+        _numericKeyTyped.pop();
+        if(!_numericKeyTyped.length) {
+          _displayScreen = 0;
+        }
       } else {
         _numberTyped = [];
+        _displayScreen = 0;
       }
-      _displayScreen = 0;
+      return;
     }
 
     if(key === '+' || key === '-' || key === 'x' || key === '÷') {

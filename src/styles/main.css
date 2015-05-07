@@ -21,6 +21,7 @@ html, body {
   padding: 20px 10px;
   text-align: right;
   font-weight: lighter;
+  min-height: 18px;
 }
 .highlight {
   transform: scale(0.9);
