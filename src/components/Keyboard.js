@@ -29,7 +29,7 @@ var Keyboard = React.createClass({
         </div>
 
         <div className='keyboard-row'>
-          <Key keyType='operation' keyValue=':' />
+          <Key keyType='operation' keyValue='÷' />
           <Key keyType='operation' keyValue='-' />
           <Key keyType='operation' keyValue='+' />
           <Key keyType='operation' keyValue='x' />

@@ -10,12 +10,16 @@ var CHANGE_EVENT = 'change';
 var _numericKeyTyped = [];
 var _signKeyTyped = null;
 var _numberTyped = [];
-var _display = 0;
+var _displayScreen = 0;
+var _displayFormulae = [];
 
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
-  getDisplay: function() {
-    return _display;
+  getDisplayScreen: function() {
+    return _displayScreen;
+  },
+  getDisplayFormulae: function() {
+    return _displayFormulae;
   },
 
   emitChange: function() {
@@ -32,7 +36,7 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
 
 function processKey(key) {
 
-  if(key === '+' || key === '-' || key === 'x' || key === ':' || key === '=' || key === '<<') {
+  if(key === '+' || key === '-' || key === 'x' || key === '÷' || key === '=' || key === '<<') {
 
     // if a nuber was being typed we reset it otherwise we reset everything
     if(key === '<<') {
@@ -41,10 +45,10 @@ function processKey(key) {
       } else {
         _numberTyped = [];
       }
-      _display = 0;
+      _displayScreen = 0;
     }
 
-    if(key === '+' || key === '-' || key === 'x' || key === ':') {
+    if(key === '+' || key === '-' || key === 'x' || key === '÷') {
       _signKeyTyped = key;
     }
 
@@ -69,19 +73,24 @@ function processKey(key) {
           case 'x':
             calculation = _numberTyped[0] * _numberTyped[1];
             break;
-          case ':':
+          case '÷':
             calculation = _numberTyped[0] / _numberTyped[1];
             break;
           default:
         }
 
-        _display = calculation;
+        _displayFormulae.push({
+          literal: '' + _numberTyped[0].toString() + ' ' +
+            _signKeyTyped + ' ' +  _numberTyped[1].toString(),
+          sign: _signKeyTyped
+        });
+        _displayScreen = calculation;
         _numberTyped = [calculation];
       }
     }
   } else {
     _numericKeyTyped.push(key);
-    _display = _numericKeyTyped;
+    _displayScreen = _numericKeyTyped;
   }
 }
 

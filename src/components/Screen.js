@@ -5,7 +5,7 @@ var CalculatorStore = require('../stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
-    display: CalculatorStore.getDisplay()
+    displayScreen: CalculatorStore.getDisplayScreen()
   };
 }
 
@@ -26,7 +26,7 @@ var Screen = React.createClass({
   render: function() {
     return (
       <div className='screen'>
-        {this.state.display}
+        {this.state.displayScreen}
       </div>
     );
   },

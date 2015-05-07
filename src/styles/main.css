@@ -22,6 +22,9 @@ html, body {
   text-align: right;
   font-weight: lighter;
 }
+.highlight {
+  transform: scale(0.9);
+}
 
 .group {
   padding: 7px 8px 8px 8px;
@@ -29,14 +32,17 @@ html, body {
   border-radius: 12px;
   margin: 0 3px;
 }
-.group.multiply {
-  background-color: #68cef2;
-}
-.group.add {
-  background-color: #fcb064;
+.group.divide {
+  background-color: #cb7dc9;
 }
 .group.substract {
   background-color: #fcb064;
+}
+.group.add {
+  background-color: #fb96cf;
+}
+.group.multiply {
+  background-color: #68cef1;
 }
 
 .keyboard {
@@ -52,6 +58,12 @@ html, body {
   text-align: center;
   padding: 10px 0;
   font-weight: lighter;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  transition: all 0.2s;
 }
 .key-number {
   border: 1px solid #f8f8f8;
@@ -73,8 +85,8 @@ html, body {
 }
 .operator.divide {
   background-color: #cb7dc9;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .operator.substract {
   background-color: #fcb064;
