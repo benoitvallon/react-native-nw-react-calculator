@@ -97,6 +97,21 @@ function processKey(key) {
       }
     }
   } else {
+    // avoid multiple '.' character
+    if(key === '.') {
+      if(~_numericKeyTyped.indexOf('.')) {
+        return;
+      } else {
+        // if no '.' is found then we push first a '0'
+        _numericKeyTyped.push('0');
+      }
+    }
+    if(key === '0') {
+      // if there no other character, '0's can not accumulate
+      if(!_numericKeyTyped.length) {
+        return;
+      }
+    }
     _numericKeyTyped.push(key);
     _displayScreen = _numericKeyTyped;
   }
