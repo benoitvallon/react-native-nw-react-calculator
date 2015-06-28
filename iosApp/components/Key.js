@@ -60,41 +60,77 @@ var Key = React.createClass({
             </Text>
           </TouchableHighlight>
         </View>
-        // <div className={classString}
-        //     onClick={this.handleClick}
-        //     onMouseDown={this.onMouseDown}
-        //     onMouseUp={this.onMouseUp}>
-        //   <div className={classOperation}>{this.props.keyValue}</div>
-        // </div>
       );
     } else {
       return (
         <View style={styles.keyNotNumber}>
-          <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
-            <Text style={styles.textButton}>
+          <TouchableHighlight style={getStyles(classOperation)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+            <Text style={styles.textButtonAdd}>
               {this.props.keyValue}
             </Text>
           </TouchableHighlight>
         </View>
-        // <div className={classString}>
-        //   <div className={classOperation}
-        //     onClick={this.handleClick}
-        //     onMouseDown={this.onMouseDown}
-        //     onMouseUp={this.onMouseUp}>{this.props.keyValue}</div>
-        // </div>
       );
     }
   }
 });
+var getStyles = function(classOperation) {
+  var buttonOperationBasic = {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+  var buttonOperations = {
+    add: {
+      backgroundColor: '#fb96cf',
+      paddingBottom: 3
+    },
+    substract: {
+      backgroundColor: '#fcb064',
+      paddingBottom: 3
+    },
+    multiply: {
+      backgroundColor: '#68cef1',
+      paddingBottom: 3
+    },
+    divide: {
+      backgroundColor: '#cb7dc9',
+      paddingBottom: 3
+    },
+    back: {
+      backgroundColor: 'white',
+      color: 'gray',
+      paddingBottom: 3,
+      borderColor: 'gray',
+      borderWidth: 1
+    },
+    equal: {
+      backgroundColor: 'white',
+      color: 'gray',
+      paddingBottom: 3,
+      borderColor: 'gray',
+      borderWidth: 1
+    }
+  };
+  classOperation = classOperation.split(' ');
+  return Object.assign(buttonOperationBasic, buttonOperations[classOperation[1]]);
+}
 
 var styles = StyleSheet.create({
   keyNumber: {
     flex: 1,
     borderColor: '#f8f8f8',
-    borderWidth: 1
+    borderWidth: 1,
   },
   keyNotNumber: {
     flex: 1,
+    // backgroundColor: 'red',
+    // borderColor: '#f8f8f8',
+    // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   button: {
     flex: 1,
@@ -106,6 +142,11 @@ var styles = StyleSheet.create({
     color: '#919191',
     fontSize: 20,
     fontWeight: '400',
+  },
+  textButtonAdd: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '600',
   }
 });
 
