@@ -53,7 +53,7 @@ var Key = React.createClass({
     }
     if(this.props.keyType === 'number') {
       return (
-        <View style={styles.key}>
+        <View style={styles.keyNumber}>
           <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
             <Text style={styles.textButton}>
               {this.props.keyValue}
@@ -69,7 +69,7 @@ var Key = React.createClass({
       );
     } else {
       return (
-        <View style={styles.key}>
+        <View style={styles.keyNotNumber}>
           <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
             <Text style={styles.textButton}>
               {this.props.keyValue}
@@ -88,24 +88,24 @@ var Key = React.createClass({
 });
 
 var styles = StyleSheet.create({
-  key: {
-    alignItems: 'stretch',
-    alignSelf: 'stretch',
+  keyNumber: {
     flex: 1,
-    // flexDirection: 'row',
     borderColor: '#f8f8f8',
-    borderWidth: 1,
+    borderWidth: 1
+  },
+  keyNotNumber: {
+    flex: 1,
   },
   button: {
-    backgroundColor: 'white',
     flex: 1,
-    // padding: 10,
-    alignItems: 'center'
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   textButton: {
     color: '#919191',
     fontSize: 20,
-    fontWeight: "400"
+    fontWeight: '400',
   }
 });
 

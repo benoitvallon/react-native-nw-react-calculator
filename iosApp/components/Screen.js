@@ -45,7 +45,7 @@ var Screen = React.createClass({
 var styles = StyleSheet.create({
   screen: {
     color: '#190d08',
-    fontSize: 50,
+    fontSize: 70,
     fontWeight: '200'
   }
 });

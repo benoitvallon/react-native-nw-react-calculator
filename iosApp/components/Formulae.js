@@ -7,6 +7,7 @@ var {
   AppRegistry,
   StyleSheet,
   Text,
+  View
 } = React;
 
 function getCalculatorState() {
@@ -39,11 +40,11 @@ var Formulae = React.createClass({
 
   render: function() {
     return (
-      <Text>
+      <View styles={styles.formulae}>
         {this.state.displayFormulae.map(function(formula) {
           return <Text className={this.dynamicClass(formula.sign)}>{formula.literal}</Text>
         }, this)}
-      </Text>
+      </View>
       // <div className='formulae'>
       //     {this.state.displayFormulae.map(function(formula) {
       //       return <span className={this.dynamicClass(formula.sign)}>{formula.literal}</span>
@@ -56,6 +57,12 @@ var Formulae = React.createClass({
     this.setState(getCalculatorState());
   }
 
+});
+
+var styles = StyleSheet.create({
+  formalue: {
+    flex: 1,
+  },
 });
 
 module.exports = Formulae;

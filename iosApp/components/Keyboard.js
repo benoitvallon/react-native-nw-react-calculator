@@ -56,21 +56,10 @@ var Keyboard = React.createClass({
 var styles = StyleSheet.create({
   keyboard: {
     flex: 1,
-    // flexDirection: 'column',
-    // backgroundColor: 'red'
   },
-  // separator: {
-  //   flex: 1,
-  //   height: 1,
-  //   backgroundColor: 'blue'
-  // },
   row: {
-    // alignSelf: 'stretch',
-    // alignItems: 'stretch',
     flex: 1,
     flexDirection: 'row',
-    // borderBottomWidth: 1
-    // backgroundColor: 'green'
   }
 });
 
