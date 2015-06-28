@@ -40,7 +40,9 @@ var Formulae = React.createClass({
   render: function() {
     return (
       <Text>
-        Formulae
+        {this.state.displayFormulae.map(function(formula) {
+          return <Text className={this.dynamicClass(formula.sign)}>{formula.literal}</Text>
+        }, this)}
       </Text>
       // <div className='formulae'>
       //     {this.state.displayFormulae.map(function(formula) {

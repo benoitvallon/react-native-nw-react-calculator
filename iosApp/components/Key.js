@@ -7,7 +7,8 @@ var {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } = React;
 
 var Key = React.createClass({
@@ -53,9 +54,11 @@ var Key = React.createClass({
     if(this.props.keyType === 'number') {
       return (
         <View style={styles.key}>
-          <Text>
-            {this.props.keyValue}
-          </Text>
+          <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+            <Text style={styles.textButton}>
+              {this.props.keyValue}
+            </Text>
+          </TouchableHighlight>
         </View>
         // <div className={classString}
         //     onClick={this.handleClick}
@@ -67,9 +70,11 @@ var Key = React.createClass({
     } else {
       return (
         <View style={styles.key}>
-          <Text>
-            {this.props.keyValue}
-          </Text>
+          <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+            <Text style={styles.textButton}>
+              {this.props.keyValue}
+            </Text>
+          </TouchableHighlight>
         </View>
         // <div className={classString}>
         //   <div className={classOperation}
@@ -84,17 +89,24 @@ var Key = React.createClass({
 
 var styles = StyleSheet.create({
   key: {
+    alignItems: 'stretch',
     alignSelf: 'stretch',
-    flex: 3,
-    flexDirection: 'row',
-    padding: 10,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,
+    // flexDirection: 'row',
     borderColor: '#f8f8f8',
     borderWidth: 1,
-    color: '#919191'
   },
+  button: {
+    backgroundColor: 'white',
+    flex: 1,
+    // padding: 10,
+    alignItems: 'center'
+  },
+  textButton: {
+    color: '#919191',
+    fontSize: 20,
+    fontWeight: "400"
+  }
 });
 
 module.exports = Key;

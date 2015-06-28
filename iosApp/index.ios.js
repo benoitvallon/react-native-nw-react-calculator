@@ -36,36 +36,26 @@ var iosApp = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    // backgroundColor: 'red',
   },
   screen: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'stretch',
+    justifyContent: 'flex-end',
     backgroundColor: '#68cef2',
-    color: '#190d08',
-    fontSize: 50,
-    padding: 20,
-    textAlign: 'right',
-    fontWeight: '100'
+    padding: 20
   },
   formalue: {
-    height: 100,
-    backgroundColor: '#4c4c4c',
-    padding: 20,
-    textAlign: 'right',
-    fontWeight: '100',
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'stretch'
+    backgroundColor: '#4c4c4c',
+    padding: 20,
   },
   keyboard: {
-    fontWeight: '100',
-    alignSelf: 'stretch',
-    flex: 1,
+    flex: 4,
+    flexDirection: 'row',
   }
 });
 

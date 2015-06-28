@@ -13,7 +13,7 @@ var {
 var Keyboard = React.createClass({
   render: function() {
     return (
-      <View className='keyboard'>
+      <View style={styles.keyboard}>
 
         <View style={styles.row}>
           <Key keyType='number' keyValue='1' />
@@ -54,16 +54,23 @@ var Keyboard = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  keyboard: {
+    flex: 1,
+    // flexDirection: 'column',
+    // backgroundColor: 'red'
+  },
+  // separator: {
+  //   flex: 1,
+  //   height: 1,
+  //   backgroundColor: 'blue'
+  // },
   row: {
-    // alignItems: 'center',
-    alignSelf: 'stretch',
-    flex: 3,
+    // alignSelf: 'stretch',
+    // alignItems: 'stretch',
+    flex: 1,
     flexDirection: 'row',
-    fontSize: 30,
-    // padding: 5,
-    // textAlign: 'right',
-    fontWeight: '100',
-    backgroundColor: 'green'
+    // borderBottomWidth: 1
+    // backgroundColor: 'green'
   }
 });
 
