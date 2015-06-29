@@ -22,7 +22,7 @@ var iosApp = React.createClass({
         <View style={styles.screen} >
           <Screen />
         </View>
-        <View style={styles.formalue}>
+        <View style={styles.formulae}>
           <Formulae />
         </View>
         <View style={styles.keyboard}>
@@ -43,12 +43,11 @@ var styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     backgroundColor: '#68cef2',
-    padding: 20
+    padding: 18
   },
-  formalue: {
+  formulae: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'flex-end',
     backgroundColor: '#4c4c4c',
     padding: 20,

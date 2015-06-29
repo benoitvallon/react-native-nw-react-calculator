@@ -40,16 +40,13 @@ var Formulae = React.createClass({
 
   render: function() {
     return (
-      <View styles={styles.formulae}>
+      <View style={styles.formulae}>
         {this.state.displayFormulae.map(function(formula) {
-          return <Text className={this.dynamicClass(formula.sign)}>{formula.literal}</Text>
+          return <View style={getFormulaStyles(formula.sign)}>
+            <Text style={styles.text}>{formula.literal}</Text>
+          </View>
         }, this)}
       </View>
-      // <div className='formulae'>
-      //     {this.state.displayFormulae.map(function(formula) {
-      //       return <span className={this.dynamicClass(formula.sign)}>{formula.literal}</span>
-      //     }, this)}
-      // </div>
     );
   },
 
@@ -59,10 +56,41 @@ var Formulae = React.createClass({
 
 });
 
+var getFormulaStyles = function(sign) {
+  var button = {
+    basic: {
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 8,
+      marginLeft: 10
+    },
+    '+': {
+      backgroundColor: '#fb96cf',
+    },
+    '-': {
+      backgroundColor: '#fcb064',
+    },
+    'x': {
+      backgroundColor: '#68cef1',
+    },
+    '÷': {
+      backgroundColor: '#cb7dc9',
+    },
+  };
+
+  return Object.assign(button.basic, button[sign]);
+}
+
 var styles = StyleSheet.create({
-  formalue: {
-    flex: 1,
+  formulae: {
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  text: {
+    fontSize: 18
+  }
 });
 
 module.exports = Formulae;
