@@ -40,14 +40,14 @@ var Key = React.createClass({
     }
     var classOperation = '';
     if(this.props.keyType === 'operation') {
-      classOperation = 'operator ';
+      // classOperation = 'operator ';
       if(this.props.keyValue === '+') { classOperation += 'add'; }
       if(this.props.keyValue === '-') { classOperation += 'substract'; }
       if(this.props.keyValue === '÷') { classOperation += 'divide'; }
       if(this.props.keyValue === 'x') { classOperation += 'multiply'; }
     }
     if(this.props.keyType === 'action') {
-      classOperation = 'action ';
+      // classOperation = 'action ';
       if(this.props.keyValue === '<<') { classOperation += 'back'; }
       if(this.props.keyValue === '=') { classOperation += 'equal'; }
     }
@@ -61,11 +61,21 @@ var Key = React.createClass({
           </TouchableHighlight>
         </View>
       );
-    } else {
+    } else if(this.props.keyType === 'operation') {
       return (
-        <View style={styles.keyNotNumber}>
-          <TouchableHighlight style={getStyles(classOperation)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
-            <Text style={styles.textButtonAdd}>
+        <View style={styles.keyOperator}>
+          <TouchableHighlight style={getOperatorStyles(classOperation)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+            <Text style={styles.textButtonOperator}>
+              {this.props.keyValue}
+            </Text>
+          </TouchableHighlight>
+        </View>
+      );
+    } else if(this.props.keyType === 'action') {
+      return (
+        <View style={styles.keyAction}>
+          <TouchableHighlight style={getActionStyles(classOperation)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+            <Text style={getActionButtonStyles(classOperation)}>
               {this.props.keyValue}
             </Text>
           </TouchableHighlight>
@@ -74,15 +84,16 @@ var Key = React.createClass({
     }
   }
 });
-var getStyles = function(classOperation) {
-  var buttonOperationBasic = {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
-  var buttonOperations = {
+
+var getOperatorStyles = function(classOperation) {
+  var buttonOperator = {
+    basic: {
+      height: 50,
+      width: 50,
+      borderRadius: 25,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     add: {
       backgroundColor: '#fb96cf',
       paddingBottom: 3
@@ -99,23 +110,50 @@ var getStyles = function(classOperation) {
       backgroundColor: '#cb7dc9',
       paddingBottom: 3
     },
+  };
+  return Object.assign(buttonOperator.basic, buttonOperator[classOperation]);
+}
+
+var getActionStyles = function(classOperation) {
+  var buttonAction = {
+    basic: {
+      flex: 1,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     back: {
-      backgroundColor: 'white',
-      color: 'gray',
-      paddingBottom: 3,
-      borderColor: 'gray',
+      // backgroundColor: 'white',
+      paddingBottom: 1,
+      borderColor: '#d68086',
       borderWidth: 1
     },
     equal: {
-      backgroundColor: 'white',
-      color: 'gray',
-      paddingBottom: 3,
-      borderColor: 'gray',
+      // backgroundColor: '#9ed8a6',
+      paddingBottom: 1,
+      borderColor: '#9ed8a6',
       borderWidth: 1
     }
   };
-  classOperation = classOperation.split(' ');
-  return Object.assign(buttonOperationBasic, buttonOperations[classOperation[1]]);
+  return Object.assign(buttonAction.basic, buttonAction[classOperation]);
+}
+
+var getActionButtonStyles = function(classOperation) {
+  var buttonText = {
+    basic: {
+      fontSize: 25,
+      fontWeight: '200',
+    },
+    back: {
+      paddingBottom: 3,
+      color: '#d68086',
+    },
+    equal: {
+      paddingBottom: 3,
+      color: '#9ed8a6',
+    }
+  };
+  return Object.assign(buttonText.basic, buttonText[classOperation]);
 }
 
 var styles = StyleSheet.create({
@@ -124,13 +162,14 @@ var styles = StyleSheet.create({
     borderColor: '#f8f8f8',
     borderWidth: 1,
   },
-  keyNotNumber: {
+  keyOperator: {
     flex: 1,
-    // backgroundColor: 'red',
-    // borderColor: '#f8f8f8',
-    // borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  keyAction: {
+    flex: 1,
+    padding: 10,
   },
   button: {
     flex: 1,
@@ -143,7 +182,7 @@ var styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
   },
-  textButtonAdd: {
+  textButtonOperator: {
     color: 'white',
     fontSize: 20,
     fontWeight: '600',
