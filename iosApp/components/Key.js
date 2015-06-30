@@ -1,6 +1,6 @@
 'use strict';
 
-var CalculatorActions = require('../actions/CalculatorActions');
+var CalculatorActions = require('../common/actions/CalculatorActions');
 
 var React = require('react-native');
 var {

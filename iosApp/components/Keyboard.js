@@ -11,6 +11,7 @@ var {
 } = React;
 
 var Keyboard = React.createClass({
+
   render: function() {
     return (
       <View style={styles.keyboard}>

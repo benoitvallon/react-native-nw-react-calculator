@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var CalculatorStore = require('../stores/CalculatorStore');
+var CalculatorStore = require('../../iosApp/common/stores/CalculatorStore');
 
 function getCalculatorState() {
   return {

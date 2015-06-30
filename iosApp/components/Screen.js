@@ -1,13 +1,13 @@
 'use strict';
 
+var CalculatorStore = require('../common/stores/CalculatorStore');
+
 var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
   Text,
 } = React;
-
-var CalculatorStore = require('../stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
