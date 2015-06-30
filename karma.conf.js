@@ -42,10 +42,10 @@ module.exports = function (config) {
       },
       resolve: {
         alias: {
-          'styles': path.join(process.cwd(), './src/styles/'),
-          'components': path.join(process.cwd(), './src/components/'),
-          'stores': '../../../src/stores/',
-          'actions': '../../../src/actions/'
+          'styles': path.join(process.cwd(), './specificWeb/styles/'),
+          'components': path.join(process.cwd(), './specificWeb/components/'),
+          'stores': '../../../common/stores/',
+          'actions': '../../../common/actions/'
         }
       }
     },

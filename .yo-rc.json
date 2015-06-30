@@ -1,7 +1,0 @@
-{
-  "generator-react-webpack": {
-    "app-name": "",
-    "architecture": "flux",
-    "styles-language": "sass"
-  }
-}

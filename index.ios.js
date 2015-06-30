@@ -4,9 +4,9 @@
  */
 'use strict';
 
-var Screen = require('./components/Screen');
-var Formulae = require('./components/Formulae');
-var Keyboard = require('./components/Keyboard');
+var Screen = require('./specificiOS/components/Screen');
+var Formulae = require('./specificiOS/components/Formulae');
+var Keyboard = require('./specificiOS/components/Keyboard');
 
 var React = require('react-native');
 var {

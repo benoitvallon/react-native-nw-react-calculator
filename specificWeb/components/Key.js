@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var CalculatorActions = require('../../iosApp/common/actions/CalculatorActions');
+var CalculatorActions = require('../../common/actions/CalculatorActions');
 
 var Key = React.createClass({
 

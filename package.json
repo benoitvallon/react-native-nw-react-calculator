@@ -4,18 +4,23 @@
   "description": "",
   "repository": "",
   "private": true,
-  "src": "src",
+  "src": "/specificWeb",
   "test": "test",
   "dist": "dist",
   "mainInput": "main",
   "mainOutput": "main",
+  "scripts": {
+    "start": "node_modules/react-native/packager/packager.sh"
+  },
   "dependencies": {
+    "es6-promise": "^2.0.1",
     "events": "^1.0.2",
     "flux": "^2.0.1",
     "keymirror": "^0.1.1",
     "normalize.css": "^3.0.3",
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
+    "react-native": "^0.6.0",
     "react-router": "^0.13.3"
   },
   "devDependencies": {

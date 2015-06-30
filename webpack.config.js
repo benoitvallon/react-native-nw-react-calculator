@@ -19,7 +19,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './src/components/main.js'
+      './specificWeb/components/main.js'
   ],
 
   stats: {
@@ -30,9 +30,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'styles': __dirname + '/src/styles',
+      'styles': __dirname + '/specificWeb/styles',
       'mixins': __dirname + '/src/mixins',
-      'components': __dirname + '/src/components/',
+      'components': __dirname + '/specificWeb/components',
       'stores': __dirname + '/src/stores/',
       'actions': __dirname + '/src/actions/'
     }

@@ -1,13 +1,7 @@
 'use strict';
 
-var CalculatorStore = require('../common/stores/CalculatorStore');
-
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-} = React;
+var React = require('react');
+var CalculatorStore = require('../../common/stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
@@ -31,22 +25,14 @@ var Screen = React.createClass({
 
   render: function() {
     return (
-      <Text style={styles.screen}>
+      <div className='screen'>
         {this.state.displayScreen}
-      </Text>
+      </div>
     );
   },
 
   _onChange: function() {
     this.setState(getCalculatorState());
-  }
-});
-
-var styles = StyleSheet.create({
-  screen: {
-    color: '#190d08',
-    fontSize: 70,
-    fontWeight: '200'
   }
 });
 

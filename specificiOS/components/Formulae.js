@@ -1,6 +1,6 @@
 'use strict';
 
-var CalculatorStore = require('../common/stores/CalculatorStore');
+var CalculatorStore = require('../../common/stores/CalculatorStore');
 
 var React = require('react-native');
 var {

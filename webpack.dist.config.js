@@ -18,7 +18,7 @@ module.exports = {
 
   debug: false,
   devtool: false,
-  entry: './src/components/main.js',
+  entry: './specificWeb/components/main.js',
 
   stats: {
     colors: true,
@@ -35,9 +35,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-      'styles': __dirname + '/src/styles',
+      'styles': __dirname + '/specificWeb/styles',
       'mixins': __dirname + '/src/mixins',
-      'components': __dirname + '/src/components/',
+      'components': __dirname + '/specificWeb/components',
       'stores': __dirname + '/src/stores/',
       'actions': __dirname + '/src/actions/'
     }
