@@ -1,7 +1,6 @@
 'use strict';
 
-var React = require('react-native');
-var EventEmitter = require('events');
+var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var CalculatorConstants = require('../constants/CalculatorConstants');
