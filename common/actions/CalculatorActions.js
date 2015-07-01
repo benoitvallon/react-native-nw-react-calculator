@@ -5,10 +5,11 @@ var CalculatorConstants = require('../constants/CalculatorConstants');
 
 var CalculatorActions = {
 
-  create: function(key) {
+  create: function(keyType, keyValue) {
     AppDispatcher.dispatch({
       type: CalculatorConstants.KEY_TYPED,
-      key: key
+      keyType: keyType,
+      keyValue: keyValue
     });
   },
 

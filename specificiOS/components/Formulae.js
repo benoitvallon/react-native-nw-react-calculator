@@ -30,19 +30,15 @@ var Formulae = React.createClass({
     CalculatorStore.removeChangeListener(this._onChange);
   },
 
-  dynamicClass: function(className) {
-    if(className === '+') { className = 'add'; }
-    if(className === '-') { className = 'substract'; }
-    if(className === '÷') { className = 'divide'; }
-    if(className === 'x') { className = 'multiply'; }
-    return 'group ' + className;
+  dynamicClass: function(operator) {
+    return 'group ' + operator;
   },
 
   render: function() {
     return (
       <View style={styles.formulae}>
         {this.state.displayFormulae.map(function(formula) {
-          return <View style={getFormulaStyles(formula.sign)}>
+          return <View style={getFormulaStyles(formula.operator)}>
             <Text style={styles.text}>{formula.literal}</Text>
           </View>
         }, this)}
@@ -56,7 +52,7 @@ var Formulae = React.createClass({
 
 });
 
-var getFormulaStyles = function(sign) {
+var getFormulaStyles = function(operator) {
   var button = {
     basic: {
       borderRadius: 10,
@@ -65,21 +61,21 @@ var getFormulaStyles = function(sign) {
       padding: 8,
       marginLeft: 10
     },
-    '+': {
+    add: {
       backgroundColor: '#fb96cf',
     },
-    '-': {
+    substract: {
       backgroundColor: '#fcb064',
     },
-    'x': {
+    multiply: {
       backgroundColor: '#68cef1',
     },
-    '÷': {
+    divide: {
       backgroundColor: '#cb7dc9',
     },
   };
 
-  return Object.assign(button.basic, button[sign]);
+  return Object.assign(button.basic, button[operator]);
 }
 
 var styles = StyleSheet.create({

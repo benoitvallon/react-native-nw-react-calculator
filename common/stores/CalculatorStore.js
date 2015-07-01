@@ -9,6 +9,7 @@ var CHANGE_EVENT = 'change';
 
 var _numericKeyTyped = [];
 var _signKeyTyped = null;
+var _symbolKeyTyped = null;
 var _numberTyped = [];
 var _displayScreen = 0;
 var _displayFormulae = [];
@@ -42,12 +43,11 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
   },
 });
 
-function processKey(key) {
-
-  if(key === '+' || key === '-' || key === 'x' || key === '÷' || key === '=' || key === '<<') {
+function processKey(keyType, keyValue) {
+  if(keyType === 'operator' || keyType === 'action') {
 
     // if a nuber was being typed we reset it otherwise we reset everything
-    if(key === '<<') {
+    if(keyValue === 'back') {
       if(_numericKeyTyped.length) {
         _numericKeyTyped.pop();
         if(!_numericKeyTyped.length) {
@@ -60,8 +60,8 @@ function processKey(key) {
       return;
     }
 
-    if(key === '+' || key === '-' || key === 'x' || key === '÷') {
-      _signKeyTyped = key;
+    if(keyType === 'operator') {
+      _signKeyTyped = keyValue;
     }
 
     // a number was previously typed
@@ -76,25 +76,29 @@ function processKey(key) {
         var calculation = 0;
 
         switch(_signKeyTyped) {
-          case '+':
+          case 'add':
             calculation = _numberTyped[0] + _numberTyped[1];
+            _symbolKeyTyped = '+';
             break;
-          case '-':
+          case 'substract':
             calculation = _numberTyped[0] - _numberTyped[1];
+            _symbolKeyTyped = '-';
             break;
-          case 'x':
+          case 'multiply':
             calculation = _numberTyped[0] * _numberTyped[1];
+            _symbolKeyTyped = 'x';
             break;
-          case '÷':
+          case 'divide':
             calculation = _numberTyped[0] / _numberTyped[1];
+            _symbolKeyTyped = '÷';
             break;
           default:
         }
 
         _displayFormulae.push({
           literal: '' + _numberTyped[0].toString() + ' ' +
-            _signKeyTyped + ' ' +  _numberTyped[1].toString(),
-          sign: _signKeyTyped
+            _symbolKeyTyped + ' ' +  _numberTyped[1].toString(),
+          operator: _signKeyTyped
         });
         _displayScreen = calculation;
         _numberTyped = [calculation];
@@ -102,7 +106,7 @@ function processKey(key) {
     }
   } else {
     // avoid multiple '.' character
-    if(key === '.') {
+    if(keyValue === '.') {
       if(~_numericKeyTyped.indexOf('.')) {
         return;
       } else {
@@ -110,13 +114,13 @@ function processKey(key) {
         _numericKeyTyped.push('0');
       }
     }
-    if(key === '0') {
+    if(keyValue === '0') {
       // if there no other character, '0's can not accumulate
       if(!_numericKeyTyped.length) {
         return;
       }
     }
-    _numericKeyTyped.push(key);
+    _numericKeyTyped.push(keyValue);
     _displayScreen = _numericKeyTyped;
   }
 }
@@ -125,9 +129,10 @@ CalculatorStore.dispatchToken = AppDispatcher.register(function(action) {
 
   switch(action.type) {
     case CalculatorConstants.KEY_TYPED:
-      var key = action.key;
-      if (key !== '') {
-        processKey(key);
+      var keyType = action.keyType;
+      var keyValue = action.keyValue;
+      if (keyType !== undefined && keyValue !== undefined ) {
+        processKey(keyType, keyValue);
         CalculatorStore.emitChange();
       }
       break;

@@ -23,20 +23,16 @@ var Formulae = React.createClass({
     CalculatorStore.removeChangeListener(this._onChange);
   },
 
-  dynamicClass: function(className) {
-    if(className === '+') { className = 'add'; }
-    if(className === '-') { className = 'substract'; }
-    if(className === '÷') { className = 'divide'; }
-    if(className === 'x') { className = 'multiply'; }
-    return 'group ' + className;
+  dynamicClass: function(opeartor) {
+    return 'group ' + opeartor;
   },
 
   render: function() {
     return (
       <div className='formulae'>
-          {this.state.displayFormulae.map(function(formula) {
-            return <span className={this.dynamicClass(formula.sign)}>{formula.literal}</span>
-          }, this)}
+        {this.state.displayFormulae.map(function(formula) {
+          return <span className={this.dynamicClass(formula.operator)}>{formula.literal}</span>
+        }, this)}
       </div>
     );
   },

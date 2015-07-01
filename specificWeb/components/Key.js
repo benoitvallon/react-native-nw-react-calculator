@@ -10,7 +10,7 @@ var Key = React.createClass({
   },
 
   handleClick: function(event) {
-    CalculatorActions.create(this.props.keyValue);
+    CalculatorActions.create(this.props.keyType, this.props.keyValue);
   },
 
   onMouseDown: function(event) {
@@ -31,17 +31,11 @@ var Key = React.createClass({
       classString += ' highlight';
     }
     var classOperation = '';
-    if(this.props.keyType === 'operation') {
-      classOperation = 'operator ';
-      if(this.props.keyValue === '+') { classOperation += 'add'; }
-      if(this.props.keyValue === '-') { classOperation += 'substract'; }
-      if(this.props.keyValue === '÷') { classOperation += 'divide'; }
-      if(this.props.keyValue === 'x') { classOperation += 'multiply'; }
+    if(this.props.keyType === 'operator') {
+      classOperation = 'operator ' + this.props.keyValue;
     }
     if(this.props.keyType === 'action') {
-      classOperation = 'action ';
-      if(this.props.keyValue === '<<') { classOperation += 'back'; }
-      if(this.props.keyValue === '=') { classOperation += 'equal'; }
+      classOperation = 'action ' + this.props.keyValue;
     }
     if(this.props.keyType === 'number') {
       return (
@@ -49,7 +43,7 @@ var Key = React.createClass({
             onClick={this.handleClick}
             onMouseDown={this.onMouseDown}
             onMouseUp={this.onMouseUp}>
-          <div className={classOperation}>{this.props.keyValue}</div>
+          <div className={classOperation}>{this.props.keySymbol}</div>
         </div>
       );
     } else {
@@ -58,7 +52,7 @@ var Key = React.createClass({
           <div className={classOperation}
             onClick={this.handleClick}
             onMouseDown={this.onMouseDown}
-            onMouseUp={this.onMouseUp}>{this.props.keyValue}</div>
+            onMouseUp={this.onMouseUp}>{this.props.keySymbol}</div>
         </div>
       );
     }
