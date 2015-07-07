@@ -4,16 +4,16 @@ This project tries to show how the code can be organized to be used with multipl
 
 - an iOS App (based on React Native)
 - a Website App in any browser (based on React)
+- a Desktop App (based on NW)
 
 ## Limitations
 
-Of course some of the choices made here to share the code between specific build are nt optimal. Packaging some of them as npm modules would have been probably a much better idea but it wouldn't have shown all of the project structure as easily and would have made the project harder to understand.
+Of course some of the choices made here to share the code between specific build are not optimal. Packaging some of them as npm modules would have been probably a better idea but it wouldn't have shown all of the project structure as easily and would have made the project harder to understand.
 
 ## What's next
 
 Here are some thoughts about what can come next:
 
-- Add some NW implementation to make the project able to run as a Desktop App
 - Make the Website App Isomorphic/Universal
 
 # How to build/run the projects
