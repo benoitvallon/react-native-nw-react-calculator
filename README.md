@@ -40,6 +40,8 @@ Here are some thoughts about what can come next:
 
 Congratulations! You've just successfully run the project as an iOS App.
 
+![Mobile App](https://github.com/benoitvallon/calculator-app-react/images/mobile-app.png "Mobile App")
+
 ## The Website App
 
 ### Requirements for React
@@ -52,6 +54,8 @@ There isn't any addtional requirements since you already installed the deps with
 - `grunt serve` to preview in the browser at http://localhost:8000/index.web.html or http://localhost:8000/webpack-dev-server/index.web.html
 
 Congratulations! You've just successfully run the project as a Website App.
+
+![Website App](https://github.com/benoitvallon/calculator-app-react/images/website-app.png "Website App")
 
 ## The Desktop App
 
@@ -76,3 +80,5 @@ If you have setup the alias mentioned above, just run:
 - `nw .` to build and launch the project
 
 Congratulations! You've just successfully run the project as a Desktop App.
+
+![Desktop App](https://github.com/benoitvallon/calculator-app-react/images/desktop-app.png "Desktop App")
