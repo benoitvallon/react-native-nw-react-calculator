@@ -40,7 +40,7 @@ Here are some thoughts about what can come next:
 
 Congratulations! You've just successfully run the project as an iOS App.
 
-![Mobile App](https://github.com/benoitvallon/calculator-app-react/images/mobile-app.png "Mobile App")
+![Mobile App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/mobile-app.png "Mobile App")
 
 ## The Website App
 
@@ -55,7 +55,7 @@ There isn't any addtional requirements since you already installed the deps with
 
 Congratulations! You've just successfully run the project as a Website App.
 
-![Website App](https://github.com/benoitvallon/calculator-app-react/images/website-app.png "Website App")
+![Website App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/website-app.png "Website App")
 
 ## The Desktop App
 
@@ -81,4 +81,4 @@ If you have setup the alias mentioned above, just run:
 
 Congratulations! You've just successfully run the project as a Desktop App.
 
-![Desktop App](https://github.com/benoitvallon/calculator-app-react/images/desktop-app.png "Desktop App")
+![Desktop App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/desktop-app.png "Desktop App")
