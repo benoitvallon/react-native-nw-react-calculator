@@ -4,15 +4,35 @@
   "description": "",
   "repository": "",
   "private": true,
-  "src": "/specificWeb",
+  "src": "/",
   "test": "test",
   "dist": "dist",
   "mainInput": "main",
   "mainOutput": "main",
+  "main": "index.nw.html",
   "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
+    "start": "node_modules/react-native/packager/packager.sh",
+    "startnw": "watchify ./specificNW/main.js -o bundle.js -v"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  },
+  "window": {
+    "toolbar": true,
+    "min_width": 300,
+    "min_height": 475,
+    "max_width": 800,
+    "max_height": 600
   },
   "dependencies": {
+    "browserify": "^10.2.4",
     "es6-promise": "^2.0.1",
     "events": "^1.0.2",
     "flux": "^2.0.1",
@@ -21,7 +41,9 @@
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
     "react-native": "^0.6.0",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "reactify": "^1.1.1",
+    "watchify": "^3.2.3"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

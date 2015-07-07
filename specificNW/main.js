@@ -1,6 +1,6 @@
 'use strict';
 
-var App = require('./App');
+var App = require('../common/components/App');
 var React = require('react');
 var Router = require('react-router');
 var Route = Router.Route;

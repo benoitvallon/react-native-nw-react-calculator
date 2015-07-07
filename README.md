@@ -49,6 +49,30 @@ There isn't any addtional requirements since you already installed the deps with
 ### Quick start
 
 - `grunt build` to build the project
-- `grunt serve` to preview in the browser at localhost:8000
+- `grunt serve` to preview in the browser at http://localhost:8000/index.web.html or http://localhost:8000/webpack-dev-server/index.web.html
 
 Congratulations! You've just successfully run the project as a Website App.
+
+## The Desktop App
+
+### Requirements for NW
+
+To run the project, you are supposed to run something like:
+
+`/path/to/nw .`
+
+On OSX, the executable binary is in a hidden directory within the .app file. The easier solution to install it is to downlaod the app on http://nwjs.io/ then copying it to your application folder. You will now be able to run:
+
+`/Applications/nwjs.app/Contents/MacOS/nwjs .`
+
+You can also setup an alias to call the binary.
+
+`alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"`
+
+### Quick start
+
+If you have setup the alias mentioned above, just run:
+
+- `nw .` to build and launch the project
+
+Congratulations! You've just successfully run the project as a Desktop App.

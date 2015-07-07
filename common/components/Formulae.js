@@ -1,15 +1,15 @@
 'use strict';
 
 var React = require('react');
-var CalculatorStore = require('../../common/stores/CalculatorStore');
+var CalculatorStore = require('../stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
-    displayScreen: CalculatorStore.getDisplayScreen()
+    displayFormulae: CalculatorStore.getDisplayFormulae()
   };
 }
 
-var Screen = React.createClass({
+var Formulae = React.createClass({
 
   getInitialState: function() {
     return getCalculatorState();
@@ -23,10 +23,16 @@ var Screen = React.createClass({
     CalculatorStore.removeChangeListener(this._onChange);
   },
 
+  dynamicClass: function(opeartor) {
+    return 'group ' + opeartor;
+  },
+
   render: function() {
     return (
-      <div className='screen'>
-        {this.state.displayScreen}
+      <div className='formulae'>
+        {this.state.displayFormulae.map(function(formula) {
+          return <span className={this.dynamicClass(formula.operator)}>{formula.literal}</span>
+        }, this)}
       </div>
     );
   },
@@ -34,6 +40,7 @@ var Screen = React.createClass({
   _onChange: function() {
     this.setState(getCalculatorState());
   }
+
 });
 
-module.exports = Screen;
+module.exports = Formulae;

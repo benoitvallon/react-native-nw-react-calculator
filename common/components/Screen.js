@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var CalculatorStore = require('../../common/stores/CalculatorStore');
+var CalculatorStore = require('../stores/CalculatorStore');
 
 function getCalculatorState() {
   return {
