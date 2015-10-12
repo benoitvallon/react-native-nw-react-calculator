@@ -2,17 +2,15 @@
 
 var App = require('../common/components/App');
 var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
+var ReactDOM = require('react-dom');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router
+var Route = ReactRouter.Route;
 
 var content = document.getElementById('content');
 
-var Routes = (
-  <Route handler={App}>
-    <Route name="/" handler={App}/>
-  </Route>
-);
-
-Router.run(Routes, function (Handler) {
-  React.render(<Handler/>, content);
-});
+ReactDOM.render((
+  <Router>
+    <Route path="/" component={App} />
+  </Router>
+), content);
