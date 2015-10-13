@@ -16,6 +16,10 @@ Here are some thoughts about what can come next:
 
 - Make the Website App Isomorphic/Universal
 
+## Thank you Robert for your awesome design
+
+I want to thank Robert O'Dowd who kindly authorized me the reuse his very beautiful design. The original design made by Robert was part of his project called "Simplifycation" visible [here](https://dribbble.com/shots/1973851-Simplifycation).  
+
 # How to build/run the projects
 
 ## General requirements before running any specific projects
