@@ -41,7 +41,7 @@
     "object-assign": "^4.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "react-native": "^0.12.0",
+    "react-native": "^0.13.0-rc",
     "react-router": "^1.0.0-rc3",
     "reactify": "^1.1.1",
     "watchify": "^3.4.0"
