@@ -1,31 +1,39 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import CalculatorActions from '../actions/CalculatorActions';
 
-var Key = React.createClass({
+class Key extends Component {
 
-  getInitialState: function() {
-    return {isHighlighted: false};
-  },
+  constructor(props) {
+    super(props);
+    this.state = {
+      isHighlighted: false
+    };
 
-  handleClick: function(event) {
+    // Bind callback methods to make `this` the correct context.
+    this.handleClick = this.handleClick.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+  }
+
+  handleClick(event) {
     CalculatorActions.create(this.props.keyType, this.props.keyValue);
-  },
+  }
 
-  onMouseDown: function(event) {
+  onMouseDown(event) {
     this.setState({
       isHighlighted: true
     });
-  },
+  }
 
-  onMouseUp: function(event) {
+  onMouseUp(event) {
     this.setState({
       isHighlighted: false
     });
-  },
+  }
 
-  render: function() {
+  render() {
     var classString = 'key key-' + this.props.keyType;
     if(this.state.isHighlighted) {
       classString += ' highlight';
@@ -57,6 +65,6 @@ var Key = React.createClass({
       );
     }
   }
-});
+}
 
 module.exports = Key;

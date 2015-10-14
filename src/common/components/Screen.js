@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import CalculatorStore from '../stores/CalculatorStore';
 
 function getCalculatorState() {
@@ -9,31 +9,37 @@ function getCalculatorState() {
   };
 }
 
-var Screen = React.createClass({
+class Screen extends Component {
 
-  getInitialState: function() {
-    return getCalculatorState();
-  },
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayScreen: CalculatorStore.getDisplayScreen()
+    };
 
-  componentDidMount: function() {
+    // Bind callback methods to make `this` the correct context.
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentDidMount() {
     CalculatorStore.addChangeListener(this._onChange);
-  },
+  };
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     CalculatorStore.removeChangeListener(this._onChange);
-  },
+  };
 
-  render: function() {
+  render() {
     return (
       <div className='screen'>
         {this.state.displayScreen}
       </div>
     );
-  },
+  };
 
-  _onChange: function() {
+  _onChange() {
     this.setState(getCalculatorState());
   }
-});
+}
 
 module.exports = Screen;

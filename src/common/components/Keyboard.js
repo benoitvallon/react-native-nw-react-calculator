@@ -1,10 +1,10 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import Key from './Key';
 
-var Keyboard = React.createClass({
-  render: function() {
+class Keyboard extends Component {
+  render() {
     return (
       <div className='keyboard'>
         <div className='keyboard-row'>
@@ -43,6 +43,6 @@ var Keyboard = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Keyboard;

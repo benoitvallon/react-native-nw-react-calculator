@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import CalculatorStore from '../stores/CalculatorStore';
 
 function getCalculatorState() {
@@ -9,25 +9,31 @@ function getCalculatorState() {
   };
 }
 
-var Formulae = React.createClass({
+class Formulae extends Component {
 
-  getInitialState: function() {
-    return getCalculatorState();
-  },
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayFormulae: CalculatorStore.getDisplayFormulae()
+    };
 
-  componentDidMount: function() {
+    // Bind callback methods to make `this` the correct context.
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentDidMount() {
     CalculatorStore.addChangeListener(this._onChange);
-  },
+  }
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     CalculatorStore.removeChangeListener(this._onChange);
-  },
+  }
 
-  dynamicClass: function(opeartor) {
+  dynamicClass(opeartor) {
     return 'group ' + opeartor;
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className='formulae'>
         {this.state.displayFormulae.map(function(formula) {
@@ -35,12 +41,11 @@ var Formulae = React.createClass({
         }, this)}
       </div>
     );
-  },
-
-  _onChange: function() {
-    this.setState(getCalculatorState());
   }
 
-});
+  _onChange() {
+    this.setState(getCalculatorState());
+  }
+}
 
 module.exports = Formulae;
