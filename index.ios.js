@@ -4,18 +4,17 @@
  */
 'use strict';
 
-
-import Formulae from './src/specificiOS/components/Formulae';
-import Keyboard from './src/common/components/Keyboard';
-
-import Screen from './src/common/components/Screen';
-
-import React, { Component } from 'react';
-import {
+// it is important tha the first React variable found is from the react-native package
+import React, {
   AppRegistry,
   StyleSheet,
   View,
 } from 'react-native';
+import { Component } from 'react';
+
+import Screen from './src/common/components/Screen';
+import Formulae from './src/common/components/Formulae';
+import Keyboard from './src/common/components/Keyboard';
 
 class iosApp extends Component {
   render() {

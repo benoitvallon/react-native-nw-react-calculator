@@ -1,7 +1,6 @@
 'use strict';
 
-import React from 'react';
-import {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,

@@ -2,8 +2,7 @@
 
 import Key from './Key';
 
-import React from 'react';
-import {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,
