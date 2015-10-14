@@ -103,10 +103,33 @@ module.exports = function (grunt) {
           ]
         }]
       }
+    },
+
+    'watch': {
+      options: {
+        livereload: true
+      },
+      build: {
+        files: 'src/**/*.js',
+        tasks: ['webpack']
+      }
+    },
+
+    'exec': {
+      launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs .'
+    },
+
+    'concurrent': {
+      target: {
+        tasks: ['watch', 'exec:launch_nw'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve-web', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open:dist', 'connect:dist']);
     }
@@ -117,9 +140,13 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.registerTask('serve-nw', function (target) {
+    grunt.task.run([
+      'concurrent'
+    ]);
+  });
+
   grunt.registerTask('test', ['karma']);
-
   grunt.registerTask('build', ['clean', 'copy', 'webpack']);
-
   grunt.registerTask('default', []);
 };
