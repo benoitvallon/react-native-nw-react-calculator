@@ -36,6 +36,8 @@
     "babel": "^5.8.23",
     "babel-loader": "^5.3.2",
     "css-loader": "~0.19.0",
+    "eslint": "^1.6.0",
+    "eslint-plugin-react": "^3.5.1",
     "grunt": "~0.4.5",
     "grunt-concurrent": "^2.0.3",
     "grunt-contrib-clean": "~0.6.0",

@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import CalculatorActions from '../actions/CalculatorActions';
 
 class Key extends Component {
@@ -17,17 +17,17 @@ class Key extends Component {
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
-  handleClick(event) {
+  handleClick() {
     CalculatorActions.create(this.props.keyType, this.props.keyValue);
   }
 
-  onMouseDown(event) {
+  onMouseDown() {
     this.setState({
       isHighlighted: true
     });
   }
 
-  onMouseUp(event) {
+  onMouseUp() {
     this.setState({
       isHighlighted: false
     });

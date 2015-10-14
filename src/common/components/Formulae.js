@@ -1,7 +1,7 @@
 'use strict';
 
-import Base from './FormulaeBase'
-import Render from './FormulaeRender'
+import Base from './FormulaeBase';
+import Render from './FormulaeRender';
 
 export default class Formulae extends Base {
   constructor (props) {

@@ -3,13 +3,11 @@
 import Key from './Key';
 
 import React, {
-  AppRegistry,
   StyleSheet,
-  Text,
-  View,
+  View
 } from 'react-native';
 
-export default function (props, state) {
+export default function () {
   return (
     <View style={styles.keyboard}>
 
@@ -52,10 +50,10 @@ export default function (props, state) {
 
 var styles = StyleSheet.create({
   keyboard: {
-    flex: 1,
+    flex: 1
   },
   row: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row'
   }
 });

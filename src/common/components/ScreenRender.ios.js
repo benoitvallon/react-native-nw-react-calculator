@@ -1,9 +1,8 @@
 'use strict';
 
 import React, {
-  AppRegistry,
   StyleSheet,
-  Text,
+  Text
 } from 'react-native';
 
 export default function (props, state) {

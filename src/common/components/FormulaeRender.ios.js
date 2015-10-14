@@ -1,7 +1,6 @@
 'use strict';
 
 import React, {
-  AppRegistry,
   StyleSheet,
   Text,
   View
@@ -29,27 +28,27 @@ var getFormulaStyles = function(operator) {
       marginLeft: 10
     },
     add: {
-      backgroundColor: '#fb96cf',
+      backgroundColor: '#fb96cf'
     },
     substract: {
-      backgroundColor: '#fcb064',
+      backgroundColor: '#fcb064'
     },
     multiply: {
-      backgroundColor: '#68cef1',
+      backgroundColor: '#68cef1'
     },
     divide: {
-      backgroundColor: '#cb7dc9',
-    },
+      backgroundColor: '#cb7dc9'
+    }
   };
 
   return Object.assign(button.basic, button[operator]);
-}
+};
 
 var styles = StyleSheet.create({
   formulae: {
     flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   text: {
     fontSize: 18

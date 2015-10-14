@@ -1,25 +1,13 @@
 'use strict';
 
 import React, {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   TouchableHighlight
 } from 'react-native';
 
-export default function (props, state) {
-  var classString = 'key key-' + this.props.keyType;
-  if(this.state.isHighlighted) {
-    classString += ' highlight';
-  }
-  var classOperation = '';
-  if(this.props.keyType === 'operator') {
-    classOperation = 'operator ' + this.props.keyValue;
-  }
-  if(this.props.keyType === 'action') {
-    classOperation = 'action ' + this.props.keyValue;
-  }
+export default function () {
   if(this.props.keyType === 'number') {
     return (
       <View style={styles.keyNumber}>
@@ -60,7 +48,7 @@ var getOperatorStyles = function(classOperation) {
       width: 50,
       borderRadius: 25,
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     add: {
       backgroundColor: '#fb96cf',
@@ -77,10 +65,10 @@ var getOperatorStyles = function(classOperation) {
     divide: {
       backgroundColor: '#cb7dc9',
       paddingBottom: 3
-    },
+    }
   };
   return Object.assign(buttonOperator.basic, buttonOperator[classOperation]);
-}
+};
 
 var getActionStyles = function(classOperation) {
   var buttonAction = {
@@ -88,7 +76,7 @@ var getActionStyles = function(classOperation) {
       flex: 1,
       borderRadius: 10,
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     back: {
       paddingBottom: 1,
@@ -102,31 +90,31 @@ var getActionStyles = function(classOperation) {
     }
   };
   return Object.assign(buttonAction.basic, buttonAction[classOperation]);
-}
+};
 
 var getActionButtonStyles = function(classOperation) {
   var buttonText = {
     basic: {
       fontSize: 25,
-      fontWeight: '200',
+      fontWeight: '200'
     },
     back: {
       paddingBottom: 3,
-      color: '#d68086',
+      color: '#d68086'
     },
     equal: {
       paddingBottom: 3,
-      color: '#9ed8a6',
+      color: '#9ed8a6'
     }
   };
   return Object.assign(buttonText.basic, buttonText[classOperation]);
-}
+};
 
 var styles = StyleSheet.create({
   keyNumber: {
     flex: 1,
     borderColor: '#f8f8f8',
-    borderWidth: 1,
+    borderWidth: 1
   },
   keyOperator: {
     flex: 1,
@@ -135,7 +123,7 @@ var styles = StyleSheet.create({
   },
   keyAction: {
     flex: 1,
-    padding: 10,
+    padding: 10
   },
   button: {
     flex: 1,
@@ -146,11 +134,11 @@ var styles = StyleSheet.create({
   textButton: {
     color: '#919191',
     fontSize: 20,
-    fontWeight: '400',
+    fontWeight: '400'
   },
   textButtonOperator: {
     color: 'white',
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: '600'
   }
 });

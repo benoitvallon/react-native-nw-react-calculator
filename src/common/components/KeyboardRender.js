@@ -4,7 +4,7 @@ import Key from './Key';
 
 import React from 'react';
 
-export default function (props, state) {
+export default function () {
   return (
     <div className='keyboard'>
       <div className='keyboard-row'>

@@ -3,24 +3,24 @@
 import React from 'react';
 
 export default function (props, state) {
-  var classString = 'key key-' + this.props.keyType;
-  if(this.state.isHighlighted) {
+  var classString = 'key key-' + props.keyType;
+  if(state.isHighlighted) {
     classString += ' highlight';
   }
   var classOperation = '';
-  if(this.props.keyType === 'operator') {
-    classOperation = 'operator ' + this.props.keyValue;
+  if(props.keyType === 'operator') {
+    classOperation = 'operator ' + props.keyValue;
   }
-  if(this.props.keyType === 'action') {
-    classOperation = 'action ' + this.props.keyValue;
+  if(props.keyType === 'action') {
+    classOperation = 'action ' + props.keyValue;
   }
-  if(this.props.keyType === 'number') {
+  if(props.keyType === 'number') {
     return (
       <div className={classString}
           onClick={this.handleClick}
           onMouseDown={this.onMouseDown}
           onMouseUp={this.onMouseUp}>
-        <div className={classOperation}>{this.props.keySymbol}</div>
+        <div className={classOperation}>{props.keySymbol}</div>
       </div>
     );
   } else {
@@ -29,7 +29,7 @@ export default function (props, state) {
         <div className={classOperation}
           onClick={this.handleClick}
           onMouseDown={this.onMouseDown}
-          onMouseUp={this.onMouseUp}>{this.props.keySymbol}</div>
+          onMouseUp={this.onMouseUp}>{props.keySymbol}</div>
       </div>
     );
   }

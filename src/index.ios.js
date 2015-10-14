@@ -8,7 +8,7 @@
 import React, {
   AppRegistry,
   StyleSheet,
-  View,
+  View
 } from 'react-native';
 import { Component } from 'react';
 
@@ -36,7 +36,7 @@ class iosApp extends Component {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   screen: {
     flex: 3,
@@ -51,10 +51,10 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     backgroundColor: '#4c4c4c',
-    padding: 20,
+    padding: 20
   },
   keyboard: {
-    height: 420,
+    height: 420
   }
 });
 

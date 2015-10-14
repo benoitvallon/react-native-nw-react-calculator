@@ -11,7 +11,7 @@ var CalculatorActions = {
       keyType: keyType,
       keyValue: keyValue
     });
-  },
+  }
 
 };
 
