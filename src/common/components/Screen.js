@@ -23,11 +23,11 @@ class Screen extends Component {
 
   componentDidMount() {
     CalculatorStore.addChangeListener(this._onChange);
-  };
+  }
 
   componentWillUnmount() {
     CalculatorStore.removeChangeListener(this._onChange);
-  };
+  }
 
   render() {
     return (
@@ -35,7 +35,7 @@ class Screen extends Component {
         {this.state.displayScreen}
       </div>
     );
-  };
+  }
 
   _onChange() {
     this.setState(getCalculatorState());

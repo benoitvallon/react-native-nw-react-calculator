@@ -4,9 +4,11 @@
  */
 'use strict';
 
-import Screen from './src/specificiOS/components/Screen';
+
 import Formulae from './src/specificiOS/components/Formulae';
 import Keyboard from './src/specificiOS/components/Keyboard';
+
+import Screen from './src/specificiOS/components/Screen';
 
 import React, {
   AppRegistry,
