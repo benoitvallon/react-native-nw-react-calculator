@@ -15,9 +15,9 @@ module.exports = function (grunt) {
   var pkgConfig = grunt.file.readJSON('package.json');
 
   grunt.initConfig({
-    pkg: pkgConfig,
+    'pkg': pkgConfig,
 
-    webpack: {
+    'webpack': {
       options: webpackDistConfig,
       dist: {
         cache: false
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
       }
     },
 
-    connect: {
+    'connect': {
       options: {
         port: 8000
       },
@@ -55,25 +55,25 @@ module.exports = function (grunt) {
       }
     },
 
-    open: {
+    'open': {
       options: {
         delay: 500
       },
       dev: {
-        path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/'
+        path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/index.web.html'
       },
       dist: {
-        path: 'http://localhost:<%= connect.options.port %>/'
+        path: 'http://localhost:<%= connect.options.port %>/index.web.html'
       }
     },
 
-    karma: {
+    'karma': {
       unit: {
         configFile: 'karma.conf.js'
       }
     },
 
-    copy: {
+    'copy': {
       dist: {
         files: [
           // includes files within path
@@ -94,7 +94,7 @@ module.exports = function (grunt) {
       }
     },
 
-    clean: {
+    'clean': {
       dist: {
         files: [{
           dot: true,
