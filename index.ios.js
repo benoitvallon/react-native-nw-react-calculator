@@ -6,18 +6,19 @@
 
 
 import Formulae from './src/specificiOS/components/Formulae';
-import Keyboard from './src/specificiOS/components/Keyboard';
+import Keyboard from './src/common/components/Keyboard';
 
 import Screen from './src/common/components/Screen';
 
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   StyleSheet,
   View,
 } from 'react-native';
 
-var iosApp = React.createClass({
-  render: function() {
+class iosApp extends Component {
+  render() {
     return (
       <View style={styles.container}>
         <View style={styles.screen} >
@@ -32,7 +33,7 @@ var iosApp = React.createClass({
       </View>
     );
   }
-});
+}
 
 var styles = StyleSheet.create({
   container: {

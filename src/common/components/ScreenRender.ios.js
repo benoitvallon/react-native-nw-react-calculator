@@ -1,19 +1,11 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
 } from 'react-native';
-
-var styles = StyleSheet.create({
-  screen: {
-    color: '#190d08',
-    fontSize: 70,
-    fontWeight: '200'
-  }
-});
 
 export default function (props, state) {
   return (
@@ -22,3 +14,11 @@ export default function (props, state) {
     </Text>
   );
 }
+
+var styles = StyleSheet.create({
+  screen: {
+    color: '#190d08',
+    fontSize: 70,
+    fontWeight: '200'
+  }
+});

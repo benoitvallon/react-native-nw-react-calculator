@@ -1,12 +1,14 @@
+'use strict';
+
 import Base from './ScreenBase'
 import Render from './ScreenRender'
 
 export default class Screen extends Base {
   constructor (props) {
-    super(props)
+    super(props);
   }
 
   render () {
-    return Render(this.props, this.state)
+    return Render.call(this, this.props, this.state);
   }
 }
