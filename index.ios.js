@@ -8,7 +8,7 @@
 import Formulae from './src/specificiOS/components/Formulae';
 import Keyboard from './src/specificiOS/components/Keyboard';
 
-import Screen from './src/specificiOS/components/Screen';
+import Screen from './src/common/components/Screen';
 
 import React, {
   AppRegistry,

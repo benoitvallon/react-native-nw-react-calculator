@@ -1,13 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import CalculatorStore from '../../common/stores/CalculatorStore';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import CalculatorStore from '../stores/CalculatorStore';
 
 function getCalculatorState() {
   return {
@@ -35,25 +29,9 @@ class Screen extends Component {
     CalculatorStore.removeChangeListener(this._onChange);
   }
 
-  render() {
-    return (
-      <Text style={styles.screen}>
-        {this.state.displayScreen}
-      </Text>
-    );
-  }
-
   _onChange() {
     this.setState(getCalculatorState());
   }
 }
-
-var styles = StyleSheet.create({
-  screen: {
-    color: '#190d08',
-    fontSize: 70,
-    fontWeight: '200'
-  }
-});
 
 module.exports = Screen;
