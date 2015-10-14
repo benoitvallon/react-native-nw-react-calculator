@@ -1,19 +1,16 @@
 /*
  * Webpack development server configuration
- *
- * This file is set up for serving the webpack-dev-server, which will watch for changes and recompile as required if
- * the subfolder /webpack-dev-server/ is visited. Visiting the root will not automatically reload.
  */
+
 'use strict';
+
 var webpack = require('webpack');
 
 module.exports = {
-
   output: {
     filename: 'main.js',
     publicPath: '/assets/'
   },
-
   cache: true,
   debug: true,
   devtool: false,
@@ -21,28 +18,15 @@ module.exports = {
       'webpack/hot/only-dev-server',
       './specificWeb/main.js'
   ],
-
   stats: {
     colors: true,
     reasons: true
   },
-
-  resolve: {
-    extensions: ['', '.js'],
-    alias: {
-      'styles': __dirname + '/styles',
-      'mixins': __dirname + '/src/mixins',
-      'components': __dirname + '/components',
-      'stores': __dirname + '/src/stores/',
-      'actions': __dirname + '/src/actions/'
-    }
-  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'jsxhint'
-    }],
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
@@ -57,11 +41,5 @@ module.exports = {
       test: /\.(png|jpg)$/,
       loader: 'url-loader?limit=8192'
     }]
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
-
+  }
 };
