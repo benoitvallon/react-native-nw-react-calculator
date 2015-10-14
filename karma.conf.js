@@ -42,8 +42,8 @@ module.exports = function (config) {
       },
       resolve: {
         alias: {
-          'styles': path.join(process.cwd(), './specificWeb/styles/'),
-          'components': path.join(process.cwd(), './specificWeb/components/'),
+          'styles': path.join(process.cwd(), './specificWebAndNW/styles/'),
+          'components': path.join(process.cwd(), './specificWebAndNW/components/'),
           'stores': '../../../common/stores/',
           'actions': '../../../common/actions/'
         }

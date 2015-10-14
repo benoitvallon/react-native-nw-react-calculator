@@ -16,7 +16,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './src/specificWeb/main.js'
+      './src/specificWebAndNW/main.js'
   ],
   stats: {
     colors: true,
