@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react'),
-    Key = require('./Key');
+import React from 'react';
+import Key from './Key';
 
 var Keyboard = React.createClass({
   render: function() {

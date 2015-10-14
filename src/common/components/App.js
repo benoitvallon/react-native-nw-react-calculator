@@ -1,13 +1,9 @@
 'use strict';
 
-var React = require('react'),
-    Screen = require('./Screen'),
-    Formulae = require('./Formulae'),
-    Keyboard = require('./Keyboard');
-
-// CSS
-// require('normalize.css');
-// require('../styles/main.css');
+import React from 'react';
+import Screen from './Screen';
+import Formulae from './Formulae';
+import Keyboard from './Keyboard';
 
 var App = React.createClass({
   render: function() {

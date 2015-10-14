@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react');
-var CalculatorStore = require('../stores/CalculatorStore');
+import React from 'react';
+import CalculatorStore from '../stores/CalculatorStore';
 
 function getCalculatorState() {
   return {

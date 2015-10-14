@@ -1,7 +1,7 @@
 'use strict';
 
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var CalculatorConstants = require('../constants/CalculatorConstants');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import CalculatorConstants from '../constants/CalculatorConstants';
 
 var CalculatorActions = {
 

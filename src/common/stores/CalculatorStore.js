@@ -1,9 +1,9 @@
 'use strict';
 
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var CalculatorConstants = require('../constants/CalculatorConstants');
+import { EventEmitter } from 'events';
+import assign from 'object-assign';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import CalculatorConstants from '../constants/CalculatorConstants';
 
 var CHANGE_EVENT = 'change';
 

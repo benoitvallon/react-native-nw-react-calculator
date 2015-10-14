@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react');
-var CalculatorActions = require('../actions/CalculatorActions');
+import React from 'react';
+import CalculatorActions from '../actions/CalculatorActions';
 
 var Key = React.createClass({
 

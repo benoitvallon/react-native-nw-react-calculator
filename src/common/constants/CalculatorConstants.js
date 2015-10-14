@@ -1,6 +1,6 @@
 'use strict';
 
-var keyMirror = require('keymirror');
+import keyMirror from 'keymirror';
 
 module.exports = keyMirror({
   KEY_TYPED: null,

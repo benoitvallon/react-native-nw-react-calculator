@@ -1,7 +1,7 @@
 'use strict';
 
-var Promise = require('es6-promise').Promise;
-var assign = require('object-assign');
+import { Promise } from 'es6-promise';
+import assign from 'object-assign';
 
 var _callbacks = [];
 var _promises = [];
