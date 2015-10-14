@@ -47,7 +47,7 @@ var Key = React.createClass({
     if(this.props.keyType === 'number') {
       return (
         <View style={styles.keyNumber}>
-          <TouchableHighlight style={styles.button} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+          <TouchableHighlight style={styles.button} onPress={this.handleClick} underlayColor='#cdcdcd'>
             <Text style={styles.textButton}>
               {this.props.keySymbol}
             </Text>
@@ -57,7 +57,7 @@ var Key = React.createClass({
     } else if(this.props.keyType === 'operator') {
       return (
         <View style={styles.keyOperator}>
-          <TouchableHighlight style={getOperatorStyles(this.props.keyValue)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+          <TouchableHighlight style={getOperatorStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
             <Text style={styles.textButtonOperator}>
               {this.props.keySymbol}
             </Text>
@@ -67,7 +67,7 @@ var Key = React.createClass({
     } else if(this.props.keyType === 'action') {
       return (
         <View style={styles.keyAction}>
-          <TouchableHighlight style={getActionStyles(this.props.keyValue)} onPress={this.handleClick.bind(this)} underlayColor='#cdcdcd'>
+          <TouchableHighlight style={getActionStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
             <Text style={getActionButtonStyles(this.props.keyValue)}>
               {this.props.keySymbol}
             </Text>
