@@ -4,16 +4,15 @@
  */
 'use strict';
 
-var Screen = require('./specificiOS/components/Screen');
-var Formulae = require('./specificiOS/components/Formulae');
-var Keyboard = require('./specificiOS/components/Keyboard');
+import Screen from './src/specificiOS/components/Screen';
+import Formulae from './src/specificiOS/components/Formulae';
+import Keyboard from './src/specificiOS/components/Keyboard';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
   View,
-} = React;
+} from 'react-native';
 
 var iosApp = React.createClass({
   render: function() {

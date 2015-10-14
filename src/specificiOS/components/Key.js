@@ -1,15 +1,14 @@
 'use strict';
 
-var CalculatorActions = require('../../common/actions/CalculatorActions');
+import CalculatorActions from '../../common/actions/CalculatorActions';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,
   View,
   TouchableHighlight
-} = React;
+} from 'react-native';
 
 var Key = React.createClass({
 

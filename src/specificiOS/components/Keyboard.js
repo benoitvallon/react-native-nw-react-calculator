@@ -1,14 +1,13 @@
 'use strict';
 
-var Key = require('./Key');
+import Key from './Key';
 
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native';
 
 var Keyboard = React.createClass({
 
