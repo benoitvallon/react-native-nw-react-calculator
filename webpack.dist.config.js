@@ -16,7 +16,7 @@ module.exports = {
   },
   debug: false,
   devtool: false,
-  entry: './src/specificWebAndNW/main.js',
+  entry: './src/index.js',
   stats: {
     colors: true,
     reasons: false

@@ -12,9 +12,9 @@ import React, {
 } from 'react-native';
 import { Component } from 'react';
 
-import Screen from './src/common/components/Screen';
-import Formulae from './src/common/components/Formulae';
-import Keyboard from './src/common/components/Keyboard';
+import Screen from './common/components/Screen';
+import Formulae from './common/components/Formulae';
+import Keyboard from './common/components/Keyboard';
 
 class iosApp extends Component {
   render() {
