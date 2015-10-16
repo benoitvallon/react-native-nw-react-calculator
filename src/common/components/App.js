@@ -1,20 +1,11 @@
 'use strict';
 
-import React, { Component } from 'react';
-import Screen from './Screen';
-import Formulae from './Formulae';
-import Keyboard from './Keyboard';
+import Render from './AppRender';
 
-class App extends Component {
-  render() {
-    return (
-      <div className='main'>
-        <Screen />
-        <Formulae />
-        <Keyboard />
-      </div>
-    );
+import { Component } from 'react';
+
+export default class App extends Component {
+  render () {
+    return Render.call(this, this.props, this.state);
   }
 }
-
-module.exports = App;
