@@ -30,7 +30,8 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-native": "^0.13.0-rc",
-    "react-router": "^1.0.0-rc3"
+    "react-router": "^1.0.0-rc3",
+    "uniqid": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",

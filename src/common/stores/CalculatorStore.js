@@ -2,6 +2,7 @@
 
 import { EventEmitter } from 'events';
 import assign from 'object-assign';
+import uniqid from 'uniqid';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import CalculatorConstants from '../constants/CalculatorConstants';
 
@@ -96,6 +97,7 @@ function processKey(keyType, keyValue) {
         }
 
         _displayFormulae.push({
+          id: uniqid(),
           literal: '' + _numberTyped[0].toString() + ' ' +
             _symbolKeyTyped + ' ' +  _numberTyped[1].toString(),
           operator: _signKeyTyped
