@@ -7,15 +7,15 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'test/helpers/**/*.js',
-      'test/spec/components/**/*.js',
-      'test/spec/stores/**/*.js',
-      'test/spec/actions/**/*.js'
+      'src/__test__/helpers/**/*.js',
+      'src/__test__/spec/components/**/*.js',
+      'src/__test__/spec/stores/**/*.js',
+      'src/__test__/spec/actions/**/*.js'
     ],
     preprocessors: {
-      'test/spec/components/**/*.js': ['webpack'],
-      'test/spec/stores/**/*.js': ['webpack'],
-      'test/spec/actions/**/*.js': ['webpack']
+      'src/__test__/spec/components/**/*.js': ['webpack'],
+      'src/__test__/spec/stores/**/*.js': ['webpack'],
+      'src/__test__/spec/actions/**/*.js': ['webpack']
     },
     webpack: {
       cache: true,
@@ -39,14 +39,6 @@ module.exports = function (config) {
           test: /\.css$/,
           loader: 'style-loader!css-loader'
         }]
-      },
-      resolve: {
-        alias: {
-          'styles': path.join(process.cwd(), './specificWebAndNW/styles/'),
-          'components': path.join(process.cwd(), './specificWebAndNW/components/'),
-          'stores': '../../../common/stores/',
-          'actions': '../../../common/actions/'
-        }
       }
     },
     webpackServer: {

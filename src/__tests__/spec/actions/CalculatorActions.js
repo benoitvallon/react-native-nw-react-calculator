@@ -4,7 +4,7 @@ describe('CalculatorActions', function() {
   var action;
 
   beforeEach(function() {
-    action = require('actions/CalculatorActions.js');
+    action = require('../../../common/actions/CalculatorActions.js');
   });
 
   it('should be defined', function() {
