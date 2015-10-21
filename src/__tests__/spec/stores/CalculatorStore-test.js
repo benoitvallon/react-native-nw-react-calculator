@@ -34,53 +34,105 @@ describe('CalculatorStore', function() {
   });
 
   it('initializes with zero on screen and no formulae', function() {
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
   });
 
   it('shows numbers on screen as we type', function() {
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['2']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     callback(actionKeyTyped('number', '4'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['2', '4']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('24');
     callback(actionKeyTyped('number', '6'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['2', '4', '6']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('246');
     resetTyping();
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
   });
 
   it('shows reset what we type', function() {
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['2']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '6'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['6']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('6');
     callback(actionKeyTyped('number', '8'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['6', '8']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('68');
     callback(actionKeyTyped('number', '1'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['6', '8', '1']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('681');
     callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['6', '8']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('68');
     callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['6']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('6');
     callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     resetTyping();
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
   });
 
   it('handles typing zero properly', function() {
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '0'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['0']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '0'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['0']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '0'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual(['0']);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toBe(0);
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    resetTyping();
+  });
+
+  it('handles typing dot first properly', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.00');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.0');
+    resetTyping();
+  });
+
+  it('handles typing dot after number properly', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('number', '3'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.2');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.24');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.242');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.24');
+    callback(actionKeyTyped('number', '7'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('23.247');
+    resetTyping();
+  });
+
+  it('handles typing dot after back properly', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
+    callback(actionKeyTyped('action', 'back'));
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.00');
+    resetTyping();
   });
 });

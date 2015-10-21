@@ -24,20 +24,16 @@
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "testFileExtensions": [
-      "es6",
       "js"
     ],
     "moduleFileExtensions": [
-      "js",
-      "json",
-      "es6"
+      "js"
     ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/fbjs",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
-    ]
+    "testPathDirs": [
+      "<rootDir>/src/"
+    ],
+    "verbose" : true,
+    "collectCoverage": false
   },
   "dependencies": {
     "es6-promise": "^3.0.2",

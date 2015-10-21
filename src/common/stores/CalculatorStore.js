@@ -12,8 +12,9 @@ var _numericKeyTyped = [];
 var _signKeyTyped = null;
 var _symbolKeyTyped = null;
 var _numberTyped = [];
-var _displayScreen = 0;
+var _displayScreen = '0';
 var _displayFormulae = [];
+var _totalNumberOfDigits = 12;
 
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
@@ -47,16 +48,17 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
 function processKey(keyType, keyValue) {
   if(keyType === 'operator' || keyType === 'action') {
 
-    // if a nuber was being typed we reset it otherwise we reset everything
+    // if a number was being typed we reset it otherwise we reset everything
     if(keyValue === 'back') {
       if(_numericKeyTyped.length) {
         _numericKeyTyped.pop();
+        _displayScreen = _numericKeyTyped.join('');
         if(!_numericKeyTyped.length) {
-          _displayScreen = 0;
+          _displayScreen = '0';
         }
       } else {
         _numberTyped = [];
-        _displayScreen = 0;
+        _displayScreen = '0';
       }
       return;
     }
@@ -90,7 +92,11 @@ function processKey(keyType, keyValue) {
             _symbolKeyTyped = 'x';
             break;
           case 'divide':
-            calculation = _numberTyped[0] / _numberTyped[1];
+            if(_numberTyped[1] === 0) {
+              calculation = 'Error';
+            } else {
+              calculation = _numberTyped[0] / _numberTyped[1];
+            }
             _symbolKeyTyped = '÷';
             break;
           default:
@@ -102,8 +108,19 @@ function processKey(keyType, keyValue) {
             _symbolKeyTyped + ' ' +  _numberTyped[1].toString(),
           operator: _signKeyTyped
         });
+
+        var splitDisplay = calculation.toString().split('.');
+        // this is a decimal number
+        if(splitDisplay.length == 2) {
+          calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
+        }
         _displayScreen = calculation;
-        _numberTyped = [calculation];
+
+        if(calculation == 'Error') {
+          _numberTyped = [];
+        } else {
+          _numberTyped = [calculation];
+        }
       }
     }
   } else {
@@ -113,17 +130,19 @@ function processKey(keyType, keyValue) {
         return;
       } else {
         // if no '.' is found then we push first a '0'
-        _numericKeyTyped.push('0');
+        if(!_numericKeyTyped.length) {
+          _numericKeyTyped.push('0');
+        }
       }
     }
     if(keyValue === '0') {
       // if there no other character, '0's can not accumulate
-      if(!_numericKeyTyped.length) {
+      if(_numericKeyTyped.length == 1 && _numericKeyTyped == '0') {
         return;
       }
     }
     _numericKeyTyped.push(keyValue);
-    _displayScreen = _numericKeyTyped;
+    _displayScreen = _numericKeyTyped.join('');
   }
 }
 
