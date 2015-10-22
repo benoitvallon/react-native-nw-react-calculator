@@ -201,4 +201,64 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     resetTyping();
   });
+
+  it('handles decimal add calculations', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
+    callback(actionKeyTyped('action', 'equal'));
+    // should be refactor to display '0.3' instead
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.30000000000');
+    resetTyping();
+  });
+
+  it('handles decimal substract calculations', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '2'));
+    callback(actionKeyTyped('operator', 'substract'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
+    callback(actionKeyTyped('action', 'equal'));
+    // should be refactor to display '0.1' instead
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.10000000000');
+    resetTyping();
+  });
+
+  it('handles decimal multiply calculations', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '2'));
+    callback(actionKeyTyped('operator', 'multiply'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
+    callback(actionKeyTyped('action', 'equal'));
+    // should be refactor to display '0.02' instead
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.02000000000');
+    resetTyping();
+  });
+
+  it('handles decimal divide calculations', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '2'));
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
+    // callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('action', 'equal'));
+    // should be refactor to display '0.05' instead
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.05000000000');
+    resetTyping();
+  });
 });
