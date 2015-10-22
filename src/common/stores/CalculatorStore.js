@@ -114,7 +114,7 @@ function processKey(keyType, keyValue) {
         if(splitDisplay.length == 2) {
           calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
         }
-        _displayScreen = calculation;
+        _displayScreen = calculation.toString();
 
         if(calculation == 'Error') {
           _numberTyped = [];
