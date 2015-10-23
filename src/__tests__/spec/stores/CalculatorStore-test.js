@@ -136,7 +136,7 @@ describe('CalculatorStore', function() {
     resetTyping();
   });
 
-  it('handles basic add operation', function() {
+  it('handles basic add calculation', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -150,10 +150,15 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('12');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('24');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([{
+      id: undefined,
+      literal: '12 + 12',
+      operator: 'add'
+    }]);
     resetTyping();
   });
 
-  it('handles basic substract operation', function() {
+  it('handles basic substract calculation', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -167,10 +172,15 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('11');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([{
+      id: undefined,
+      literal: '12 - 11',
+      operator: 'substract'
+    }]);
     resetTyping();
   });
 
-  it('handles basic multiply operation', function() {
+  it('handles basic multiply calculation', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -184,10 +194,15 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('12');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('144');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([{
+      id: undefined,
+      literal: '12 x 12',
+      operator: 'multiply'
+    }]);
     resetTyping();
   });
 
-  it('handles basic add operation', function() {
+  it('handles basic divide calculation', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -199,6 +214,11 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('6');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([{
+      id: undefined,
+      literal: '12 ÷ 6',
+      operator: 'divide'
+    }]);
     resetTyping();
   });
 

@@ -15,6 +15,7 @@ var _numberTyped = [];
 var _displayScreen = '0';
 var _displayFormulae = [];
 var _totalNumberOfDigits = 12;
+var _numberOfBackTyped = 0;
 
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
@@ -55,13 +56,19 @@ function processKey(keyType, keyValue) {
         _displayScreen = _numericKeyTyped.join('');
         if(!_numericKeyTyped.length) {
           _displayScreen = '0';
+          _numberOfBackTyped++;
         }
       } else {
         _numberTyped = [];
         _displayScreen = '0';
+        _numberOfBackTyped++;
+      }
+      if(_numberOfBackTyped >= 2) {
+        _displayFormulae.pop();
       }
       return;
     }
+    _numberOfBackTyped = 0;
 
     if(keyType === 'operator') {
       _signKeyTyped = keyValue;
