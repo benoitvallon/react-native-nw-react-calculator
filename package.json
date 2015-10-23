@@ -29,9 +29,6 @@
     "moduleFileExtensions": [
       "js"
     ],
-    "testPathDirs": [
-      "<rootDir>/src/"
-    ],
     "verbose" : true,
     "collectCoverage": false
   },
