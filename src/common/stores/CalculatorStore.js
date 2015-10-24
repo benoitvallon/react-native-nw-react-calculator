@@ -8,14 +8,15 @@ import CalculatorConstants from '../constants/CalculatorConstants';
 
 var CHANGE_EVENT = 'change';
 
-var _numericKeyTyped = [];
 var _signKeyTyped = null;
 var _symbolKeyTyped = null;
-var _numberTyped = [];
 var _displayScreen = '0';
 var _displayFormulae = [];
 var _totalNumberOfDigits = 12;
-var _numberOfBackTyped = 0;
+var _numberKeyPressedBuffer = [];
+var _backKeyPressedInARowBuffer = 0;
+var _numbersFromBuffer = [];
+var _lastCalculation = {};
 
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
@@ -46,110 +47,150 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-function processKey(keyType, keyValue) {
-  if(keyType === 'operator' || keyType === 'action') {
-
-    // if a number was being typed we reset it otherwise we reset everything
-    if(keyValue === 'back') {
-      if(_numericKeyTyped.length) {
-        _numericKeyTyped.pop();
-        _displayScreen = _numericKeyTyped.join('');
-        if(!_numericKeyTyped.length) {
-          _displayScreen = '0';
-          _numberOfBackTyped++;
-        }
-      } else {
-        _numberTyped = [];
-        _displayScreen = '0';
-        _numberOfBackTyped++;
+function processNumberKeyPressed(keyType, keyValue) {
+  // avoid multiple '.' character
+  if(keyValue === '.') {
+    if(~_numberKeyPressedBuffer.indexOf('.')) {
+      return;
+    } else {
+      // if no '.' is found then we push first a '0'
+      if(!_numberKeyPressedBuffer.length) {
+        _numberKeyPressedBuffer.push('0');
       }
-      if(_numberOfBackTyped >= 2) {
-        _displayFormulae.pop();
-      }
+    }
+  }
+  if(keyValue === '0') {
+    // if there no other character, '0's can not accumulate
+    if(_numberKeyPressedBuffer.length === 1 && _numberKeyPressedBuffer[0] === '0') {
       return;
     }
-    _numberOfBackTyped = 0;
+
+  }
+  _numberKeyPressedBuffer.push(keyValue);
+  _displayScreen = _numberKeyPressedBuffer.join('');
+}
+
+function processBackKeyPressed() {
+  // if a number is being entered (in the buffer) we reset every character one by one
+  if(_numberKeyPressedBuffer.length) {
+    _numberKeyPressedBuffer.pop();
+    _displayScreen = _numberKeyPressedBuffer.join('');
+    // if there is no more number in the buffer, we reset the screen and start counting the number of times back has been pressed
+    if(!_numberKeyPressedBuffer.length || _numberKeyPressedBuffer === '0') {
+      _numberKeyPressedBuffer = [];
+      _numbersFromBuffer = [];
+      _displayScreen = '0';
+      _backKeyPressedInARowBuffer++;
+      _lastCalculation = {};
+    }
+  } else {
+    _numberKeyPressedBuffer = [];
+    _numbersFromBuffer = [];
+    _displayScreen = '0';
+    _backKeyPressedInARowBuffer++;
+    _lastCalculation = {};
+  }
+  // if back has been pressed two times in a row after reset the screen and the buffer then we start deleting previous formula one by one
+  if(_backKeyPressedInARowBuffer >= 2) {
+    _displayFormulae.pop();
+  }
+  return;
+}
+
+function processKey(keyType, keyValue) {
+  if(keyType === 'number') {
+    // process all 11 key types .1234567890
+    return processNumberKeyPressed(keyType, keyValue);
+  } else {
+    if(keyValue === 'back') {
+      return processBackKeyPressed();
+    }
+    // if we come here, it means the back button has been pressed so we reset its counter
+    _backKeyPressedInARowBuffer = 0;
 
     if(keyType === 'operator') {
       _signKeyTyped = keyValue;
-    }
 
-    // a number was previously typed
-    if(_numericKeyTyped.length) {
-
-      var number = parseFloat(_numericKeyTyped.join(''));
-      _numberTyped.push(number);
-
-      _numericKeyTyped = [];
-
-      if(_numberTyped.length === 2) {
-        var calculation = 0;
-
-        switch(_signKeyTyped) {
-          case 'add':
-            calculation = _numberTyped[0] + _numberTyped[1];
-            _symbolKeyTyped = '+';
-            break;
-          case 'substract':
-            calculation = _numberTyped[0] - _numberTyped[1];
-            _symbolKeyTyped = '-';
-            break;
-          case 'multiply':
-            calculation = _numberTyped[0] * _numberTyped[1];
-            _symbolKeyTyped = 'x';
-            break;
-          case 'divide':
-            if(_numberTyped[1] === 0) {
-              calculation = 'Error';
-            } else {
-              calculation = _numberTyped[0] / _numberTyped[1];
-            }
-            _symbolKeyTyped = '÷';
-            break;
-          default:
-        }
-
-        _displayFormulae.push({
-          id: uniqid(),
-          literal: '' + _numberTyped[0].toString() + ' ' +
-            _symbolKeyTyped + ' ' +  _numberTyped[1].toString(),
-          operator: _signKeyTyped
-        });
-
-        var splitDisplay = calculation.toString().split('.');
-        // this is a decimal number
-        if(splitDisplay.length == 2) {
-          calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
-        }
-        _displayScreen = calculation.toString();
-
-        if(calculation == 'Error') {
-          _numberTyped = [];
-        } else {
-          _numberTyped = [calculation];
-        }
-      }
-    }
-  } else {
-    // avoid multiple '.' character
-    if(keyValue === '.') {
-      if(~_numericKeyTyped.indexOf('.')) {
-        return;
+      if(_numberKeyPressedBuffer.length) {
+        _numbersFromBuffer.push(parseFloat(_numberKeyPressedBuffer.join('')));
+        _numberKeyPressedBuffer = [];
       } else {
-        // if no '.' is found then we push first a '0'
-        if(!_numericKeyTyped.length) {
-          _numericKeyTyped.push('0');
+        _lastCalculation = {
+          number: parseFloat(_displayScreen),
+          sign: _signKeyTyped
+        };
+      }
+
+      processCalculation();
+    }
+
+    if(keyValue === 'equal') {
+
+      if(_numberKeyPressedBuffer.length) {
+        _numbersFromBuffer.push(parseFloat(_numberKeyPressedBuffer.join('')));
+        _numberKeyPressedBuffer = [];
+      } else if (_lastCalculation.number) {
+        _numbersFromBuffer.push(_lastCalculation.number);
+        _signKeyTyped = _lastCalculation.sign;
+      }
+
+      processCalculation();
+      _numbersFromBuffer = [];
+    }
+  }
+}
+
+function processCalculation() {
+  if(_numbersFromBuffer.length === 2) {
+    var calculation = 0;
+
+    switch(_signKeyTyped) {
+      case 'add':
+        calculation = _numbersFromBuffer[0] + _numbersFromBuffer[1];
+        _symbolKeyTyped = '+';
+        break;
+      case 'substract':
+        calculation = _numbersFromBuffer[0] - _numbersFromBuffer[1];
+        _symbolKeyTyped = '-';
+        break;
+      case 'multiply':
+        calculation = _numbersFromBuffer[0] * _numbersFromBuffer[1];
+        _symbolKeyTyped = 'x';
+        break;
+      case 'divide':
+        if(_numbersFromBuffer[1] === 0) {
+          calculation = 'Error';
+        } else {
+          calculation = _numbersFromBuffer[0] / _numbersFromBuffer[1];
         }
-      }
+        _symbolKeyTyped = '÷';
+        break;
+      default:
     }
-    if(keyValue === '0') {
-      // if there no other character, '0's can not accumulate
-      if(_numericKeyTyped.length == 1 && _numericKeyTyped == '0') {
-        return;
-      }
+    _lastCalculation = {
+      number: _numbersFromBuffer[1],
+      sign: _signKeyTyped
+    };
+
+    _displayFormulae.push({
+      id: uniqid(),
+      literal: '' + _numbersFromBuffer[0].toString() + ' ' +
+        _symbolKeyTyped + ' ' +  _numbersFromBuffer[1].toString(),
+      operator: _signKeyTyped
+    });
+
+    var splitDisplay = calculation.toString().split('.');
+    // this is a decimal number
+    if(splitDisplay.length == 2) {
+      calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
     }
-    _numericKeyTyped.push(keyValue);
-    _displayScreen = _numericKeyTyped.join('');
+    _displayScreen = calculation.toString();
+
+    if(calculation == 'Error') {
+      _numbersFromBuffer = [];
+    } else {
+      _numbersFromBuffer = [calculation];
+    }
   }
 }
 
