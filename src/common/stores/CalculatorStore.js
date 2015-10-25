@@ -17,6 +17,7 @@ var _numberKeyPressedBuffer = [];
 var _backKeyPressedInARowBuffer = 0;
 var _numbersFromBuffer = [];
 var _lastCalculation = {};
+var _lastPressedWasEqual = false;
 
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
@@ -99,16 +100,22 @@ function processBackKeyPressed() {
 
 function processKey(keyType, keyValue) {
   if(keyType === 'number') {
+    if(_lastPressedWasEqual) {
+      _numbersFromBuffer = [];
+    }
+    _lastPressedWasEqual = false;
     // process all 11 key types .1234567890
     return processNumberKeyPressed(keyType, keyValue);
   } else {
     if(keyValue === 'back') {
+      _lastPressedWasEqual = false;
       return processBackKeyPressed();
     }
     // if we come here, it means the back button has been pressed so we reset its counter
     _backKeyPressedInARowBuffer = 0;
 
     if(keyType === 'operator') {
+      _lastPressedWasEqual = false;
       _signKeyTyped = keyValue;
 
       if(_numberKeyPressedBuffer.length) {
@@ -135,7 +142,8 @@ function processKey(keyType, keyValue) {
       }
 
       processCalculation();
-      _numbersFromBuffer = [];
+
+      _lastPressedWasEqual = true;
     }
   }
 }
