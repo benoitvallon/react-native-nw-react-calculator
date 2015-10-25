@@ -192,7 +192,7 @@ function processCalculation() {
     if(splitDisplay.length == 2) {
       calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
     }
-    _displayScreen = calculation.toString();
+    _displayScreen = parseFloat(calculation.toString()).toString();
 
     if(calculation == 'Error') {
       _numbersFromBuffer = [];

@@ -268,8 +268,7 @@ describe('CalculatorStore', function() {
     callback(actionKeyTyped('number', '2'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
     callback(actionKeyTyped('action', 'equal'));
-    // should be refactor to display '0.3' instead
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.30000000000');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.3');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.1 + 0.2', operator: 'add' }]);
     resetTyping();
@@ -285,8 +284,7 @@ describe('CalculatorStore', function() {
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
     callback(actionKeyTyped('action', 'equal'));
-    // should be refactor to display '0.1' instead
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.10000000000');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.2 - 0.1', operator: 'substract' }]);
     resetTyping();
@@ -302,8 +300,7 @@ describe('CalculatorStore', function() {
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
     callback(actionKeyTyped('action', 'equal'));
-    // should be refactor to display '0.02' instead
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.02000000000');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.02');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.2 x 0.1', operator: 'multiply' }]);
     resetTyping();
@@ -315,12 +312,10 @@ describe('CalculatorStore', function() {
     callback(actionKeyTyped('number', '2'));
     callback(actionKeyTyped('operator', 'divide'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
-    // callback(actionKeyTyped('number', '.'));
     callback(actionKeyTyped('number', '4'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('4');
     callback(actionKeyTyped('action', 'equal'));
-    // should be refactor to display '0.05' instead
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.05000000000');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.05');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.2 ÷ 4', operator: 'divide' }]);
     resetTyping();
