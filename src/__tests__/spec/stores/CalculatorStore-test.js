@@ -184,77 +184,63 @@ describe('CalculatorStore', function() {
     resetTyping();
   });
 
-  it('handles one basic add calculation', function() {
+  it('handles one basic add calculation (1+2=3)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
     callback(actionKeyTyped('operator', 'add'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
     callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     callback(actionKeyTyped('action', 'equal'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('24');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
-      { id: undefined, literal: '12 + 12', operator: 'add' }]);
+      { id: undefined, literal: '1 + 2', operator: 'add' }]);
     resetTyping();
   });
 
-  it('handles one basic substract calculation', function() {
+  it('handles one basic substract calculation (1-2=-1)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
     callback(actionKeyTyped('operator', 'substract'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '1'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('11');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     callback(actionKeyTyped('action', 'equal'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
-      { id: undefined, literal: '12 - 11', operator: 'substract' }]);
+      { id: undefined, literal: '1 - 2', operator: 'substract' }]);
     resetTyping();
   });
 
-  it('handles one basic multiply calculation', function() {
+  it('handles one basic multiply calculation (1x2=2)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
     callback(actionKeyTyped('operator', 'multiply'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
     callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('action', 'equal'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('144');
-    expect(CalculatorStore.getDisplayFormulae()).toEqual([
-      { id: undefined, literal: '12 x 12', operator: 'multiply' }]);
-    resetTyping();
-  });
-
-  it('handles one basic divide calculation', function() {
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
-    callback(actionKeyTyped('number', '1'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('operator', 'divide'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('number', '6'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('6');
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
-      { id: undefined, literal: '12 ÷ 6', operator: 'divide' }]);
+      { id: undefined, literal: '1 x 2', operator: 'multiply' }]);
+    resetTyping();
+  });
+
+  it('handles one basic divide calculation (4÷2=2)', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '4 ÷ 2', operator: 'divide' }]);
     resetTyping();
   });
 
