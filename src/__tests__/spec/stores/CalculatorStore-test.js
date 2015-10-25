@@ -557,4 +557,75 @@ describe('CalculatorStore', function() {
       { id: undefined, literal: '5 + 2', operator: 'add' }]);
     resetTyping();
   });
+
+  it('handles typing errors (before, in and after calculation)', function() {
+    // multiple operators at the begining
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' }]);
+    resetTyping();
+
+    // multiple operators in calculation
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' }]);
+    resetTyping();
+
+    // multiple operators in calculation
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' }]);
+
+    // continue calculation
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('7');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' },
+      { id: undefined, literal: '3 + 4', operator: 'add' }]);
+
+    callback(actionKeyTyped('action', 'equal'));
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('15');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' },
+      { id: undefined, literal: '3 + 4', operator: 'add' },
+      { id: undefined, literal: '7 + 4', operator: 'add' },
+      { id: undefined, literal: '11 + 4', operator: 'add' }]);
+    resetTyping();
+  });
 });
