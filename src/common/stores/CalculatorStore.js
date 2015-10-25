@@ -190,9 +190,9 @@ function processCalculation() {
     var splitDisplay = calculation.toString().split('.');
     // this is a decimal number
     if(splitDisplay.length == 2) {
-      calculation = calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length);
+      calculation = parseFloat(calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length));
     }
-    _displayScreen = parseFloat(calculation.toString()).toString();
+    _displayScreen = calculation.toString();
 
     if(calculation == 'Error') {
       _numbersFromBuffer = [];

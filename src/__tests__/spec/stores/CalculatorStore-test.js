@@ -244,7 +244,7 @@ describe('CalculatorStore', function() {
     resetTyping();
   });
 
-  it('handles one decimal add calculations', function() {
+  it('handles decimal add calculations (0.1+0.2=0.3, +1=1.3)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
     callback(actionKeyTyped('number', '1'));
@@ -257,10 +257,21 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.3');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.1 + 0.2', operator: 'add' }]);
+
+    // reuse previous rounded calculation
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.3');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '0.1 + 0.2', operator: 'add' },
+      { id: undefined, literal: '0.3 + 1', operator: 'add' }]);
     resetTyping();
   });
 
-  it('handles one decimal substract calculations', function() {
+  it('handles decimal substract calculations (0.2-0.1=0.1, -1=-0.9)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
     callback(actionKeyTyped('number', '2'));
@@ -273,26 +284,48 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.2 - 0.1', operator: 'substract' }]);
+
+    // reuse previous rounded calculation
+    callback(actionKeyTyped('operator', 'substract'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.9');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '0.2 - 0.1', operator: 'substract' },
+      { id: undefined, literal: '0.1 - 1', operator: 'substract' }]);
     resetTyping();
   });
 
-  it('handles one decimal multiply calculations', function() {
+  it('handles decimal multiply calculations (0.1x0.2=0.02, x2=0.04)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
-    callback(actionKeyTyped('number', '2'));
-    callback(actionKeyTyped('operator', 'multiply'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
-    callback(actionKeyTyped('number', '.'));
     callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('operator', 'multiply'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.1');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.2');
     callback(actionKeyTyped('action', 'equal'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.02');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
-      { id: undefined, literal: '0.2 x 0.1', operator: 'multiply' }]);
+      { id: undefined, literal: '0.1 x 0.2', operator: 'multiply' }]);
+
+    // reuse previous rounded calculation
+    callback(actionKeyTyped('operator', 'multiply'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.02');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.04');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '0.1 x 0.2', operator: 'multiply' },
+      { id: undefined, literal: '0.02 x 2', operator: 'multiply' }]);
     resetTyping();
   });
 
-  it('handles one decimal divide calculations', function() {
+  it('handles decimal divide calculations (0.2÷4=0.05, ÷2=0.025)', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
     callback(actionKeyTyped('number', '2'));
@@ -304,6 +337,17 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.05');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '0.2 ÷ 4', operator: 'divide' }]);
+
+    // reuse previous rounded calculation
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.05');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.025');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '0.2 ÷ 4', operator: 'divide' },
+      { id: undefined, literal: '0.05 ÷ 2', operator: 'divide' }]);
     resetTyping();
   });
 
