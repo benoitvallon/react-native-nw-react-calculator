@@ -180,13 +180,6 @@ function processCalculation() {
       sign: _signKeyTyped
     };
 
-    _displayFormulae.push({
-      id: uniqid(),
-      literal: '' + _numbersFromBuffer[0].toString() + ' ' +
-        _symbolKeyTyped + ' ' +  _numbersFromBuffer[1].toString(),
-      operator: _signKeyTyped
-    });
-
     var splitDisplay = calculation.toString().split('.');
     // this is a decimal number
     if(splitDisplay.length == 2) {
@@ -197,6 +190,12 @@ function processCalculation() {
     if(calculation == 'Error') {
       _numbersFromBuffer = [];
     } else {
+      _displayFormulae.push({
+        id: uniqid(),
+        literal: '' + _numbersFromBuffer[0].toString() + ' ' +
+          _symbolKeyTyped + ' ' +  _numbersFromBuffer[1].toString(),
+        operator: _signKeyTyped
+      });
       _numbersFromBuffer = [calculation];
     }
   }
