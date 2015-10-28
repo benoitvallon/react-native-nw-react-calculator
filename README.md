@@ -107,7 +107,7 @@ As of now (October 14th) react-native and npm v3.X do not cooperate well togethe
 
 Congratulations! You've just successfully run the project as an iOS App.
 
-![Mobile App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/mobile-app.png "Mobile App")
+![Mobile App](images/mobile-app.png "Mobile App")
 
 ## The Website App
 
@@ -122,7 +122,7 @@ There isn't any addtional requirements since you already installed the deps with
 
 Congratulations! You've just successfully run the project as a Website App.
 
-![Website App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/website-app.png "Website App")
+![Website App](images/website-app.png "Website App")
 
 ## The Desktop App
 
@@ -147,7 +147,7 @@ You can also setup an alias to call the binary.
 
 Congratulations! You've just successfully run the project as a Desktop App.
 
-![Desktop App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/desktop-app.png "Desktop App")
+![Desktop App](images/desktop-app.png "Desktop App")
 
 # Run the tests
 
