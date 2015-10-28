@@ -1,14 +1,67 @@
-# What is this project? Code once run every where!
+# Code once and run every where!
 
-This project tries to show how the code can be organized to be used with multiple devices/outputs. This code source is for now able to run as:
+This project tries to show how the code can be organized to be used for multiple devices. For now, the source code is able to run as:
 
 - an iOS App (based on React Native)
 - a Website App in any browser (based on React)
 - a Desktop App (based on NW)
 
-## Limitations
+## Libraries/tools
 
-Of course some of the choices made here to share the code between specific build are not optimal. Packaging some of them as npm modules would have been probably a better idea but it wouldn't have shown all of the project structure as easily and would have made the project harder to understand.
+This project uses libraries and tools like:
+- es6 syntax and [babel](https://babeljs.io)
+- [react](https://facebook.github.io/react) for the Website App and Desktop App,
+- [react-native](https://facebook.github.io/react-native) for the iOS App
+- [NW](http://nwjs.io) to package the Desktop App
+- [flux](https://facebook.github.io/flux) to organize the data flow management
+- [css-loader](https://github.com/webpack/css-loader) to integrate the styles in the builds
+- [grunt](http://gruntjs.com) to create the builds
+- [webpack](https://webpack.github.io) to help during the development phase with hot reloading
+
+
+## Basic philosophy
+
+All the code is contained in the `src` directory, especially the 2 main entry files that are used for the builds:
+- `index.ios.js` is the one used to build the iOS App
+-  `index.js` is the one used to build the Website App and Desktop App as the code is strictly the same.
+
+### Flux architecture actions/stores
+
+All the [flux](https://facebook.github.io/flux) architecture is share to 100% to all the different builds. This means that all the logic and data management code is done only once and reuse everywhere. This allows us to have an easy tests suite as well and to ensure that our code is working properly on all the devices.
+
+### Components
+
+The real interest of the project is in how the components have been structured to shared most of their logic and only redefined what is specific to every device.
+
+Basically, every component has a main `Class` which inherits a base `Class` containing all the logic. Then, the main component import a different Render function which has been selected during the build. The file extension `.ios.js` or `.js` is used by the build tool to import only the right file.
+
+At the end, every component is defined by 4 files. If we look at the screen component, here is its structure.
+
+```
+Screen.js
+  |-> ScreenBase.js
+  |-> ScreenRender.ios.js (used during iOS build)
+  |-> ScreenRender.js  (used during Website and Desktop build)
+```
+
+And here is the main `Class` file which composes the files.
+
+```js
+'use strict';
+
+import Base from './ScreenBase';
+import Render from './ScreenRender';
+
+export default class Screen extends Base {
+  constructor (props) {
+    super(props);
+  }
+
+  render () {
+    return Render.call(this, this.props, this.state);
+  }
+}
+```
 
 ## What's next
 
@@ -18,7 +71,7 @@ Here are some thoughts about what can come next:
 
 ## Thank you Robert for your awesome design
 
-I want to thank Robert O'Dowd who kindly authorized me the reuse his very beautiful design. The original design made by Robert was part of his project called "Simplifycation" visible [here](https://dribbble.com/shots/1973851-Simplifycation).  
+I want to thank Robert O'Dowd who kindly authorized me the reuse his very beautiful design. The original design made by Robert was part of his project called "Simplifycation" visible [here](https://dribbble.com/shots/1973851-Simplifycation).
 
 # How to build/run the projects
 
@@ -95,3 +148,11 @@ You can also setup an alias to call the binary.
 Congratulations! You've just successfully run the project as a Desktop App.
 
 ![Desktop App](https://github.com/benoitvallon/calculator-app-react/blob/master/images/desktop-app.png "Desktop App")
+
+# Run the tests
+
+To run the tests, simply run:
+
+```
+npm test
+```
