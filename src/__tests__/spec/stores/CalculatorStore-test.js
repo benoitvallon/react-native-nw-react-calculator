@@ -184,7 +184,8 @@ describe('CalculatorStore', function() {
     resetTyping();
   });
 
-  it('handles one basic add calculation (1+2=3)', function() {
+  it('handles basic add calculations (1+2=3, 1+-2=-1)', function() {
+    // positive numbers
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -197,9 +198,26 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '1 + 2', operator: 'add' }]);
     resetTyping();
+
+    // negative numbers
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + -2', operator: 'add' }]);
+    resetTyping();
   });
 
-  it('handles one basic substract calculation (1-2=-1)', function() {
+  it('handles basic substract calculations (1-2=-1, 1--2=-3)', function() {
+    // positive numbers
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -212,9 +230,26 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '1 - 2', operator: 'substract' }]);
     resetTyping();
+
+    // negative numbers
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'substract'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 - -2', operator: 'substract' }]);
+    resetTyping();
   });
 
-  it('handles one basic multiply calculation (1x2=2)', function() {
+  it('handles basic multiply calculations (1x2=2, 1x-2=-2)', function() {
+    // positive numbers
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -227,9 +262,26 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '1 x 2', operator: 'multiply' }]);
     resetTyping();
+
+    // negative numbers
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'multiply'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 x -2', operator: 'multiply' }]);
+    resetTyping();
   });
 
-  it('handles one basic divide calculation (4÷2=2)', function() {
+  it('handles basic divide calculations (4÷2=2, 4÷-2=-2)', function() {
+    // positive numbers
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '4'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('4');
@@ -241,6 +293,22 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('2');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '4 ÷ 2', operator: 'divide' }]);
+    resetTyping();
+
+    // negative numbers
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-2');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '4 ÷ -2', operator: 'divide' }]);
     resetTyping();
   });
 
@@ -774,6 +842,25 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
     callback(actionKeyTyped('number', '+-'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+  });
+
+  it('handles sign switching after a decimal number (1.2, -1.2, 1.2, -1.2, 1.2)', function() {
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1.2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1.2');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.2');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
     resetTyping();
   });
