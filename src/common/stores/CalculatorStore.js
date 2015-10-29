@@ -81,9 +81,22 @@ function processNumberKeyPressed(keyType, keyValue) {
 function processBackKeyPressed() {
   // if a number is being entered (in the buffer) we reset every character one by one
   if(_numberKeyPressedBuffer.length) {
-    // check if it is a negative number
+    // pop the last nnumber typed
     _numberKeyPressedBuffer.pop();
-    _displayScreen = _numberKeyPressedBuffer.join('');
+
+    // check if it is a negative number for trailing '0' or negative number, we did the inverse trick after '.', we added '0'
+    if((_numberKeyPressedBuffer.length === 1 && _numberKeyPressedBuffer[0] === '0') ||
+        (_numberKeyPressedBuffer.length === 2 && _numberKeyPressedBuffer[0] === '-' && _numberKeyPressedBuffer[1] === '0')) {
+      _numberKeyPressedBuffer.pop();
+    }
+
+    // if there is only the negative sign in the buffer we keep and hack the display to '-0'
+    if(_numberKeyPressedBuffer.length === 1 && _numberKeyPressedBuffer[0] === '-') {
+      _displayScreen = '-0';
+    } else {
+      _displayScreen = _numberKeyPressedBuffer.join('');
+    }
+
     // if there is no more number in the buffer, we reset the screen and start counting the number of times back has been pressed
     if(!_numberKeyPressedBuffer.length) {
       _numberKeyPressedBuffer = [];

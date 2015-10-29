@@ -170,7 +170,12 @@ describe('CalculatorStore', function() {
     resetTyping();
   });
 
-  it('handles typing back as we type', function() {
+  it('handles typing back as we type (1234, -1234)', function() {
+    // back after nothing
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+
+    // back after some number
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
@@ -190,16 +195,35 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
     resetTyping();
+
+    // back after some number and sign switching
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-12');
+    callback(actionKeyTyped('number', '3'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-123');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1234');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-123');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-12');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
   });
 
-  it('handles typing . after back', function() {
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
-    callback(actionKeyTyped('number', '1'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
-    callback(actionKeyTyped('number', '2'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('12');
-    callback(actionKeyTyped('action', 'back'));
-    callback(actionKeyTyped('action', 'back'));
+  it('handles typing . after back (.00, -0.00)', function() {
+    // right after a .
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.');
@@ -207,6 +231,34 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.0');
     callback(actionKeyTyped('number', '0'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.00');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.0');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0.');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+
+    // right after a sign switching and .
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.00');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.0');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
     resetTyping();
   });
 
