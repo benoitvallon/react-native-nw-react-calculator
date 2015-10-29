@@ -748,4 +748,61 @@ describe('CalculatorStore', function() {
       { id: undefined, literal: '4 + 5', operator: 'add' }]);
     resetTyping();
   });
+
+  it('handles sign switching with 0 (0, -0, 0, -0, 0)', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+  });
+
+  it('handles sign switching after a number (1, -1, 1, -1, 1)', function() {
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+  });
+
+  it('handles sign switching after calculation (1+2=3, -3+4=7)', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' }]);
+
+    // sign switching
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-3');
+    callback(actionKeyTyped('operator', 'add'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-3');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('4');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add' },
+      { id: undefined, literal: '-3 + 4', operator: 'add' }]);
+    resetTyping();
+  });
 });

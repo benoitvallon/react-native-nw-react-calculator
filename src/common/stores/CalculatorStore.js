@@ -100,6 +100,31 @@ function processBackKeyPressed() {
 
 function processKey(keyType, keyValue) {
   if(keyType === 'number') {
+    if(keyValue === '+-') {
+      if(_numberKeyPressedBuffer[0] === '-') {
+        _numberKeyPressedBuffer.shift();
+      } else {
+        if(!_numberKeyPressedBuffer.length) {
+          if(_displayScreen.split('')[0] === '-') {
+            _displayScreen = parseFloat(_displayScreen.substring(1)).toString();
+          } else {
+            _displayScreen = ('-' + _displayScreen).toString();
+          }
+          if(_numbersFromBuffer.length) {
+            _numbersFromBuffer = [parseFloat(_displayScreen)];
+          }
+          return;
+        } else {
+          _numberKeyPressedBuffer.unshift('-');
+        }
+      }
+      _displayScreen = _numberKeyPressedBuffer.join('');
+      if(!_numberKeyPressedBuffer.length || _numberKeyPressedBuffer === '0') {
+        _numberKeyPressedBuffer = [];
+        _displayScreen = '0';
+      }
+      return;
+    }
     if(_lastPressedWasEqual) {
       _numbersFromBuffer = [];
     }
