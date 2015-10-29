@@ -50,7 +50,7 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
   });
 
-  it('handles 0 accumalation (0000, 1000, 0.0001)', function() {
+  it('handles 0 accumalation (0000, -0000, 1000, 0.0001)', function() {
     // typing a lot of 0 0 0 0
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '0'));
@@ -61,8 +61,20 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '0'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
-    callback(actionKeyTyped('action', 'back'));
+    resetTyping();
+
+    // typing a lot of 0 0 0 0 after a sign switching
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
     resetTyping();
 
     // typing a lot of 0 after a number key 1 0 0 0
@@ -74,8 +86,6 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('100');
     callback(actionKeyTyped('number', '0'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1000');
-    callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('100');
     resetTyping();
 
     // typing a lot of 0 after a number dot . 0 0 0
@@ -89,12 +99,10 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.000');
     callback(actionKeyTyped('number', '1'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0.0001');
-    callback(actionKeyTyped('action', 'back'));
-    expect(CalculatorStore.getDisplayScreen()).toEqual('0.000');
     resetTyping();
   });
 
-  it('handles typing . (.000, 1.234, ...12)', function() {
+  it('handles typing . (.000, 1.234, -0.123, ...12)', function() {
     // typing . first
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     callback(actionKeyTyped('number', '.'));
@@ -125,6 +133,24 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('1.23');
     callback(actionKeyTyped('number', '5'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1.235');
+    resetTyping();
+
+    // typing . after a sign switching
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '.'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.1');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.12');
+    callback(actionKeyTyped('number', '3'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.123');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.12');
+    callback(actionKeyTyped('number', '4'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0.124');
     resetTyping();
 
     // typing multiples .
