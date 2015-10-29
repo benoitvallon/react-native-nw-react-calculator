@@ -805,4 +805,16 @@ describe('CalculatorStore', function() {
       { id: undefined, literal: '-3 + 4', operator: 'add' }]);
     resetTyping();
   });
+
+  it('handles typing a number after sign switching (0, -0, -1, 1)', function() {
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-0');
+    callback(actionKeyTyped('number', '1'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('-1');
+    callback(actionKeyTyped('number', '+-'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+  });
 });

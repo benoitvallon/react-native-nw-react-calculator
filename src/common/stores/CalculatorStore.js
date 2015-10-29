@@ -49,13 +49,20 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
 });
 
 function processNumberKeyPressed(keyType, keyValue) {
+  // filter the buffer in case it contains only '-0' to remove the '0'
+  if(_numberKeyPressedBuffer.length === 2 && _numberKeyPressedBuffer[0] === '-' && _numberKeyPressedBuffer[1] === '0') {
+    _numberKeyPressedBuffer.pop();
+  }
+
   // avoid multiple '.' character
   if(keyValue === '.') {
     if(~_numberKeyPressedBuffer.indexOf('.')) {
       return;
     } else {
-      // if no '.' is found then we push first a '0'
-      if(!_numberKeyPressedBuffer.length) {
+      // if no '.' is found and the buffer is empty then we push a first '0'
+      // we also test if the buffer contains only '-', if so, we push a first '0'
+      if(!_numberKeyPressedBuffer.length ||
+          (_numberKeyPressedBuffer.length === 1 && _numberKeyPressedBuffer[0] === '-')) {
         _numberKeyPressedBuffer.push('0');
       }
     }
@@ -74,10 +81,11 @@ function processNumberKeyPressed(keyType, keyValue) {
 function processBackKeyPressed() {
   // if a number is being entered (in the buffer) we reset every character one by one
   if(_numberKeyPressedBuffer.length) {
+    // check if it is a negative number
     _numberKeyPressedBuffer.pop();
     _displayScreen = _numberKeyPressedBuffer.join('');
     // if there is no more number in the buffer, we reset the screen and start counting the number of times back has been pressed
-    if(!_numberKeyPressedBuffer.length || _numberKeyPressedBuffer === '0') {
+    if(!_numberKeyPressedBuffer.length) {
       _numberKeyPressedBuffer = [];
       _numbersFromBuffer = [];
       _displayScreen = '0';
@@ -101,27 +109,32 @@ function processBackKeyPressed() {
 function processKey(keyType, keyValue) {
   if(keyType === 'number') {
     if(keyValue === '+-') {
-      if(_numberKeyPressedBuffer[0] === '-') {
-        _numberKeyPressedBuffer.shift();
-      } else {
-        if(!_numberKeyPressedBuffer.length) {
-          if(_displayScreen.split('')[0] === '-') {
-            _displayScreen = parseFloat(_displayScreen.substring(1)).toString();
-          } else {
-            _displayScreen = ('-' + _displayScreen).toString();
+
+      // a number is being type
+      if(_numberKeyPressedBuffer.length) {
+        if(_numberKeyPressedBuffer[0] === '-') {
+          _numberKeyPressedBuffer.shift();
+
+          if(_numberKeyPressedBuffer.length === 2 && _numberKeyPressedBuffer[0] === '0') {
+            _numberKeyPressedBuffer.shift();
           }
-          if(_numbersFromBuffer.length) {
-            _numbersFromBuffer = [parseFloat(_displayScreen)];
-          }
-          return;
         } else {
           _numberKeyPressedBuffer.unshift('-');
         }
-      }
-      _displayScreen = _numberKeyPressedBuffer.join('');
-      if(!_numberKeyPressedBuffer.length || _numberKeyPressedBuffer === '0') {
-        _numberKeyPressedBuffer = [];
-        _displayScreen = '0';
+        _displayScreen = _numberKeyPressedBuffer.join('');
+      } else {
+        // the typing buffer is empty and there is no previous numbers in the other buffer
+        // it means we are at the beginning of a calculation
+        if(!_numbersFromBuffer.length) {
+          _numberKeyPressedBuffer.unshift('0');
+          _numberKeyPressedBuffer.unshift('-');
+          _displayScreen = _numberKeyPressedBuffer.join('');
+        } else {
+          // there is a previous numbers in the other buffer
+          // it means we are in the middle of a calculation
+          _numbersFromBuffer[0] = _numbersFromBuffer[0] * -1;
+          _displayScreen = _numbersFromBuffer[0].toString();
+        }
       }
       return;
     }
