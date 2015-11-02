@@ -14,4 +14,8 @@ describe('CalculatorActions', function() {
   it('should find "typeKey" action', function() {
     expect(action.typeKey).toBeDefined();
   });
+
+  it('should find "typeFormula" action', function() {
+    expect(action.typeFormula).toBeDefined();
+  });
 });

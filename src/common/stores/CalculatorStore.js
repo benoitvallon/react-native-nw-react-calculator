@@ -252,6 +252,17 @@ function processCalculation() {
   }
 }
 
+function processFormula(formula) {
+  // if the formula pressed has the same calculation as the last one executed, we do nothing
+  if(_displayFormulae[_displayFormulae.length - 1].literal !== formula.literal) {
+    var numbers = formula.literal.split(' ');
+    _numbersFromBuffer[0] = parseFloat(numbers[0]);
+    _numbersFromBuffer[1] = parseFloat(numbers[2]);
+    _signKeyTyped = formula.operator;
+    processCalculation();
+  }
+}
+
 CalculatorStore.dispatchToken = AppDispatcher.register(function(action) {
 
   switch(action.type) {
@@ -260,6 +271,13 @@ CalculatorStore.dispatchToken = AppDispatcher.register(function(action) {
       var keyValue = action.keyValue;
       if (keyType !== undefined && keyValue !== undefined ) {
         processKey(keyType, keyValue);
+        CalculatorStore.emitChange();
+      }
+      break;
+    case CalculatorConstants.FORMULA_TYPED:
+      var formula = action.formula;
+      if (formula !== undefined) {
+        processFormula(formula);
         CalculatorStore.emitChange();
       }
       break;

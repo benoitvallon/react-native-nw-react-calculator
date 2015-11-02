@@ -11,6 +11,13 @@ var CalculatorActions = {
       keyType: keyType,
       keyValue: keyValue
     });
+  },
+
+  typeFormula: function(formula) {
+    AppDispatcher.dispatch({
+      type: CalculatorConstants.FORMULA_TYPED,
+      formula: formula
+    });
   }
 
 };

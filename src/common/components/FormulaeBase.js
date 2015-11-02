@@ -2,6 +2,7 @@
 
 import { Component } from 'react';
 import CalculatorStore from '../stores/CalculatorStore';
+import CalculatorActions from '../actions/CalculatorActions';
 
 function getCalculatorState() {
   return {
@@ -18,6 +19,7 @@ class Formulae extends Component {
     };
 
     // Bind callback methods to make `this` the correct context.
+    this.handleClick = this.handleClick.bind(this);
     this._onChange = this._onChange.bind(this);
   }
 
@@ -31,6 +33,10 @@ class Formulae extends Component {
 
   dynamicClass(opeartor) {
     return 'group ' + opeartor;
+  }
+
+  handleClick(formula) {
+    CalculatorActions.typeFormula(formula);
   }
 
   _onChange() {

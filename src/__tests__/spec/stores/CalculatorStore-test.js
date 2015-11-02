@@ -20,6 +20,13 @@ describe('CalculatorStore', function() {
     };
   };
 
+  var actionFormulaTyped = function(formula) {
+    return {
+      type: CalculatorConstants.FORMULA_TYPED,
+      formula: formula
+    };
+  };
+
   var resetTyping = function() {
     for(var i = 0; i < 20; i++) {
       callback(actionKeyTyped('action', 'back'));
@@ -522,16 +529,14 @@ describe('CalculatorStore', function() {
     expect(CalculatorStore.getDisplayScreen()).toEqual('9');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '1 + 2', operator: 'add'},
-      { id: undefined, literal: '4 + 5', operator: 'add'}
-    ]);
+      { id: undefined, literal: '4 + 5', operator: 'add'}]);
 
     // first back to delete previous result
     callback(actionKeyTyped('action', 'back'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('0');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([
       { id: undefined, literal: '1 + 2', operator: 'add'},
-      { id: undefined, literal: '4 + 5', operator: 'add'}
-    ]);
+      { id: undefined, literal: '4 + 5', operator: 'add'}]);
 
     // second back to delele most recent formulae
     callback(actionKeyTyped('action', 'back'));
@@ -980,6 +985,47 @@ describe('CalculatorStore', function() {
     callback(actionKeyTyped('number', '+-'));
     expect(CalculatorStore.getDisplayScreen()).toEqual('1');
     expect(CalculatorStore.getDisplayFormulae()).toEqual([]);
+    resetTyping();
+  });
+
+  it('handles reusing formula more than one time (1+2=3, 4+5=9, "1+2", "1+2")', function() {
+    // first calculation 1 + 2 = 3
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('number', '2'));
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add'}]);
+
+    // second and new calculation 4 + 5 = 9
+    callback(actionKeyTyped('number', '4'));
+    callback(actionKeyTyped('operator', 'add'));
+    callback(actionKeyTyped('number', '5'));
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('9');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add'},
+      { id: undefined, literal: '4 + 5', operator: 'add'}
+    ]);
+
+    // type on the first formula one time
+    callback(actionFormulaTyped({ id: undefined, literal: '1 + 2', operator: 'add'}));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add'},
+      { id: undefined, literal: '4 + 5', operator: 'add'},
+      { id: undefined, literal: '1 + 2', operator: 'add'}
+    ]);
+
+    // type on the first formula a second time
+    callback(actionFormulaTyped({ id: undefined, literal: '1 + 2', operator: 'add'}));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('3');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1 + 2', operator: 'add'},
+      { id: undefined, literal: '4 + 5', operator: 'add'},
+      { id: undefined, literal: '1 + 2', operator: 'add'}
+    ]);
     resetTyping();
   });
 });
