@@ -1,5 +1,7 @@
 # A mobile, desktop and website App with the same code
 
+[![Build Status](https://travis-ci.org/benoitvallon/react-redux-universal-hot-example.svg?branch=master)](https://travis-ci.org/benoitvallon/react-redux-universal-hot-example) [![Dependency Status](https://david-dm.org/benoitvallon/react-redux-universal-hot-example.svg)](https://david-dm.org/benoitvallon/react-redux-universal-hot-example)
+
 This project shows how the source code can be architectured to run on multiple devices. As of now, it is able to run as:
 
 - an iOS App (based on [react-native](https://facebook.github.io/react-native))
