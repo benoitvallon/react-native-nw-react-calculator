@@ -1,10 +1,10 @@
-# Code once and run every where!
+# A mobile, desktop and website App with the same code
 
-This project tries to show how the code can be organized to be used for multiple devices. For now, the source code is able to run as:
+This project shows how the source code can be architectured for multiple devices. For now, the source code is able to run as:
 
-- an iOS App (based on React Native)
-- a Website App in any browser (based on React)
-- a Desktop App (based on NW)
+- an iOS App (based on [react-native](https://facebook.github.io/react-native))
+- a Website App in any browser (based on [react](https://facebook.github.io/react))
+- a Desktop App (based on [NW](http://nwjs.io))
 
 ## Libraries/tools
 
