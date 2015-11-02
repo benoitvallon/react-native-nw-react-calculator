@@ -18,7 +18,7 @@ class Key extends Component {
   }
 
   handleClick() {
-    CalculatorActions.create(this.props.keyType, this.props.keyValue);
+    CalculatorActions.typeKey(this.props.keyType, this.props.keyValue);
   }
 
   onMouseDown() {

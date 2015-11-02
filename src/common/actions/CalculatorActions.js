@@ -5,7 +5,7 @@ import CalculatorConstants from '../constants/CalculatorConstants';
 
 var CalculatorActions = {
 
-  create: function(keyType, keyValue) {
+  typeKey: function(keyType, keyValue) {
     AppDispatcher.dispatch({
       type: CalculatorConstants.KEY_TYPED,
       keyType: keyType,
