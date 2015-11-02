@@ -88,18 +88,16 @@ I want to thank Robert O'Dowd who kindly authorized me the reuse his very beauti
 
 # How to build/run the projects
 
-## General requirements before running any specific projects
+## General requirements before running any specific project
 
-### If you are using npm v2.X
-
-- `npm install` to install all the dependencies, React and React Native among others
+- `npm install` to install all the dependencies, React and React Native among others.
 
 
-### If you are using npm v3.X
+### With some versions of npm (<v3.3.8)
 
-As of now (October 14th) react-native and npm v3.X do not cooperate well together. Then, if you are using npm v3.X as global the best way to install the project is to install npm v2.X locally and use this freshly installed npm to install the other packages.
+React-native and the first versions of npm v3 did not cooperate well together. Then, if you are using an old version of npm (inferior to v3.3.8) as global, the best way to install the project is to install npm v3.X locally and use this freshly installed npm to install the other packages.
 
-- `npm install npm@2` to install npm v2.X locally
+- `npm install npm@3` to install npm v3.X locally
 - `node_modules/npm/cli.js install` to install all the dependencies, React and React Native among others
 
 ## The iOS App
