@@ -1131,4 +1131,107 @@ describe('CalculatorStore', function() {
     ]);
     resetTyping();
   });
+
+  it('handles big numbers as we type (1 000 000 000 000)', function() {
+    // first calculation 1 000 000 000 000
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('10000000000');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+11');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+12');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+11');
+    callback(actionKeyTyped('action', 'back'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('10000000000');
+    resetTyping();
+  });
+
+  it('handles big numbers in calculation (1 000 000 000 000*2=2.00000e+12)', function() {
+    // first calculation 1 000 000 000 000 * 2 = 2.00000e+12
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('10000000000');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+11');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+12');
+    callback(actionKeyTyped('operator', 'multiply'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+12');
+    callback(actionKeyTyped('number', '2'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('2.00000e+12');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1.00000e+12 x 2', operator: 'multiply'}]);
+    resetTyping();
+  });
+
+  it('handles big numbers and decimal in calculation (1 000 000 000 000.1+7=1.42857e+11, +7777777=18367.34878)', function() {
+    // first calculation 1 000 000 000 000.1 + 7 = 1.42857e+11
+    expect(CalculatorStore.getDisplayScreen()).toEqual('0');
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('10000000000');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+11');
+    callback(actionKeyTyped('number', '0'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+12');
+    callback(actionKeyTyped('number', '.'));
+    callback(actionKeyTyped('number', '1'));
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.00000e+12');
+    callback(actionKeyTyped('number', '7'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('7');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.42857e+11');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1.00000e+12 ÷ 7', operator: 'divide'}]);
+
+    callback(actionKeyTyped('operator', 'divide'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('1.42857e+11');
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    callback(actionKeyTyped('number', '7'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('7777777');
+    callback(actionKeyTyped('action', 'equal'));
+    expect(CalculatorStore.getDisplayScreen()).toEqual('18367.34878');
+    expect(CalculatorStore.getDisplayFormulae()).toEqual([
+      { id: undefined, literal: '1.42857e+11 ÷ 7777777', operator: 'divide'}]);
+    resetTyping();
+  });
 });

@@ -13,6 +13,7 @@ var _symbolKeyTyped = null;
 var _displayScreen = '0';
 var _displayFormulae = [];
 var _totalNumberOfDigits = 12;
+var _exponentialNumberOfDigits = 5;
 var _numberKeyPressedBuffer = [];
 var _backKeyPressedInARowBuffer = 0;
 var _numbersFromBuffer = [];
@@ -22,6 +23,10 @@ var _lastPressedWasEqual = false;
 var CalculatorStore = assign({}, EventEmitter.prototype, {
 
   getDisplayScreen: function() {
+    if(_displayScreen.toString().length >= _totalNumberOfDigits) {
+      // console.log('display filter', _displayScreen.toString());
+      return parseFloat(_displayScreen).toExponential(_exponentialNumberOfDigits);
+    }
     return _displayScreen;
   },
   getDisplayFormulae: function() {
@@ -203,6 +208,8 @@ function processCalculation() {
   if(_numbersFromBuffer.length === 2) {
     var calculation = 0;
 
+    _numbersFromBuffer[0] = parseFloat(_numbersFromBuffer[0]);
+    _numbersFromBuffer[1] = parseFloat(_numbersFromBuffer[1]);
     switch(_signKeyTyped) {
       case 'add':
         calculation = _numbersFromBuffer[0] + _numbersFromBuffer[1];
@@ -234,13 +241,25 @@ function processCalculation() {
     var splitDisplay = calculation.toString().split('.');
     // this is a decimal number
     if(splitDisplay.length == 2) {
-      calculation = parseFloat(calculation.toFixed(_totalNumberOfDigits - calculation.toString().split('.')[0].length));
+      var fixedTo = _totalNumberOfDigits - 2 - calculation.toString().split('.')[0].length;
+      if(fixedTo < 0) {
+        fixedTo = 0;
+      }
+      calculation = parseFloat(calculation.toFixed(fixedTo));
+    } else if(calculation.toString().length >= _totalNumberOfDigits) {
+      calculation = calculation.toExponential(_exponentialNumberOfDigits);
     }
     _displayScreen = calculation.toString();
 
     if(calculation == 'Error') {
       _numbersFromBuffer = [];
     } else {
+      if(_numbersFromBuffer[0].toString().length >= _totalNumberOfDigits) {
+        _numbersFromBuffer[0] = _numbersFromBuffer[0].toExponential(_exponentialNumberOfDigits);
+      }
+      if(_numbersFromBuffer[1].toString().length >= _totalNumberOfDigits) {
+        _numbersFromBuffer[1] = _numbersFromBuffer[1].toExponential(_exponentialNumberOfDigits);
+      }
       _displayFormulae.push({
         id: uniqid(),
         literal: '' + _numbersFromBuffer[0].toString() + ' ' +
