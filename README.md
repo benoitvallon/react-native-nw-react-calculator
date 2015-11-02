@@ -6,18 +6,6 @@ This project shows how the source code can be architectured to run on multiple d
 - a Desktop App (based on [NW](http://nwjs.io))
 - a Website App in any browser (based on [react](https://facebook.github.io/react))
 
-### Mobile App
-
-![Mobile App](images/mobile-app.png "Mobile App")
-
-### Desktop App
-
-![Desktop App](images/desktop-app.png "Desktop App")
-
-### Website App
-
-![Website App](images/website-app.png "Website App")
-
 ## Libraries/tools
 
 This project uses libraries and tools like:
@@ -30,6 +18,19 @@ This project uses libraries and tools like:
 - [grunt](http://gruntjs.com) to create the builds
 - [webpack](https://webpack.github.io) to help during the development phase with hot reloading
 
+## Screenshots
+
+### Mobile App
+
+![Mobile App](images/mobile-app.png "Mobile App")
+
+### Desktop App
+
+![Desktop App](images/desktop-app.png "Desktop App")
+
+### Website App
+
+![Website App](images/website-app.png "Website App")
 
 ## Basic philosophy
 
@@ -162,3 +163,5 @@ To run the tests, simply run:
 ```
 npm test
 ```
+
+![Tests](images/tests.png "Tests")
