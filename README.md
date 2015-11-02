@@ -1,10 +1,22 @@
 # A mobile, desktop and website App with the same code
 
-This project shows how the source code can be architectured for multiple devices. For now, the source code is able to run as:
+This project shows how the source code can be architectured to run on multiple devices. As of now, it is able to run as:
 
 - an iOS App (based on [react-native](https://facebook.github.io/react-native))
-- a Website App in any browser (based on [react](https://facebook.github.io/react))
 - a Desktop App (based on [NW](http://nwjs.io))
+- a Website App in any browser (based on [react](https://facebook.github.io/react))
+
+### Mobile App
+
+![Mobile App](images/mobile-app.png "Mobile App")
+
+### Desktop App
+
+![Desktop App](images/desktop-app.png "Desktop App")
+
+### Website App
+
+![Website App](images/website-app.png "Website App")
 
 ## Libraries/tools
 
@@ -107,8 +119,6 @@ As of now (October 14th) react-native and npm v3.X do not cooperate well togethe
 
 Congratulations! You've just successfully run the project as an iOS App.
 
-![Mobile App](images/mobile-app.png "Mobile App")
-
 ## The Website App
 
 ### Requirements for React
@@ -121,8 +131,6 @@ There isn't any addtional requirements since you already installed the deps with
 - `grunt serve-web` to preview in the browser at http://localhost:8000/index.web.html or http://localhost:8000/webpack-dev-server/index.web.html with webpack-dev-server and hot reload enabled
 
 Congratulations! You've just successfully run the project as a Website App.
-
-![Website App](images/website-app.png "Website App")
 
 ## The Desktop App
 
@@ -146,8 +154,6 @@ You can also setup an alias to call the binary.
 - `grunt serve-nw` to launch the desktop app and enable livereload
 
 Congratulations! You've just successfully run the project as a Desktop App.
-
-![Desktop App](images/desktop-app.png "Desktop App")
 
 # Run the tests
 
