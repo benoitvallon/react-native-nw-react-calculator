@@ -6,18 +6,6 @@ This project shows how the source code can be architectured to run on multiple d
 - a Desktop App (based on [NW](http://nwjs.io))
 - a Website App in any browser (based on [react](https://facebook.github.io/react))
 
-## Libraries/tools
-
-This project uses libraries and tools like:
-- es6 syntax and [babel](https://babeljs.io)
-- [react](https://facebook.github.io/react) for the Website App and Desktop App,
-- [react-native](https://facebook.github.io/react-native) for the iOS App
-- [NW](http://nwjs.io) to package the Desktop App
-- [flux](https://facebook.github.io/flux) to organize the data flow management
-- [css-loader](https://github.com/webpack/css-loader) to integrate the styles in the builds
-- [grunt](http://gruntjs.com) to create the builds
-- [webpack](https://webpack.github.io) to help during the development phase with hot reloading
-
 ## Screenshots
 
 ### Mobile App
@@ -31,6 +19,18 @@ This project uses libraries and tools like:
 ### Website App
 
 ![Website App](images/website-app.png "Website App")
+
+## Libraries/tools
+
+This project uses libraries and tools like:
+- es6 syntax and [babel](https://babeljs.io)
+- [react](https://facebook.github.io/react) for the Website App and Desktop App,
+- [react-native](https://facebook.github.io/react-native) for the iOS App
+- [NW](http://nwjs.io) to package the Desktop App
+- [flux](https://facebook.github.io/flux) to organize the data flow management
+- [css-loader](https://github.com/webpack/css-loader) to integrate the styles in the builds
+- [grunt](http://gruntjs.com) to create the builds
+- [webpack](https://webpack.github.io) to help during the development phase with hot reloading
 
 ## Basic philosophy
 
