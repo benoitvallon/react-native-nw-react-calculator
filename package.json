@@ -1,9 +1,21 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "description": "",
-  "repository": "",
-  "private": true,
+  "name": "react-native-nw-react-calculator",
+  "version": "1.0.0",
+  "description": "A mobile, desktop and website App with the same code",
+  "author": "Benoit VALLON <benoitvallon@gmail.com> (http://github.com/benoitvallon)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benoitvallon/react-native-nw-react-calculator"
+  },
+  "homepage": "https://github.com/benoitvallon/react-native-nw-react-calculator",
+  "keywords": [
+    "react",
+    "react-native",
+    "nw",
+    "flux",
+    "babel"
+  ],
   "src": "/",
   "test": "test",
   "dist": "dist",
