@@ -48,6 +48,7 @@
     "es6-promise": "^3.0.2",
     "events": "^1.1.0",
     "flux": "^2.1.1",
+    "history": "^1.13.0",
     "keymirror": "^0.1.1",
     "normalize.css": "^3.0.3",
     "object-assign": "^4.0.1",
