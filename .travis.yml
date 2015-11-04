@@ -6,8 +6,11 @@ node_js:
   - "4.2"
   - "5.0"
 
-before_install: npm install -g grunt-cli
+before_install:
+  - npm install -g grunt-cli
+  - npm install -g react-native-cli
 
 script:
   - grunt build
+  - react-native bundle --root src --minify
   - npm test
