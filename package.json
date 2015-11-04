@@ -54,7 +54,7 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-native": "^0.13.2",
-    "react-router": "^1.0.0-rc3",
+    "react-router": "^1.0.0-rc4",
     "uniqid": "^1.0.0"
   },
   "devDependencies": {
