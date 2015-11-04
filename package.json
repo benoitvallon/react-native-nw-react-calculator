@@ -42,7 +42,7 @@
       "js"
     ],
     "verbose": true,
-    "collectCoverage": false
+    "collectCoverage": true
   },
   "dependencies": {
     "es6-promise": "^3.0.2",
