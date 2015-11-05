@@ -1,0 +1,3 @@
+rootProject.name = 'ReactNativeNWReactCalculator'
+
+include ':app'
