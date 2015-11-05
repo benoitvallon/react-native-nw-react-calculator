@@ -6,7 +6,8 @@ import Keyboard from './Keyboard';
 
 import React, {
   StyleSheet,
-  View
+  View,
+  Platform
 } from 'react-native';
 
 export default function () {
@@ -32,7 +33,7 @@ var styles = StyleSheet.create({
   screen: {
     flex: 3,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: Platform.OS === 'android' ? 'center' : 'flex-end',
     justifyContent: 'flex-end',
     backgroundColor: '#68cef2',
     padding: 18
