@@ -4,7 +4,8 @@ import React, {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 
 export default function () {
@@ -31,11 +32,13 @@ export default function () {
   } else if(this.props.keyType === 'action') {
     return (
       <View style={styles.keyAction}>
-        <TouchableHighlight style={getActionStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={getActionButtonStyles(this.props.keyValue)}>
-            {this.props.keySymbol}
-          </Text>
-        </TouchableHighlight>
+        <TouchableOpacity style={styles.keyActionButton} onPress={this.handleClick}>
+          <View style={getActionStyles(this.props.keyValue)}>
+            <Text style={getActionButtonStyles(this.props.keyValue)}>
+              {this.props.keySymbol}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -124,6 +127,9 @@ var styles = StyleSheet.create({
   keyAction: {
     flex: 1,
     padding: 10
+  },
+  keyActionButton: {
+    flex: 1
   },
   button: {
     flex: 1,
