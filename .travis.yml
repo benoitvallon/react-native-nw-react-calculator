@@ -12,5 +12,6 @@ before_install:
 
 script:
   - grunt build
-  - react-native bundle --root src --minify
+  - react-native bundle --root src --platform ios --minify
+  - react-native bundle --root src --platform android --minify
   - npm test
