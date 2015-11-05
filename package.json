@@ -42,7 +42,8 @@
       "js"
     ],
     "verbose": true,
-    "collectCoverage": true
+    "collectCoverage": true,
+    "modulePathIgnorePatterns": ["read-package-tree"]
   },
   "dependencies": {
     "es6-promise": "^3.0.2",
