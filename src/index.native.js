@@ -7,4 +7,4 @@ import {
 
 import App from './common/components/App';
 
-AppRegistry.registerComponent('iosApp', () => App);
+AppRegistry.registerComponent('nativeApp', () => App);
