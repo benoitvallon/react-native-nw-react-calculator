@@ -2,10 +2,12 @@
 
 import React from 'react';
 
-export default function (props, state) {
-  return (
-    <div className='screen'>
-      {state.displayScreen}
-    </div>
-  );
+export default class ScreenRender extends Component {
+  Render () {
+    return (
+      <div className='screen'>
+        {state.displayScreen}
+      </div>
+    );
+  }
 }

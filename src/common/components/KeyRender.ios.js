@@ -1,43 +1,46 @@
 'use strict';
 
 import React, {
+  Component,
   StyleSheet,
   Text,
   View,
   TouchableHighlight
 } from 'react-native';
 
-export default function () {
-  if(this.props.keyType === 'number') {
-    return (
-      <View style={styles.keyNumber}>
-        <TouchableHighlight style={styles.button} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={styles.textButton}>
-            {this.props.keySymbol}
-          </Text>
-        </TouchableHighlight>
-      </View>
-    );
-  } else if(this.props.keyType === 'operator') {
-    return (
-      <View style={styles.keyOperator}>
-        <TouchableHighlight style={getOperatorStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={styles.textButtonOperator}>
-            {this.props.keySymbol}
-          </Text>
-        </TouchableHighlight>
-      </View>
-    );
-  } else if(this.props.keyType === 'action') {
-    return (
-      <View style={styles.keyAction}>
-        <TouchableHighlight style={getActionStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={getActionButtonStyles(this.props.keyValue)}>
-            {this.props.keySymbol}
-          </Text>
-        </TouchableHighlight>
-      </View>
-    );
+export default class KeyRender extends Component {
+  Render () {
+    if(this.props.keyType === 'number') {
+      return (
+        <View style={styles.keyNumber}>
+          <TouchableHighlight style={styles.button} onPress={this.handleClick} underlayColor='#cdcdcd'>
+            <Text style={styles.textButton}>
+              {this.props.keySymbol}
+            </Text>
+          </TouchableHighlight>
+        </View>
+      );
+    } else if(this.props.keyType === 'operator') {
+      return (
+        <View style={styles.keyOperator}>
+          <TouchableHighlight style={getOperatorStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
+            <Text style={styles.textButtonOperator}>
+              {this.props.keySymbol}
+            </Text>
+          </TouchableHighlight>
+        </View>
+      );
+    } else if(this.props.keyType === 'action') {
+      return (
+        <View style={styles.keyAction}>
+          <TouchableHighlight style={getActionStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
+            <Text style={getActionButtonStyles(this.props.keyValue)}>
+              {this.props.keySymbol}
+            </Text>
+          </TouchableHighlight>
+        </View>
+      );
+    }
   }
 }
 

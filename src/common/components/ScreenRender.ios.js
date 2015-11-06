@@ -1,16 +1,19 @@
 'use strict';
 
 import React, {
+  Component,
   StyleSheet,
   Text
 } from 'react-native';
 
-export default function (props, state) {
-  return (
-    <Text style={styles.screen}>
-      {state.displayScreen}
-    </Text>
-  );
+export default class ScreenRender extends Component {
+  Render () {
+    return (
+      <Text style={styles.screen}>
+        {state.displayScreen}
+      </Text>
+    );
+  }
 }
 
 var styles = StyleSheet.create({

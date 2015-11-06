@@ -1,22 +1,25 @@
 'use strict';
 
 import React, {
+  Component,
   StyleSheet,
   Text,
   View,
   TouchableHighlight
 } from 'react-native';
 
-export default function (props, state) {
-  return (
-    <View style={styles.formulae}>
-      {this.state.displayFormulae.map(function(formula) {
-        return <TouchableHighlight style={getFormulaStyles(formula.operator)} onPress={this.handleClick.bind(this, formula)} underlayColor='#cdcdcd'>
-          <Text style={styles.text}>{formula.literal}</Text>
-        </TouchableHighlight>
-      }, this)}
-    </View>
-  );
+export default class FormulaeRender extends Component {
+  Render () {
+    return (
+      <View style={styles.formulae}>
+        {this.state.displayFormulae.map(function(formula) {
+          return <TouchableHighlight style={getFormulaStyles(formula.operator)} onPress={this.handleClick.bind(this, formula)} underlayColor='#cdcdcd'>
+            <Text style={styles.text}>{formula.literal}</Text>
+          </TouchableHighlight>
+        }, this)}
+      </View>
+    );
+  }
 }
 
 var getFormulaStyles = function(operator) {
