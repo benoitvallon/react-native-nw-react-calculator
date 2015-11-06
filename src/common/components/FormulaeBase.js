@@ -31,8 +31,8 @@ class Formulae extends Component {
     CalculatorStore.removeChangeListener(this._onChange);
   }
 
-  dynamicClass(opeartor) {
-    return 'group ' + opeartor;
+  dynamicClass(operator) {
+    return 'group ' + operator;
   }
 
   handleClick(formula) {
