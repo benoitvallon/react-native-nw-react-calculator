@@ -5,24 +5,27 @@ import Formulae from './Formulae';
 import Keyboard from './Keyboard';
 
 import React, {
+  Component,
   StyleSheet,
   View
 } from 'react-native';
 
-export default function () {
-  return (
-    <View style={styles.container}>
-      <View style={styles.screen} >
-        <Screen />
+export default class AppRender extends Component {
+  Render () {
+    return (
+      <View style={styles.container}>
+        <View style={styles.screen} >
+          <Screen />
+        </View>
+        <View style={styles.formulae}>
+          <Formulae />
+        </View>
+        <View style={styles.keyboard}>
+          <Keyboard />
+        </View>
       </View>
-      <View style={styles.formulae}>
-        <Formulae />
-      </View>
-      <View style={styles.keyboard}>
-        <Keyboard />
-      </View>
-    </View>
-  );
+    );
+  }
 }
 
 var styles = StyleSheet.create({

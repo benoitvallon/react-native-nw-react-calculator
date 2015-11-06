@@ -1,14 +1,10 @@
 'use strict';
 
 import Base from './KeyBase';
-import Render from './KeyRender';
+import KeyRender from './KeyRender';
 
 export default class Key extends Base {
-  constructor (props) {
-    super(props);
-  }
-
   render () {
-    return Render.call(this, this.props, this.state);
+    return <KeyRender />;
   }
 }
