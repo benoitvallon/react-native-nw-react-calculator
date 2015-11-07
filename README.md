@@ -12,7 +12,7 @@ This project shows how the source code can be architectured to run on multiple d
 
 ### Mobile Apps (iOS & Android)
 
-![iOS App](images/mobile-apps.png "iOS App")
+![Mobile Apps](images/mobile-apps.png "Mobile Apps")
 
 ### Desktop App
 
