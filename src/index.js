@@ -1,5 +1,3 @@
-'use strict';
-
 import App from './common/components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
