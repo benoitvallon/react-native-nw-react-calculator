@@ -1,0 +1,11 @@
+{
+  "name": "react-native-nw-react-calculator-nwjs",
+  "main": "index.html",
+  "window": {
+    "toolbar": true,
+    "min_width": 300,
+    "min_height": 475,
+    "max_width": 800,
+    "max_height": 600
+  }
+}

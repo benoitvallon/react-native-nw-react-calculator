@@ -19,9 +19,6 @@
   "src": "./",
   "test": "./test",
   "dist": "./dist",
-  "mainInput": "main",
-  "mainOutput": "main",
-  "main": "index.html",
   "scripts": {
     "build": "grunt build",
     "deploy": "gh-pages -d dist",
@@ -34,13 +31,6 @@
     "serve-web:dist": "grunt serve-web:dist",
     "start": "node_modules/react-native/packager/packager.sh",
     "test": "`npm bin`/jest"
-  },
-  "window": {
-    "toolbar": true,
-    "min_width": 300,
-    "min_height": 475,
-    "max_width": 800,
-    "max_height": 600
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
