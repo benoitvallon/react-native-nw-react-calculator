@@ -25,6 +25,7 @@
   "scripts": {
     "build": "grunt build",
     "deploy": "gh-pages -d dist",
+    "karma": "`npm bin`/karma start",
     "travis": "npm run build && npm run react-native:ios && npm run react-native:android && npm test",
     "react-native:ios": "react-native bundle --root src --platform ios --minify",
     "react-native:android": "react-native bundle --root src --platform android --minify",
@@ -32,7 +33,7 @@
     "serve-web": "grunt serve-web",
     "serve-web:dist": "grunt serve-web:dist",
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "jest"
+    "test": "`npm bin`/jest"
   },
   "window": {
     "toolbar": true,
@@ -89,7 +90,6 @@
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-exec": "^0.4.6",
-    "grunt-karma": "^0.12.1",
     "grunt-open": "^0.2.3",
     "grunt-webpack": "^1.0.11",
     "jasmine-core": "^2.3.4",

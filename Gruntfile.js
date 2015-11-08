@@ -69,12 +69,6 @@ module.exports = function (grunt) {
       }
     },
 
-    'karma': {
-      unit: {
-        configFile: 'karma.conf.js'
-      }
-    },
-
     'copy': {
       dist: {
         files: [
@@ -144,7 +138,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', ['karma']);
   grunt.registerTask('build', ['clean', 'copy', 'webpack']);
   grunt.registerTask('default', []);
 };
