@@ -7,7 +7,7 @@ var mountFolder = function (dir) {
 };
 
 var webpackDistConfig = require('./webpack.dist.config.js');
-var webpackDevConfig = require('./webpack.config.js');
+var webpackDevConfig = require('./webpack.hot.config.js');
 
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything

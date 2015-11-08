@@ -1,6 +1,6 @@
 'use strict';
 
-var path = require('path');
+var webpackConfig = require('./webpack.config.js');
 
 module.exports = function (config) {
   config.set({
@@ -19,27 +19,7 @@ module.exports = function (config) {
     },
     webpack: {
       cache: true,
-      module: {
-        loaders: [{
-          test: /\.gif/,
-          loader: 'url-loader?limit=10000&mimetype=image/gif'
-        }, {
-          test: /\.jpg/,
-          loader: 'url-loader?limit=10000&mimetype=image/jpg'
-        }, {
-          test: /\.png/,
-          loader: 'url-loader?limit=10000&mimetype=image/png'
-        }, {
-          test: /\.js$/,
-          loader: 'babel-loader'
-        }, {
-          test: /\.sass/,
-          loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
-        }, {
-          test: /\.css$/,
-          loader: 'style-loader!css-loader'
-        }]
-      }
+      module: webpackConfig.module
     },
     webpackServer: {
       stats: {

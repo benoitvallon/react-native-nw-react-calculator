@@ -6,41 +6,17 @@
 
 'use strict';
 
+require('babel/register');
 var webpack = require('webpack');
+var baseConfig = require('./webpack.config.js');
 
-module.exports = {
-  output: {
-    publicPath: '/assets/',
-    path: 'dist/assets/',
-    filename: 'main.js'
-  },
-  debug: false,
+module.exports = Object.assign({}, baseConfig, {
   devtool: false,
-  entry: './src/index.js',
-  stats: {
-    colors: true,
-    reasons: false
-  },
-  plugins: [
+
+  plugins: baseConfig.plugins.concat([
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
-  ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
-    }, {
-      test: /\.sass/,
-      loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
-    }, {
-      test: /\.(png|jpg)$/,
-      loader: 'url-loader?limit=8192'
-    }]
-  }
-};
+  ])
+});

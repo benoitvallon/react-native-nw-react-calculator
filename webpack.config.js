@@ -1,36 +1,34 @@
 /*
- * Webpack development server configuration
+ * Webpack base configuration
  */
 
 'use strict';
 
-var webpack = require('webpack');
-
 module.exports = {
+  devtool: 'source-map',
+
+  entry: [
+    './src/index.js'
+  ],
+
   output: {
     filename: 'main.js',
+    path: 'dist/assets/',
     publicPath: '/assets/'
   },
-  cache: true,
-  debug: true,
-  devtool: false,
-  entry: [
-      'webpack/hot/only-dev-server',
-      './src/index.js'
-  ],
+
   stats: {
     colors: true,
     reasons: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
+
+  plugins: [],
+
   module: {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
+      loader: 'babel-loader'
     }, {
       test: /\.sass/,
       loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
