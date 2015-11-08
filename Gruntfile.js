@@ -1,7 +1,9 @@
 'use strict';
 
+var serveStatic = require('serve-static');
+
 var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
+  return serveStatic(require('path').resolve(dir));
 };
 
 var webpackDistConfig = require('./webpack.dist.config.js'),

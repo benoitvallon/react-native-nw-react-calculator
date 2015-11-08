@@ -23,6 +23,10 @@
   "mainOutput": "main",
   "main": "index.nw.html",
   "scripts": {
+    "build": "node_modules/.bin/grunt build",
+    "serve-nw": "node_modules/.bin/grunt serve-nw",
+    "serve-web": "node_modules/.bin/grunt serve-web",
+    "serve-web:dist": "node_modules/.bin/grunt serve-web:dist",
     "start": "node_modules/react-native/packager/packager.sh",
     "test": "jest"
   },
@@ -48,6 +52,8 @@
     "es6-promise": "^3.0.2",
     "events": "^1.1.0",
     "flux": "^2.1.1",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "history": "^1.13.0",
     "keymirror": "^0.1.1",
     "normalize.css": "^3.0.3",
@@ -56,6 +62,7 @@
     "react-dom": "^0.14.2",
     "react-native": "^0.13.2",
     "react-router": "^1.0.0-rc4",
+    "serve-static": "^1.10.0",
     "uniqid": "^1.0.0"
   },
   "devDependencies": {
