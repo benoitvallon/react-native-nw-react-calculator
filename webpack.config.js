@@ -4,6 +4,8 @@
 
 'use strict';
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   devtool: 'source-map',
 
@@ -21,7 +23,12 @@ module.exports = {
     reasons: true
   },
 
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Calculator App',
+      template: './index.html'
+    })
+  ],
 
   module: {
     loaders: [{

@@ -81,6 +81,7 @@
     "grunt-exec": "^0.4.6",
     "grunt-open": "^0.2.3",
     "grunt-webpack": "^1.0.11",
+    "html-webpack-plugin": "^1.6.2",
     "jasmine-core": "^2.3.4",
     "jest-cli": "^0.7.1",
     "jshint": "^2.8.0",
