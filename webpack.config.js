@@ -4,6 +4,7 @@
 
 'use strict';
 
+var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
 
   output: {
     filename: 'assets/main.js',
-    path: 'dist/'
+    path: path.join(__dirname, 'dist')
   },
 
   stats: {
