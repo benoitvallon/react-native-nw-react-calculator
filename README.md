@@ -33,8 +33,8 @@ This project uses libraries and tools like:
 - [NW](http://nwjs.io) to package the Desktop App
 - [flux](https://facebook.github.io/flux) to organize the data flow management
 - [css-loader](https://github.com/webpack/css-loader) to integrate the styles in the builds
-- [grunt](http://gruntjs.com) to create the builds
-- [webpack](https://webpack.github.io) to help during the development phase with hot reloading
+- [grunt](http://gruntjs.com) to launch NW.js or your web browser
+- [webpack](https://webpack.github.io) to create the builds and help during the development phase with hot reloading
 
 ## Basic philosophy
 
@@ -148,7 +148,7 @@ There isn't any addtional requirements since you already installed the deps with
 
 ### Quick start
 
-- `npm run build` to build the project (at least the first time)
+- `npm run build` to build the project
 - `npm run serve-web` to preview in the browser at http://localhost:8000/ with webpack-dev-server and hot reload enabled
 
 Congratulations! You've just successfully run the project as a Website App.
@@ -171,7 +171,7 @@ You can also setup an alias to call the binary.
 
 ### Quick start
 
-- `npm run build` to build the project (at least the first time)
+- `npm run build` to build the project
 - `npm run serve-nw` to launch the desktop app and enable livereload
 
 Congratulations! You've just successfully run the project as a Desktop App.

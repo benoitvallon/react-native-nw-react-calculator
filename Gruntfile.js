@@ -1,6 +1,5 @@
 'use strict';
 
-var webpackDistConfig = require('./webpack.dist.config.js');
 var webpackDevConfig = require('./webpack.hot.config.js');
 
 module.exports = function (grunt) {
@@ -12,13 +11,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     'pkg': pkgConfig,
-
-    'webpack': {
-      options: webpackDistConfig,
-      dist: {
-        cache: false
-      }
-    },
 
     'webpack-dev-server': {
       options: {
@@ -42,17 +34,6 @@ module.exports = function (grunt) {
       }
     },
 
-    'clean': {
-      dist: {
-        files: [{
-          dot: true,
-          src: [
-            '<%= pkg.dist %>'
-          ]
-        }]
-      }
-    },
-
     'exec': {
       watch: pkgConfig.scripts.watch,
       launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs dist'
@@ -69,10 +50,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('serve-web', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'open:dist']);
-    }
-
     grunt.task.run([
       'open:dist',
       'webpack-dev-server'
@@ -85,6 +62,5 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', ['clean', 'webpack']);
   grunt.registerTask('default', []);
 };
