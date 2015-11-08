@@ -21,6 +21,7 @@
     "clean": "`npm bin`/rimraf dist",
     "deploy": "gh-pages -d dist",
     "karma": "`npm bin`/karma start",
+    "server": "`npm bin`/webpack-dev-server --config ./webpack.hot.config.js --content-base ./dist/ --port 8000 --inline --hot --progress",
     "travis": "npm run build && npm run react-native:ios && npm run react-native:android && npm test",
     "react-native:ios": "react-native bundle --root src --platform ios --minify",
     "react-native:android": "react-native bundle --root src --platform android --minify",

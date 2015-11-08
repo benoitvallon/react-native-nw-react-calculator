@@ -1,7 +1,5 @@
 'use strict';
 
-var webpackDevConfig = require('./webpack.hot.config.js');
-
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything
   require('load-grunt-tasks')(grunt);
@@ -11,19 +9,6 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     'pkg': pkgConfig,
-
-    'webpack-dev-server': {
-      options: {
-        hot: true,
-        port: 8000,
-        webpack: webpackDevConfig,
-        contentBase: './dist/'
-      },
-
-      start: {
-        keepAlive: true
-      }
-    },
 
     'open': {
       options: {
@@ -36,6 +21,7 @@ module.exports = function (grunt) {
 
     'exec': {
       watch: pkgConfig.scripts.watch,
+      server: pkgConfig.scripts.server,
       launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs dist'
     },
 
@@ -52,7 +38,7 @@ module.exports = function (grunt) {
   grunt.registerTask('serve-web', function (target) {
     grunt.task.run([
       'open:dist',
-      'webpack-dev-server'
+      'exec:server'
     ]);
   });
 
