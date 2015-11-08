@@ -1,11 +1,5 @@
 'use strict';
 
-var serveStatic = require('serve-static');
-
-var mountFolder = function (dir) {
-  return serveStatic(require('path').resolve(dir));
-};
-
 var webpackDistConfig = require('./webpack.dist.config.js');
 var webpackDevConfig = require('./webpack.hot.config.js');
 
@@ -31,7 +25,7 @@ module.exports = function (grunt) {
         hot: true,
         port: 8000,
         webpack: webpackDevConfig,
-        contentBase: './<%= pkg.src %>/'
+        contentBase: './dist/'
       },
 
       start: {
@@ -39,29 +33,9 @@ module.exports = function (grunt) {
       }
     },
 
-    'connect': {
-      options: {
-        port: 8000
-      },
-
-      dist: {
-        options: {
-          keepalive: true,
-          middleware: function () {
-            return [
-              mountFolder(pkgConfig.dist)
-            ];
-          }
-        }
-      }
-    },
-
     'open': {
       options: {
         delay: 500
-      },
-      dev: {
-        path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/index.web.html'
       },
       dist: {
         path: 'http://localhost:<%= connect.options.port %>/index.html'
@@ -107,7 +81,7 @@ module.exports = function (grunt) {
     },
 
     'exec': {
-      launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs .'
+      launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs dist'
     },
 
     'concurrent': {
@@ -122,11 +96,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve-web', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'open:dist', 'connect:dist']);
+      return grunt.task.run(['build', 'open:dist']);
     }
 
     grunt.task.run([
-      'open:dev',
+      'open:dist',
       'webpack-dev-server'
     ]);
   });
