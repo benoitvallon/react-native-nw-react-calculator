@@ -16,9 +16,9 @@
     "flux",
     "babel"
   ],
-  "src": "/",
-  "test": "test",
-  "dist": "dist",
+  "src": "./",
+  "test": "./test",
+  "dist": "./dist",
   "mainInput": "main",
   "mainOutput": "main",
   "main": "index.nw.html",
