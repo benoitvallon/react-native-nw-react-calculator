@@ -12,9 +12,8 @@ module.exports = {
   ],
 
   output: {
-    filename: 'main.js',
-    path: 'dist/assets/',
-    publicPath: '/assets/'
+    filename: 'assets/main.js',
+    path: 'dist/'
   },
 
   stats: {

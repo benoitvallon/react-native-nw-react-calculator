@@ -31,7 +31,6 @@ module.exports = function (grunt) {
         hot: true,
         port: 8000,
         webpack: webpackDevConfig,
-        publicPath: '/assets/',
         contentBase: './<%= pkg.src %>/'
       },
 
