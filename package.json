@@ -21,7 +21,7 @@
   "dist": "./dist",
   "mainInput": "main",
   "mainOutput": "main",
-  "main": "index.nw.html",
+  "main": "index.html",
   "scripts": {
     "build": "grunt build",
     "deploy": "gh-pages -d dist",

@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         delay: 500
       },
       dist: {
-        path: 'http://localhost:<%= connect.options.port %>/index.html'
+        path: 'http://localhost:8000/'
       }
     },
 
