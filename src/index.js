@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route } from 'react-router';
 
 require('file?name=package.json!./package.web.json');
+require('file?name=favicon.ico!../favicon.ico');
 
 // CSS
 require('normalize.css');
