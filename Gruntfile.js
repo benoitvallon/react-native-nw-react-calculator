@@ -42,23 +42,6 @@ module.exports = function (grunt) {
       }
     },
 
-    'copy': {
-      dist: {
-        files: [
-          {
-            flatten: true,
-            src: ['<%= pkg.src %>/index.web.html'],
-            dest: '<%= pkg.dist %>/index.html'
-          },
-          {
-            flatten: true,
-            src: ['<%= pkg.src %>/favicon.ico'],
-            dest: '<%= pkg.dist %>/favicon.ico'
-          }
-        ]
-      }
-    },
-
     'clean': {
       dist: {
         files: [{
@@ -111,6 +94,6 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', ['clean', 'copy', 'webpack']);
+  grunt.registerTask('build', ['clean', 'webpack']);
   grunt.registerTask('default', []);
 };
