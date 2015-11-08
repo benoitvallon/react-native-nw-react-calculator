@@ -53,23 +53,14 @@ module.exports = function (grunt) {
       }
     },
 
-    'watch': {
-      options: {
-        livereload: true
-      },
-      build: {
-        files: 'src/**/*.js',
-        tasks: ['webpack']
-      }
-    },
-
     'exec': {
+      watch: pkgConfig.scripts.watch,
       launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs dist'
     },
 
     'concurrent': {
       target: {
-        tasks: ['watch', 'exec:launch_nw'],
+        tasks: ['exec:watch', 'exec:launch_nw'],
         options: {
           logConcurrentOutput: true
         }

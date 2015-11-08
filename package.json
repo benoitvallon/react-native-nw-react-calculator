@@ -30,7 +30,8 @@
     "serve-web": "grunt serve-web",
     "serve-web:dist": "grunt serve-web:dist",
     "start": "node_modules/react-native/packager/packager.sh",
-    "test": "`npm bin`/jest"
+    "test": "`npm bin`/jest",
+    "watch": "`npm bin`/webpack --config webpack.config.js --watch"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
@@ -76,7 +77,6 @@
     "grunt": "^0.4.5",
     "grunt-concurrent": "^2.0.4",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1",
     "grunt-exec": "^0.4.6",
     "grunt-open": "^0.2.3",
     "grunt-webpack": "^1.0.11",
