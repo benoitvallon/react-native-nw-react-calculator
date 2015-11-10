@@ -23,10 +23,13 @@
   "mainOutput": "main",
   "main": "index.nw.html",
   "scripts": {
-    "build": "node_modules/.bin/grunt build",
-    "serve-nw": "node_modules/.bin/grunt serve-nw",
-    "serve-web": "node_modules/.bin/grunt serve-web",
-    "serve-web:dist": "node_modules/.bin/grunt serve-web:dist",
+    "build": "grunt build",
+    "travis": "npm run build && npm run react-native:ios && npm run react-native:android && npm test",
+    "react-native:ios": "grunt clean && react-native bundle --root src --platform ios --minify",
+    "react-native:android": "grunt clean && react-native bundle --root src --platform android --minify",
+    "serve-nw": "grunt serve-nw",
+    "serve-web": "grunt serve-web",
+    "serve-web:dist": "grunt serve-web:dist",
     "start": "node_modules/react-native/packager/packager.sh",
     "test": "jest"
   },
@@ -61,6 +64,7 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-native": "^0.13.2",
+    "react-native-cli": "^0.1.7",
     "react-router": "^1.0.0-rc4",
     "serve-static": "^1.10.0",
     "uniqid": "^1.0.0"
