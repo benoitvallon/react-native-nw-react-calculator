@@ -2,12 +2,12 @@
 
 var serveStatic = require('serve-static');
 
-var mountFolder = function (connect, dir) {
+var mountFolder = function (dir) {
   return serveStatic(require('path').resolve(dir));
 };
 
-var webpackDistConfig = require('./webpack.dist.config.js'),
-    webpackDevConfig = require('./webpack.config.js');
+var webpackDistConfig = require('./webpack.dist.config.js');
+var webpackDevConfig = require('./webpack.config.js');
 
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything
@@ -48,9 +48,9 @@ module.exports = function (grunt) {
       dist: {
         options: {
           keepalive: true,
-          middleware: function (connect) {
+          middleware: function () {
             return [
-              mountFolder(connect, pkgConfig.dist)
+              mountFolder(pkgConfig.dist)
             ];
           }
         }
@@ -78,23 +78,15 @@ module.exports = function (grunt) {
     'copy': {
       dist: {
         files: [
-          // includes files within path
           {
             flatten: true,
-            expand: true,
-            src: ['<%= pkg.src %>/*'],
-            dest: '<%= pkg.dist %>/',
-            filter: 'isFile'
-          },
-          {
-            flatten: true,
-            expand: true,
-            src: ['<%= pkg.src %>/images/*'],
-            dest: '<%= pkg.dist %>/images/'
-          },
-          {
             src: ['<%= pkg.src %>/index.web.html'],
             dest: '<%= pkg.dist %>/index.html'
+          },
+          {
+            flatten: true,
+            src: ['<%= pkg.src %>/favicon.ico'],
+            dest: '<%= pkg.dist %>/favicon.ico'
           }
         ]
       }
@@ -146,7 +138,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('serve-nw', function (target) {
+  grunt.registerTask('serve-nw', function () {
     grunt.task.run([
       'concurrent'
     ]);

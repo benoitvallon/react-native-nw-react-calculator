@@ -25,8 +25,8 @@
   "scripts": {
     "build": "grunt build",
     "travis": "npm run build && npm run react-native:ios && npm run react-native:android && npm test",
-    "react-native:ios": "grunt clean && react-native bundle --root src --platform ios --minify",
-    "react-native:android": "grunt clean && react-native bundle --root src --platform android --minify",
+    "react-native:ios": "react-native bundle --root src --platform ios --minify",
+    "react-native:android": "react-native bundle --root src --platform android --minify",
     "serve-nw": "grunt serve-nw",
     "serve-web": "grunt serve-web",
     "serve-web:dist": "grunt serve-web:dist",
