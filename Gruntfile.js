@@ -1,7 +1,9 @@
 'use strict';
 
+var serveStatic = require('serve-static');
+
 var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
+  return serveStatic(require('path').resolve(dir));
 };
 
 var webpackDistConfig = require('./webpack.dist.config.js'),
@@ -63,7 +65,7 @@ module.exports = function (grunt) {
         path: 'http://localhost:<%= connect.options.port %>/webpack-dev-server/index.web.html'
       },
       dist: {
-        path: 'http://localhost:<%= connect.options.port %>/index.web.html'
+        path: 'http://localhost:<%= connect.options.port %>/index.html'
       }
     },
 
@@ -89,6 +91,10 @@ module.exports = function (grunt) {
             expand: true,
             src: ['<%= pkg.src %>/images/*'],
             dest: '<%= pkg.dist %>/images/'
+          },
+          {
+            src: ['<%= pkg.src %>/index.web.html'],
+            dest: '<%= pkg.dist %>/index.html'
           }
         ]
       }
