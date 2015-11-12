@@ -8,6 +8,8 @@ This project shows how the source code can be architectured to run on multiple d
 - a Desktop App (based on [NW](http://nwjs.io))
 - a Website App in any browser (based on [react](https://facebook.github.io/react))
 
+A demo for the Website App is available [here](http://benoitvallon.github.io/react-native-nw-react-calculator).
+
 ## Screenshots
 
 ### Mobile Apps (iOS & Android)
