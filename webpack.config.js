@@ -1,36 +1,41 @@
 /*
- * Webpack development server configuration
+ * Webpack base configuration
  */
 
 'use strict';
 
-var webpack = require('webpack');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  output: {
-    filename: 'main.js',
-    publicPath: '/assets/'
-  },
-  cache: true,
-  debug: true,
-  devtool: false,
+  devtool: 'source-map',
+
   entry: [
-      'webpack/hot/only-dev-server',
-      './src/index.js'
+    './src/index.js'
   ],
+
+  output: {
+    filename: 'assets/main.js',
+    path: path.join(__dirname, 'dist')
+  },
+
   stats: {
     colors: true,
     reasons: true
   },
+
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Calculator App',
+      template: './index.html'
+    })
   ],
+
   module: {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
+      loader: 'babel-loader'
     }, {
       test: /\.sass/,
       loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
