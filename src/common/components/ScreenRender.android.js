@@ -3,5 +3,5 @@
 import Render from './ScreenRender.native';
 
 export default function () {
-    return Render.call(this, this.props, this.state);
+  return Render.call(this, this.props, this.state);
 }
