@@ -11,7 +11,7 @@ export default function (props, state) {
   return (
     <View style={styles.formulae}>
       {this.state.displayFormulae.map(function(formula) {
-        return <TouchableHighlight style={getFormulaStyles(formula.operator)} onPress={this.handleClick.bind(this, formula)} underlayColor='#cdcdcd'>
+        return <TouchableHighlight key={formula.id}  style={getFormulaStyles(formula.operator)} onPress={this.handleClick.bind(this, formula)} underlayColor='#cdcdcd'>
           <Text style={styles.text}>{formula.literal}</Text>
         </TouchableHighlight>
       }, this)}
