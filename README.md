@@ -100,13 +100,12 @@ I want to thank Robert O'Dowd who kindly authorized me the reuse his very beauti
 
 - `npm install` to install all the dependencies, React and React Native among others.
 
+### With some versions of npm (>=v3.3.10 <=v3.6.0)
 
-### With some versions of npm (<v3.3.8)
+Some builds from npm included bugs while `npm install`. So if you are using a npm version within the range form 3.3.10 to 3.6.0 included, you must run `npm install` twice. Those versions including npm v3.3.12 are the ones bundled by default with node from version v5.1.0 to v5.5.0.
 
-React-native and the first versions of npm v3 did not cooperate well together. Then, if you are using an old version of npm (inferior to v3.3.8) as global, the best way to install the project is to install npm v3.X locally and use this freshly installed npm to install the other packages.
-
-- `npm install npm@3` to install npm v3.X locally
-- `node_modules/npm/cli.js install` to install all the dependencies, React and React Native among others
+- `npm install npm@3`
+- `npm install npm@3` run it twice, because of the packages won't be installed after the first run [#10985](https://github.com/npm/npm/issues/10985)
 
 ## The Mobile Apps (iOS & Android)
 

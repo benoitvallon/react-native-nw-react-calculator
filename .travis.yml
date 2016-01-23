@@ -5,6 +5,5 @@ node_js:
   - "4.1"
   - "4.2"
   - "5.0"
-  - "5.3"
 
 script: npm run travis
