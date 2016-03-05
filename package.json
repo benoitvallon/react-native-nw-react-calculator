@@ -47,6 +47,9 @@
     "testFileExtensions": [
       "js"
     ],
+    "testPathDirs": [
+      "src"
+    ],
     "moduleFileExtensions": [
       "js"
     ],
