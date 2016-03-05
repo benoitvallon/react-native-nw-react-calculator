@@ -1,40 +1,8 @@
-### SublimeText ###
-*.sublime-workspace
-
-### OSX ###
+# OSX
+#
 .DS_Store
-.AppleDouble
-.LSOverride
-Icon
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-### Windows ###
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# App specific
-
-node_modules/
-npm-debug.log
-.tmp
-dist
-coverage/
-ios/main.jsbundle
-
-### Xcode ###
+# Xcode
 #
 build/
 *.pbxuser
@@ -54,8 +22,20 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-### Android/IJ ###
+# Android/IJ
 #
 .idea
 .gradle
 local.properties
+
+# node.js
+#
+node_modules/
+npm-debug.log
+
+# App specific
+#
+.tmp
+dist
+coverage/
+ios/main.jsbundle
