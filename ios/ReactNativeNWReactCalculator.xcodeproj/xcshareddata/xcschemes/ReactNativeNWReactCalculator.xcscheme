@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "iosApp.app"
-               BlueprintName = "iosApp"
-               ReferencedContainer = "container:iosApp.xcodeproj">
+               BuildableName = "ReactNativeNWReactCalculator.app"
+               BlueprintName = "ReactNativeNWReactCalculator"
+               ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "iosAppTests.xctest"
-               BlueprintName = "iosAppTests"
-               ReferencedContainer = "container:iosApp.xcodeproj">
+               BuildableName = "ReactNativeNWReactCalculatorTests.xctest"
+               BlueprintName = "ReactNativeNWReactCalculatorTests"
+               ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "iosAppTests.xctest"
-               BlueprintName = "iosAppTests"
-               ReferencedContainer = "container:iosApp.xcodeproj">
+               BuildableName = "ReactNativeNWReactCalculatorTests.xctest"
+               BlueprintName = "ReactNativeNWReactCalculatorTests"
+               ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "iosApp.app"
-            BlueprintName = "iosApp"
-            ReferencedContainer = "container:iosApp.xcodeproj">
+            BuildableName = "ReactNativeNWReactCalculator.app"
+            BlueprintName = "ReactNativeNWReactCalculator"
+            ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "iosApp.app"
-            BlueprintName = "iosApp"
-            ReferencedContainer = "container:iosApp.xcodeproj">
+            BuildableName = "ReactNativeNWReactCalculator.app"
+            BlueprintName = "ReactNativeNWReactCalculator"
+            ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "iosApp.app"
-            BlueprintName = "iosApp"
-            ReferencedContainer = "container:iosApp.xcodeproj">
+            BuildableName = "ReactNativeNWReactCalculator.app"
+            BlueprintName = "ReactNativeNWReactCalculator"
+            ReferencedContainer = "container:ReactNativeNWReactCalculator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
