@@ -21,7 +21,7 @@
   "dist": "./dist",
   "mainInput": "main",
   "mainOutput": "main",
-  "main": "index.nw.html",
+  "main": "index.desktop.html",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "build": "grunt build",
@@ -30,6 +30,7 @@
     "react-native:ios": "react-native bundle --entry-file src/index.ios.js --bundle-output ios/main.jsbundle --platform ios --dev false",
     "react-native:android": "react-native bundle --entry-file src/index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --platform android --dev false",
     "serve-nw": "grunt serve-nw",
+    "serve-electron": "grunt serve-electron",
     "serve-web": "grunt serve-web",
     "serve-web:dist": "grunt serve-web:dist",
     "test": "jest",
@@ -57,6 +58,7 @@
     "collectCoverage": true
   },
   "dependencies": {
+    "electron-prebuilt": "^0.37.2",
     "es6-promise": "^3.1.2",
     "events": "^1.1.0",
     "flux": "^2.1.1",

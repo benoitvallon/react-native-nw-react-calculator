@@ -117,12 +117,19 @@ module.exports = function (grunt) {
     },
 
     'exec': {
-      launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs .'
+      launch_nw: '/Applications/nwjs.app/Contents/MacOS/nwjs .',
+      launch_electron: 'electron electron.js'
     },
 
     'concurrent': {
-      target: {
+      nw: {
         tasks: ['watch', 'exec:launch_nw'],
+        options: {
+          logConcurrentOutput: true
+        }
+      },
+      electron: {
+        tasks: ['watch', 'exec:launch_electron'],
         options: {
           logConcurrentOutput: true
         }
@@ -143,7 +150,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve-nw', function () {
     grunt.task.run([
-      'concurrent'
+      'concurrent:nw'
+    ]);
+  });
+
+  grunt.registerTask('serve-electron', function () {
+    grunt.task.run([
+      'concurrent:electron'
     ]);
   });
 

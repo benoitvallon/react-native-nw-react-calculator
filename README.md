@@ -5,7 +5,7 @@
 This project shows how the source code can be architectured to run on multiple devices. As of now, it is able to run as:
 
 - iOS & Android Apps (based on [react-native](https://facebook.github.io/react-native))
-- a Desktop App (based on [NW](http://nwjs.io))
+- a Desktop App based on [NW](http://nwjs.io) or based on [Election](http://electron.atom.io)
 - a Website App in any browser (based on [react](https://facebook.github.io/react))
 
 A demo for the Website App is available [here](http://benoitvallon.github.io/react-native-nw-react-calculator).
@@ -16,9 +16,9 @@ A demo for the Website App is available [here](http://benoitvallon.github.io/rea
 
 ![Mobile Apps](images/mobile-apps.png "Mobile Apps")
 
-### Desktop App
+### Desktop App (NW & Electron)
 
-![Desktop App](images/desktop-app.png "Desktop App")
+![Desktop App](images/desktop-apps.png "Desktop App")
 
 ### Website App
 
@@ -31,6 +31,7 @@ This project uses libraries and tools like:
 - [react](https://facebook.github.io/react) for the Website App and Desktop App,
 - [react-native](https://facebook.github.io/react-native) for the iOS & Android Apps
 - [NW](http://nwjs.io) to package the Desktop App
+- [Electron](http://electron.atom.io) to package the Desktop App
 - [flux](https://facebook.github.io/flux) to organize the data flow management
 - [css-loader](https://github.com/webpack/css-loader) to integrate the styles in the builds
 - [grunt](http://gruntjs.com) to create the builds
@@ -154,6 +155,8 @@ Congratulations! You've just successfully run the project as a Website App.
 
 ## The Desktop App
 
+You can either run the project with [NW](http://nwjs.io) or [election](http://electron.atom.io).
+
 ### Requirements for NW
 
 To run the project, you are supposed to run something like:
@@ -168,10 +171,17 @@ You can also setup an alias to call the binary.
 
 `alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"`
 
-### Quick start
+### Quick start with NW
 
 - `npm run build` to build the project (at least the first time)
 - `npm run serve-nw` to launch the desktop app and enable livereload
+
+Congratulations! You've just successfully run the project as a Desktop App.
+
+### Quick start with Electron
+
+- `npm run build` to build the project (at least the first time)
+- `npm run serve-electron` to launch the desktop app and enable livereload
 
 Congratulations! You've just successfully run the project as a Desktop App.
 
