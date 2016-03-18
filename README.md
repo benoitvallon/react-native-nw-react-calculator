@@ -16,7 +16,7 @@ A demo for the Website App is available [here](http://benoitvallon.github.io/rea
 
 ![Mobile Apps](images/mobile-apps.png "Mobile Apps")
 
-### Desktop App (NW & Electron)
+### Desktop Apps (NW & Electron)
 
 ![Desktop App](images/desktop-apps.png "Desktop App")
 
