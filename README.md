@@ -59,11 +59,11 @@ At the end, every component is defined by 6 files. If we look at the screen comp
 
 ```
 Screen.js
-  |-> ScreenBase.js
-  |-> ScreenRender.ios.js (specific to iOS build)
-  |-> ScreenRender.android.js (specific to Android build)
-  |-> ScreenRender.native.js (shared mobile app code - iOS & Android)
-  |-> ScreenRender.js  (used during Website and Desktop build)
+├── ScreenBase.js
+├── ScreenRender.ios.js (specific to iOS build
+├── ScreenRender.android.js (specific to Android build)
+├── ScreenRender.native.js (shared mobile app code - iOS & Android)
+└── ScreenRender.js (used during Website and Desktop build)
 ```
 
 And here is the main `Class` file which composes the files.
