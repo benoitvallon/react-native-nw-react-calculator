@@ -144,7 +144,7 @@ Congratulations! You've just successfully run the project as an iOS or Android A
 
 ### Requirements for React
 
-There isn't any addtional requirements since you already installed the deps with `npm install`.
+There isn't any additional requirements since you already installed the deps with `npm install`.
 
 ### Quick start
 
@@ -163,7 +163,7 @@ To run the project, you are supposed to run something like:
 
 `/path/to/nw .`
 
-On OSX, the executable binary is in a hidden directory within the .app file. The easier solution to install it is to downlaod the app on http://nwjs.io/ then copying it to your application folder. You will now be able to run:
+On OSX, the executable binary is in a hidden directory within the .app file. The easier solution to install it is to download the app on http://nwjs.io/ then copying it to your application folder. You will now be able to run:
 
 `/Applications/nwjs.app/Contents/MacOS/nwjs .`
 
