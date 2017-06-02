@@ -1,0 +1,137 @@
+module.exports = [
+	{
+		"keyCode": 13,
+		"keyType": "action",
+		"keyValue": "equal"
+	},
+	{
+		"keyCode": 8,
+		"keyType": "action",
+		"keyValue": "back"
+	},
+	{
+		"keyCode": 48,
+		"keyType": "number",
+		"keyValue": 0
+	},
+	{
+		"keyCode": 96,
+		"keyType": "number",
+		"keyValue": 0
+	},
+	{
+		"keyCode": 49,
+		"keyType": "number",
+		"keyValue": 1
+	},
+	{
+		"keyCode": 97,
+		"keyType": "number",
+		"keyValue": 1
+	},
+	{
+		"keyCode": 50,
+		"keyType": "number",
+		"keyValue": 2
+	},
+	{
+		"keyCode": 98,
+		"keyType": "number",
+		"keyValue": 2
+	},
+	{
+		"keyCode": 51,
+		"keyType": "number",
+		"keyValue": 3
+	},
+	{
+		"keyCode": 99,
+		"keyType": "number",
+		"keyValue": 3
+	},
+	{
+		"keyCode": 52,
+		"keyType": "number",
+		"keyValue": 4
+	},
+	{
+		"keyCode": 100,
+		"keyType": "number",
+		"keyValue": 4
+	},
+	{
+		"keyCode": 53,
+		"keyType": "number",
+		"keyValue": 5
+	},
+	{
+		"keyCode": 101,
+		"keyType": "number",
+		"keyValue": 5
+	},
+	{
+		"keyCode": 54,
+		"keyType": "number",
+		"keyValue": 6
+	},
+	{
+		"keyCode": 102,
+		"keyType": "number",
+		"keyValue": 6
+	},
+	{
+		"keyCode": 55,
+		"keyType": "number",
+		"keyValue": 7
+	},
+	{
+		"keyCode": 103,
+		"keyType": "number",
+		"keyValue": 7
+	},
+	{
+		"keyCode": 56,
+		"keyType": "number",
+		"keyValue": 8
+	},
+	{
+		"keyCode": 104,
+		"keyType": "number",
+		"keyValue": 8
+	},
+	{
+		"keyCode": 57,
+		"keyType": "number",
+		"keyValue": 9
+	},
+	{
+		"keyCode": 105,
+		"keyType": "number",
+		"keyValue": 9
+	},
+	{
+		"keyCode": 110,
+		"keyType": "number",
+		"keyValue": "."
+	},
+	{
+		"keyCode": 106,
+		"keyType": "operator",
+		"keyValue": "multiply"
+	},
+	{
+		"keyCode": 107,
+		"keyType": "operator",
+		"keyValue": "add"
+	},
+	{
+		"keyCode": 109,
+		"keyType": "operator",
+		"keyValue": "substract"
+	},
+	{
+		"keyCode": 111,
+		"keyType": "operator",
+		"keyValue": "divide"
+	}
+];
