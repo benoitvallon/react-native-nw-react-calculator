@@ -35,6 +35,7 @@ This project uses libraries and tools like:
 - es6 syntax and [babel](https://babeljs.io)
 - [react](https://facebook.github.io/react) for the Website App and Desktop App,
 - [react-native](https://facebook.github.io/react-native) for the iOS & Android Apps
+- [react-native-macos](https://github.com/ptmt/react-native-macos) for the macOS App
 - [NW](http://nwjs.io) to package the Desktop App
 - [Electron](http://electron.atom.io) to package the Desktop App
 - [flux](https://facebook.github.io/flux) to organize the data flow management
