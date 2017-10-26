@@ -1,19 +1,16 @@
 'use strict';
 
+import React from 'react';
 import Screen from './Screen';
 import Formulae from './Formulae';
 import Keyboard from './Keyboard';
 
-import React, {
-  StyleSheet,
-  View,
-  Platform
-} from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 
-export default function () {
+export default function() {
   return (
     <View style={styles.container}>
-      <View style={styles.screen} >
+      <View style={styles.screen}>
         <Screen />
       </View>
       <View style={styles.formulae}>

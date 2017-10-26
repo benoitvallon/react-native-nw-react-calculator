@@ -1,16 +1,11 @@
 'use strict';
 
-import React, {
-  StyleSheet,
-  Text
-} from 'react-native';
+import React from 'react';
 
-export default function (props, state) {
-  return (
-    <Text style={styles.screen}>
-      {state.displayScreen}
-    </Text>
-  );
+import { StyleSheet, Text } from 'react-native';
+
+export default function(props, state) {
+  return <Text style={styles.screen}>{state.displayScreen}</Text>;
 }
 
 var styles = StyleSheet.create({

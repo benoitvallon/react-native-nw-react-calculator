@@ -29,12 +29,12 @@
     "travis": "npm run build && npm run react-native:ios && npm run react-native:android && npm test",
     "react-native:ios": "react-native bundle --entry-file src/index.ios.js --bundle-output ios/main.jsbundle --platform ios --dev false",
     "react-native:android": "react-native bundle --entry-file src/index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --platform android --dev false",
+    "react-native:macos": "react-native-macos bundle --entry-file src/index.macos.js --bundle-output macos/main.jsbundle --platform macos --dev false",
     "serve-nw": "grunt serve-nw",
     "serve-electron": "grunt serve-electron",
     "serve-web": "grunt serve-web",
     "serve-web:dist": "grunt serve-web:dist",
-    "test": "jest",
-    "postinstall": "npm install fbjs@0.6.0"
+    "test": "jest"
   },
   "window": {
     "toolbar": true,
@@ -58,18 +58,22 @@
     "collectCoverage": true
   },
   "dependencies": {
-    "electron-prebuilt": "^0.37.2",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "electron-prebuilt": "*",
     "es6-promise": "^3.1.2",
     "events": "^1.1.0",
+    "fbjs": "^0.8.16",
     "flux": "^2.1.1",
     "grunt": "^0.4.5",
     "history": "^2.0.1",
     "keymirror": "^0.1.1",
     "normalize.css": "^3.0.3",
     "object-assign": "^4.0.1",
+    "react": "16.0.0-alpha.12",
     "react-dom": "^0.14.7",
-    "react-native": "^0.21.0",
-    "react-native-cli": "^0.1.10",
+    "react-native": "^0.49.3",
+    "react-native-cli": "*",
+    "react-native-macos": "^0.16.0",
     "react-router": "^2.0.1",
     "serve-static": "^1.10.2",
     "uniqid": "^1.0.0"
