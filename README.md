@@ -20,6 +20,10 @@ A demo for the Website App is available [here](http://benoitvallon.github.io/rea
 
 ![Desktop App](images/desktop-apps.png "Desktop App")
 
+### Desktop App (React Native macOS)
+
+![Desktop React Native App](images/desktop-rn-app.png "Desktop React Native macOS App")
+
 ### Website App
 
 ![Website App](images/website-app.png "Website App")
@@ -27,6 +31,7 @@ A demo for the Website App is available [here](http://benoitvallon.github.io/rea
 ## Libraries/tools
 
 This project uses libraries and tools like:
+
 - es6 syntax and [babel](https://babeljs.io)
 - [react](https://facebook.github.io/react) for the Website App and Desktop App,
 - [react-native](https://facebook.github.io/react-native) for the iOS & Android Apps
@@ -40,6 +45,7 @@ This project uses libraries and tools like:
 ## Basic philosophy
 
 All the code is contained in the `src` directory, especially the 3 main entry files that are used for the builds:
+
 - `index.ios.js` & `index.android.js` are the ones used to build the iOS & Android Apps
 - `index.js` is the one used to build the Website App and Desktop App as the code is strictly the same.
 
@@ -68,7 +74,7 @@ Screen.js
 
 And here is the main `Class` file which composes the files.
 
-```js
+```javascript
 'use strict';
 
 import Base from './ScreenBase';
@@ -123,7 +129,7 @@ Some builds from npm included bugs while `npm install`. So if you are using a np
 
 #### Android
 
-- Follow the official documentation guide here: http://facebook.github.io/react-native/docs/getting-started.html#android-setup (includes experimental Windows & Linux support)
+- Follow the official documentation guide here: <http://facebook.github.io/react-native/docs/getting-started.html#android-setup> (includes experimental Windows & Linux support)
 
 ### Running the Mobile Apps
 
@@ -136,7 +142,7 @@ Some builds from npm included bugs while `npm install`. So if you are using a np
 
 - Open an emulator. (Genymotion or run `android avd`)
 - Run the `react-native run-android` in the root of this project.
-- If trying to run on a device, read the following guide: http://facebook.github.io/react-native/docs/running-on-device-android.html#content
+- If trying to run on a device, read the following guide: <http://facebook.github.io/react-native/docs/running-on-device-android.html#content>
 
 Congratulations! You've just successfully run the project as an iOS or Android App.
 
@@ -149,7 +155,7 @@ There isn't any additional requirements since you already installed the deps wit
 ### Quick start
 
 - `npm run build` to build the project (at least the first time)
-- `npm run serve-web` to preview in the browser at http://localhost:8000/index.web.html or http://localhost:8000/webpack-dev-server/index.web.html with webpack-dev-server and hot reload enabled
+- `npm run serve-web` to preview in the browser at <http://localhost:8000/index.web.html> or <http://localhost:8000/webpack-dev-server/index.web.html> with webpack-dev-server and hot reload enabled
 
 Congratulations! You've just successfully run the project as a Website App.
 
@@ -163,7 +169,7 @@ To run the project, you are supposed to run something like:
 
 `/path/to/nw .`
 
-On OSX, the executable binary is in a hidden directory within the .app file. The easier solution to install it is to download the app on http://nwjs.io/ then copying it to your application folder. You will now be able to run:
+On OSX, the executable binary is in a hidden directory within the .app file. The easier solution to install it is to download the app on <http://nwjs.io/> then copying it to your application folder. You will now be able to run:
 
 `/Applications/nwjs.app/Contents/MacOS/nwjs .`
 
