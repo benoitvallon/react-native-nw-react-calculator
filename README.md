@@ -4,8 +4,8 @@
 
 This project shows how the source code can be architectured to run on multiple devices. As of now, it is able to run as:
 
-- iOS & Android Apps (based on [react-native](https://facebook.github.io/react-native))
-- a Desktop App based on [NW](http://nwjs.io) or based on [Electron](http://electron.atom.io)
+- iOS & Android Apps (based on [react-native](https://facebook.github.io/react-native)) 
+- a Desktop App based on [NW](http://nwjs.io) or based on [Electron](http://electron.atom.io) or based on React Native
 - a Website App in any browser (based on [react](https://facebook.github.io/react))
 
 A demo for the Website App is available [here](http://benoitvallon.github.io/react-native-nw-react-calculator).
