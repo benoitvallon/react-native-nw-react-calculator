@@ -25,9 +25,9 @@ var CalculatorStore = assign({}, EventEmitter.prototype, {
   getDisplayScreen: function() {
     if(_displayScreen.toString().length >= _totalNumberOfDigits) {
       // console.log('display filter', _displayScreen.toString());
-      return parseFloat(_displayScreen).toExponential(_exponentialNumberOfDigits);
+      return processAddSeparator(parseFloat(_displayScreen).toExponential(_exponentialNumberOfDigits));
     }
-    return _displayScreen;
+    return processAddSeparator(_displayScreen);
   },
   getDisplayFormulae: function() {
     var maxNumberOfChar = 32;
@@ -128,7 +128,7 @@ function processKey(keyType, keyValue) {
   if(keyType === 'number') {
     if(keyValue === '+-') {
 
-      // a number is being type
+      // a number is being typed
       if(_numberKeyPressedBuffer.length) {
         if(_numberKeyPressedBuffer[0] === '-') {
           _numberKeyPressedBuffer.shift();
@@ -280,6 +280,32 @@ function processFormula(formula) {
     _signKeyTyped = formula.operator;
     processCalculation();
   }
+}
+
+function processAddSeparator(displayScreen) {
+  let roundNumber,
+      processedRoundNumber,
+      decimalNumber,
+      negativeSign,
+      processedNumber;
+
+  negativeSign          = '';
+  processedNumber       = displayScreen;
+
+  // Store the negative state
+  if(processedNumber[0] === '-'){
+    negativeSign = '-';
+    processedNumber = processedNumber.slice(1);
+  }
+  [roundNumber, decimalNumber] = [...processedNumber.split('.')];
+  // Return immediately if there's no need to add separator
+  if(roundNumber.length < 4) return displayScreen;
+  roundNumber = roundNumber.split('');
+  for(var i = roundNumber.length - 3; i > 0; i -=3){
+    roundNumber.splice(i, 0, ',');
+  }
+  processedNumber = negativeSign + roundNumber.join('') + (decimalNumber || '');
+  return processedNumber;
 }
 
 CalculatorStore.dispatchToken = AppDispatcher.register(function(action) {
