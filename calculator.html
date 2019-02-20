@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calculator.KH</title>
+		<link rel="stylesheet" type="text/css" href="D:\test\HTML\calculator.css">
+		<script type="text/javascript">
+        function add(num){
+			document.getElementById("main").value+=num;
+
+		}	
+		function equal(){
+			document.getElementById("main").value="";
+		}
+		function back(){
+			var sub=document.getElementById("main").value;
+			document.getElementById("main").value=sub.substring(0,sub.length-1);
+		}
+		function cal(){
+			document.getElementById("main").value=eval(document.getElementById("main").value);
+			
+
+		}
+
+		</script>
+	</head>
+	<body>
+	    <div class="display1">
+	    	<table >
+	    	<p class="top">Electronic Calculator</p>
+	    	</table>
+	    	
+	    	<input class="text" id="main">
+	    
+        
+		<table class="display">
+			<tr>
+			 <td><input class="insert" type="button" value="7" onclick="add('7')"></td>
+			 <td><input  class="insert" type="button" value="8" onclick="add('8')"></td>
+			 <td><input  class="insert" type="button" value="9" onclick="add('9')"></td>
+			 <td><input class="insert" type="button" value="DEL"onclick="back()"></td>
+			 <td><input class="insert" type="button" value="AC" onclick="equal()"></td>
+		  </tr>
+		  <tr>
+				<td><input  class="insert" type="button" value="4" onclick="add('4')"></td>
+				<td><input  class="insert" type="button" value="5" onclick="add('5')"></td>
+				<td><input  class="insert" type="button" value="6" onclick="add('6')"></td>
+				<td><input  class="insert" type="button" value="*" onclick="add('*')"></td>
+				<td><input  class="insert" type="button" value="/" onclick="add('/')"></td>
+		  </tr>
+		  <tr>
+				<td><input class="insert"  type="button" value="1" onclick="add('1')"></td>
+				<td><input  class="insert" type="button" value="2" onclick="add('2')"></td>
+				<td><input  class="insert" type="button" value="3" onclick="add('3')"></td>
+				<td><input  class="insert" type="button" value="+" onclick="add('+')"></td>
+				<td><input  class="insert" type="button" value="-" onclick="add('-')"></td>
+		  </tr>
+		  <tr>
+				<td colspan="2"><input  class="insert0" type="button" value="0" onclick="add('0')"></td>
+				<td><input  class="insert" type="button" value="." onclick="add('.')" ></td>
+				<td colspan="2"><input class="insert1" type="button" value="=" onclick="cal()"></td>
+			</tr>
+		
+		</table>
+		<table>
+	    	<p class="bottom">Electronic Calculator</p>
+	    </table>
+	    </div>
+		
+	</body>
+</html>
