@@ -3,7 +3,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import CalculatorConstants from '../constants/CalculatorConstants';
 
-var CalculatorActions = {
+const CalculatorActions = {
 
   typeKey: function(keyType, keyValue) {
     AppDispatcher.dispatch({
@@ -22,4 +22,4 @@ var CalculatorActions = {
 
 };
 
-module.exports = CalculatorActions;
+export default CalculatorActions;
