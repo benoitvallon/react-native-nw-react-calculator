@@ -7,9 +7,7 @@ class Key extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isHighlighted: false
-    };
+    this.state = { isHighlighted: false};
 
     // Bind callback methods to make `this` the correct context.
     this.handleClick = this.handleClick.bind(this);
@@ -22,15 +20,11 @@ class Key extends Component {
   }
 
   onMouseDown() {
-    this.setState({
-      isHighlighted: true
-    });
+    this.setState({isHighlighted: true});
   }
 
   onMouseUp() {
-    this.setState({
-      isHighlighted: false
-    });
+    this.setState({isHighlighted: false});
   }
 }
 
