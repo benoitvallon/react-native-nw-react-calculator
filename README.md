@@ -132,6 +132,10 @@ Some builds from npm included bugs while `npm install`. So if you are using a np
 
 ### Running the Mobile Apps
 
+For setup and complete installtion guide visit : https://shift.infinite.red/getting-started-with-react-native-development-on-windows-90d85a72ae65
+For react-native:
+- `react-native run-android` to start your application.
+
 #### iOS
 
 - Open iosApp.xcodeproj and hit run in Xcode.
