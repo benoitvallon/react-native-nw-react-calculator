@@ -3,7 +3,7 @@
 import App from './common/components/App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { HashRouter, Route } from 'react-router-dom';
 
 // CSS
 require('normalize.css');
@@ -12,7 +12,7 @@ require('./styles/main.css');
 var content = document.getElementById('content');
 
 ReactDOM.render((
-  <Router history={hashHistory}>
+  <HashRouter>
     <Route path="/" component={App} />
-  </Router>
+  </HashRouter>
 ), content);

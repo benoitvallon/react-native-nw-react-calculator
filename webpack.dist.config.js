@@ -11,10 +11,9 @@ var webpack = require('webpack');
 module.exports = {
   output: {
     publicPath: '/assets/',
-    path: 'dist/assets/',
+    path: __dirname + 'dist/assets/',
     filename: 'main.js'
   },
-  debug: false,
   devtool: false,
   entry: './src/index.js',
   stats: {
@@ -22,13 +21,10 @@ module.exports = {
     reasons: false
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'

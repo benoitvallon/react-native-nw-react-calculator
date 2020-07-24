@@ -12,7 +12,6 @@ module.exports = {
     publicPath: '/assets/'
   },
   cache: true,
-  debug: true,
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
@@ -24,13 +23,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'react-hot!babel-loader'
+      loader: 'babel-loader'
     }, {
       test: /\.sass/,
       loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'

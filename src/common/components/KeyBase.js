@@ -34,4 +34,4 @@ class Key extends Component {
   }
 }
 
-module.exports = Key;
+export default Key;

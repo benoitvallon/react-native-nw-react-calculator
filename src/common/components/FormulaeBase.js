@@ -44,4 +44,4 @@ class Formulae extends Component {
   }
 }
 
-module.exports = Formulae;
+export default Formulae;

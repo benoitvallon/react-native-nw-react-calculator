@@ -305,4 +305,4 @@ CalculatorStore.dispatchToken = AppDispatcher.register(function(action) {
   }
 });
 
-module.exports = CalculatorStore;
+export default CalculatorStore;
