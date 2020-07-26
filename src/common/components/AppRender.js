@@ -4,6 +4,7 @@ import React from 'react';
 import Screen from './Screen';
 import Formulae from './Formulae';
 import Keyboard from './Keyboard';
+import KeyboardHandler from './KeyboardHandler';
 
 export default function () {
   return (
@@ -11,6 +12,7 @@ export default function () {
       <Screen />
       <Formulae />
       <Keyboard />
+      <KeyboardHandler />
     </div>
   );
 }
