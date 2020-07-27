@@ -45,13 +45,14 @@ All the code is contained in the `src` directory, especially the 3 main entry fi
 
 ### Flux architecture actions/stores
 
-All the [flux](https://facebook.github.io/flux) architecture is share to 100% to all the different builds. This means that all the logic and data management code is done only once and reuse everywhere. This allows us to have an easy tests suite as well and to ensure that our code is working properly on all the devices.
+All the [flux](https://facebook.github.io/flux) architecture is share to 100% to all the different builds. This means that all the logic and data management code is done only once and reused everywhere.
+This not only allows us to have an easy tests suite but also ensure that our code is working properly on all devices.
 
 ### Components
 
-The real interest of the project is in how the components have been structured to shared most of their logic and only redefined what is specific to every device.
+The real interest of the project is in how the components have been structured to share most of their logic and only redefine what is specific to every device.
 
-Basically, every component has a main `Class` which inherits a base `Class` containing all the logic. Then, the main component import a different Render function which has been selected during the build. The file extension `.ios.js`, `.android.js` or `.js` is used by the build tool to import only the right file.
+Basically, every component has a main `Class` which inherits a base `Class` containing all the logic. Then, the main component imports a different Render function which has been selected during the build. The file extension `.ios.js`, `.android.js` or `.js` is used by the build tool to import only the right file.
 
 The `.native.js` files contain code that is shared between both mobile platforms (iOS & Android). Currently, the `.ios.js` and `.android.js` files compose this `.native.js` file since all code is shared right now. However, if a component needed to be different for platform specific reasons, that code would be included in the corresponding platform specific files.
 
@@ -93,9 +94,13 @@ Here are some thoughts about what can come next:
 
 ## Thank you Robert for your awesome design
 
-I want to thank Robert O'Dowd who kindly authorized me the reuse his very beautiful design. The original design made by Robert was part of his project called "Simplifycation" visible [here](https://dribbble.com/shots/1973851-Simplifycation).
+I want to thank Robert O'Dowd who kindly authorized me to reuse his very beautiful design. The original design made by Robert was part of his project called "Simplifycation" visible [here](https://dribbble.com/shots/1973851-Simplifycation).
 
 # How to build/run the projects
+
+For ReactJS:
+- `npm run build` to build the project.
+- `npm run start` to run the project. 
 
 ## General requirements before running any specific project
 
@@ -126,6 +131,10 @@ Some builds from npm included bugs while `npm install`. So if you are using a np
 - Follow the official documentation guide here: http://facebook.github.io/react-native/docs/getting-started.html#android-setup (includes experimental Windows & Linux support)
 
 ### Running the Mobile Apps
+
+For setup and complete installtion guide visit : https://shift.infinite.red/getting-started-with-react-native-development-on-windows-90d85a72ae65
+For react-native:
+- `react-native run-android` to start your application.
 
 #### iOS
 
