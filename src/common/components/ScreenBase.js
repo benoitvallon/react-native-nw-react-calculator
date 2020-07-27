@@ -34,4 +34,4 @@ class Screen extends Component {
   }
 }
 
-module.exports = Screen;
+export default Screen;

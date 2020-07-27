@@ -22,4 +22,4 @@ var CalculatorActions = {
 
 };
 
-module.exports = CalculatorActions;
+export default CalculatorActions;

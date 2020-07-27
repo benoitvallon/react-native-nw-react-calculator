@@ -34,10 +34,7 @@ module.exports = function (grunt) {
         publicPath: '/assets/',
         contentBase: './<%= pkg.src %>/'
       },
-
-      start: {
-        keepAlive: true
-      }
+      keepalive: true
     },
 
     'connect': {

@@ -2,7 +2,7 @@
 
 import keyMirror from 'keymirror';
 
-module.exports = keyMirror({
+export default keyMirror({
   KEY_TYPED: null,
   FORMULA_TYPED: null
 });

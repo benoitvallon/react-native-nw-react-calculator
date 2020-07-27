@@ -6,9 +6,9 @@ jest.dontMock('keymirror');
 
 describe('CalculatorStore', function() {
 
-  var CalculatorConstants = require('../../../common/constants/CalculatorConstants');
-  var AppDispatcher = require('../../../common/dispatcher/AppDispatcher');
-  var CalculatorStore = require('../../../common/stores/CalculatorStore');
+  var CalculatorConstants = require('../../../common/constants/CalculatorConstants').default;
+  var AppDispatcher = require('../../../common/dispatcher/AppDispatcher').default;
+  var CalculatorStore = require('../../../common/stores/CalculatorStore').default;
   var callback = AppDispatcher.register.mock.calls[0][0];
 
   // mock actions
