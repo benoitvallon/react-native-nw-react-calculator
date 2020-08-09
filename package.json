@@ -83,7 +83,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.7.2",
     "css-loader": "^0.23.1",
-    "eslint": "^2.4.0",
+    "eslint": "^6.6.0",
     "eslint-plugin-react": "^4.2.3",
     "file-loader": "^0.8.5",
     "gh-pages": "^0.11.0",
