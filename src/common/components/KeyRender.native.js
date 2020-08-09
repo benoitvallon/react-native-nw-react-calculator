@@ -1,6 +1,8 @@
 'use strict';
 
-import React, {
+import React from 'react';
+
+import {
   StyleSheet,
   Text,
   View,
@@ -8,31 +10,38 @@ import React, {
   TouchableOpacity
 } from 'react-native';
 
-export default function () {
-  if(this.props.keyType === 'number') {
+export default function() {
+  if (this.props.keyType === 'number') {
     return (
       <View style={styles.keyNumber}>
-        <TouchableHighlight style={styles.button} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={styles.textButton}>
-            {this.props.keySymbol}
-          </Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this.handleClick}
+          underlayColor="#cdcdcd"
+        >
+          <Text style={styles.textButton}>{this.props.keySymbol}</Text>
         </TouchableHighlight>
       </View>
     );
-  } else if(this.props.keyType === 'operator') {
+  } else if (this.props.keyType === 'operator') {
     return (
       <View style={styles.keyOperator}>
-        <TouchableHighlight style={getOperatorStyles(this.props.keyValue)} onPress={this.handleClick} underlayColor='#cdcdcd'>
-          <Text style={styles.textButtonOperator}>
-            {this.props.keySymbol}
-          </Text>
+        <TouchableHighlight
+          style={getOperatorStyles(this.props.keyValue)}
+          onPress={this.handleClick}
+          underlayColor="#cdcdcd"
+        >
+          <Text style={styles.textButtonOperator}>{this.props.keySymbol}</Text>
         </TouchableHighlight>
       </View>
     );
-  } else if(this.props.keyType === 'action') {
+  } else if (this.props.keyType === 'action') {
     return (
       <View style={styles.keyAction}>
-        <TouchableOpacity style={styles.keyActionButton} onPress={this.handleClick}>
+        <TouchableOpacity
+          style={styles.keyActionButton}
+          onPress={this.handleClick}
+        >
           <View style={getActionStyles(this.props.keyValue)}>
             <Text style={getActionButtonStyles(this.props.keyValue)}>
               {this.props.keySymbol}
