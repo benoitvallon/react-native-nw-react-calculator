@@ -55,7 +55,8 @@
       "js"
     ],
     "verbose": true,
-    "collectCoverage": true
+    "collectCoverage": true,
+    "modulePathIgnorePatterns": ["read-package-tree"]
   },
   "dependencies": {
     "electron-prebuilt": "^0.37.2",
