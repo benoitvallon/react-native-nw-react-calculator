@@ -1,6 +1,6 @@
 // Stiziles
 html, body {
-  background: white;
+  background: rgb(255, 255, 255);
 }
 
 .calculator {
@@ -8,7 +8,7 @@ html, body {
   background: blue;
 }
 .screen {
-  background-color: #68cef2;
+  background-color: #0889d4bb;
   color: #190d08;
   font-size: 50px;
   padding: 30px 10px;
@@ -17,7 +17,7 @@ html, body {
 }
 
 .formulae {
-  background-color: #4c4c4c;
+  background-color: #031d64;
   padding: 20px 10px;
   text-align: right;
   font-weight: lighter;
@@ -67,14 +67,15 @@ html, body {
   transition: all 0.2s;
 }
 .key-number {
-  border: 1px solid #f8f8f8;
+  border: 1px solid #085899b4;
   width: 33%;
   color: #919191;
+  font-size: 30px;
 }
 
 .key-operator {
   width: 25%;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 20px 0;
 }
 .operator {
@@ -85,29 +86,29 @@ html, body {
   display: inline;
 }
 .operator.divide {
-  background-color: #cb7dc9;
+  background-color: #0fa6b1;
   padding-left: 12px;
   padding-right: 12px;
 }
 .operator.substract {
-  background-color: #fcb064;
+  background-color: #14d3da;
   padding-left: 14px;
   padding-right: 14px;
 }
 .operator.add {
-  background-color: #fb96cf;
+  background-color: #149acf;
   padding-left: 12px;
   padding-right: 12px;
 }
 .operator.multiply {
-  background-color: #68cef1;
+  background-color: #09baf5;
   padding-left: 13px;
   padding-right: 13px;
 }
 
 .key-action {
   width: 50%;
-  padding: 20px;
+  padding: 10px;
 }
 .action {
   border-radius: 10px;
@@ -115,9 +116,11 @@ html, body {
 }
 .action.back {
   color: #d68086;
-  border: 1px solid #d68086;
+  border: 2px solid #d68086;
+  font-size: 20px;
 }
 .action.equal {
   color: #9ed8a6;
-  border: 1px solid #9ed8a6;
+  border: 2px solid #9ed8a6;
+  font-size: 20px;
 }
