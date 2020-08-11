@@ -66,6 +66,7 @@
     "history": "^2.0.1",
     "keymirror": "^0.1.1",
     "normalize.css": "^3.0.3",
+    "number-to-words": "^1.2.4",
     "object-assign": "^4.0.1",
     "react-dom": "^0.14.7",
     "react-native": "^0.21.0",
