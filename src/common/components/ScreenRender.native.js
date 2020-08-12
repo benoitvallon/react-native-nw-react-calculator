@@ -1,22 +1,20 @@
-'use strict';
+"use strict";
 
-import React, {
-  StyleSheet,
-  Text
-} from 'react-native';
+import React, { StyleSheet, Text, View } from "react-native";
 
 export default function (props, state) {
   return (
-    <Text style={styles.screen}>
-      {state.displayScreen}
-    </Text>
+    <View>
+      <Text style={styles.screen}>{state.displayScreen}</Text>
+      <Text style={styles.screen}>{state.displayNumber}</Text>
+    </View>
   );
 }
 
 var styles = StyleSheet.create({
   screen: {
-    color: '#190d08',
+    color: "#190d08",
     fontSize: 70,
-    fontWeight: '200'
-  }
+    fontWeight: "200",
+  },
 });

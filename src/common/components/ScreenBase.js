@@ -1,20 +1,21 @@
-'use strict';
+"use strict";
 
-import { Component } from 'react';
-import CalculatorStore from '../stores/CalculatorStore';
+import { Component } from "react";
+import CalculatorStore from "../stores/CalculatorStore";
 
 function getCalculatorState() {
   return {
-    displayScreen: CalculatorStore.getDisplayScreen()
+    displayScreen: CalculatorStore.getDisplayScreen(),
+    displayNumber: CalculatorStore.getDisplayNumber(),
   };
 }
 
 class Screen extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      displayScreen: CalculatorStore.getDisplayScreen()
+      displayScreen: CalculatorStore.getDisplayScreen(),
+      displayNumber: CalculatorStore.getDisplayNumber(),
     };
 
     // Bind callback methods to make `this` the correct context.
