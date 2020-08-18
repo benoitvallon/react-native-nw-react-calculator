@@ -17,7 +17,7 @@ html, body {
 }
 
 .formulae {
-  background-color: #4c4c4c;
+  background-color: #343D46;
   padding: 20px 10px;
   text-align: right;
   font-weight: lighter;
@@ -48,6 +48,7 @@ html, body {
 
 .keyboard {
   height: 300px;
+  background-color: #919191;
 }
 .keyboard-row {
   display: table;
@@ -65,23 +66,23 @@ html, body {
   -o-user-select: none;
   user-select: none;
   transition: all 0.2s;
+  background-color: #4c4c4c;
 }
 .key-number {
-  border: 1px solid #f8f8f8;
+  border: 1px solid #919191;
   width: 33%;
-  color: #919191;
+  color: red;
 }
 
 .key-operator {
   width: 25%;
-  color: white;
+  color: red;
   padding: 20px 0;
 }
 .operator {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 20px;
-  height: 60px;
   display: inline;
 }
 .operator.divide {
@@ -112,12 +113,13 @@ html, body {
 .action {
   border-radius: 10px;
   padding: 10px 0;
+  color: red;
 }
 .action.back {
-  color: #d68086;
-  border: 1px solid #d68086;
+  background-color: #d68086;
+  border: 1px solid red;
 }
 .action.equal {
-  color: #9ed8a6;
-  border: 1px solid #9ed8a6;
+  background-color: #9ed8a6;
+  border: 1px solid green;
 }
