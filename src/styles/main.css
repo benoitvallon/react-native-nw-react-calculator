@@ -1,5 +1,6 @@
 // Stiziles
-html, body {
+html,
+body {
   background: white;
 }
 
@@ -7,6 +8,7 @@ html, body {
   height: 00;
   background: blue;
 }
+
 .screen {
   background-color: #68cef2;
   color: #190d08;
@@ -23,6 +25,7 @@ html, body {
   font-weight: lighter;
   min-height: 18px;
 }
+
 .highlight {
   transform: scale(0.9);
 }
@@ -33,15 +36,19 @@ html, body {
   border-radius: 12px;
   margin: 0 3px;
 }
+
 .group.divide {
   background-color: #cb7dc9;
 }
+
 .group.substract {
   background-color: #fcb064;
 }
+
 .group.add {
   background-color: #fb96cf;
 }
+
 .group.multiply {
   background-color: #68cef1;
 }
@@ -49,10 +56,12 @@ html, body {
 .keyboard {
   height: 300px;
 }
+
 .keyboard-row {
   display: table;
   width: 100%;
 }
+
 .key {
   display: table-cell;
   vertical-align: middle;
@@ -66,6 +75,7 @@ html, body {
   user-select: none;
   transition: all 0.2s;
 }
+
 .key-number {
   border: 1px solid #f8f8f8;
   width: 33%;
@@ -77,28 +87,33 @@ html, body {
   color: white;
   padding: 20px 0;
 }
+
 .operator {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 20px;
-  height: 60px;
+
   display: inline;
 }
+
 .operator.divide {
   background-color: #cb7dc9;
   padding-left: 12px;
   padding-right: 12px;
 }
+
 .operator.substract {
   background-color: #fcb064;
   padding-left: 14px;
   padding-right: 14px;
 }
+
 .operator.add {
   background-color: #fb96cf;
   padding-left: 12px;
   padding-right: 12px;
 }
+
 .operator.multiply {
   background-color: #68cef1;
   padding-left: 13px;
@@ -109,14 +124,17 @@ html, body {
   width: 50%;
   padding: 20px;
 }
+
 .action {
   border-radius: 10px;
   padding: 10px 0;
 }
+
 .action.back {
   color: #d68086;
   border: 1px solid #d68086;
 }
+
 .action.equal {
   color: #9ed8a6;
   border: 1px solid #9ed8a6;
