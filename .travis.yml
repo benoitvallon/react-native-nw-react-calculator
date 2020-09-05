@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "14.9.0"
+  - 11.6.0
 
 cache: yarn 
 
@@ -9,9 +9,9 @@ install:
   - yarn install
 
 script:
-  - npm test
-  - npm run build 
-  - npm run travis
+  - yarn test
+  - yarn run build 
+  - yarn   run travis
 
 deploy:
   provider: pages
