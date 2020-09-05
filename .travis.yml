@@ -10,4 +10,18 @@ node_js:
   - "5.7.1"
   - "5.8.0"
 
-script: npm run travis
+cache: yarn 
+
+install:
+  - yarn ci
+
+script:
+  - yarn test
+  - yarn run build 
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: yongkang0312
