@@ -11,7 +11,7 @@ install:
 script:
   - yarn test
   - yarn run build 
-  - yarn   run travis
+  - yarn run travis
 
 deploy:
   provider: pages
