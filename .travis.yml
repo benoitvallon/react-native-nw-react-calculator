@@ -1,21 +1,13 @@
 language: node_js
 
 node_js:
+  - 11.0.0
+  - 11.1.0
+  - 11.2.0
+  - 11.3.0
+  - 11.4.0 
+  - 11.5.0
   - 11.6.0
+  - 11.7.0
 
-cache: yarn 
-
-install:
-  - yarn install
-
-script:
-  - yarn test
-  - yarn run build 
-  - yarn run travis
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  on:
-    branch: master
+script: npm run travis
