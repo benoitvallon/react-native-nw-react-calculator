@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A mobile, desktop and website App with the same code",
   "author": "Benoit VALLON <benoitvallon@gmail.com> (http://github.com/benoitvallon)",
-  "license": "MIT", 
+  "license": "MIT",
+  "repository": {
     "type": "git",
     "url": "https://github.com/benoitvallon/react-native-nw-react-calculator"
   },
@@ -12,7 +13,7 @@
     "react",
     "react-native",
     "nw",
-    "flux",   
+    "flux",
     "babel"
   ],
   "src": "./",
